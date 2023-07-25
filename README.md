@@ -1,6 +1,4 @@
-___
-# DELETE THIS INSTRUCTIONS AND ADD A SHORT INTRODUCTION ABOUT YOUR PROJECT
-___
+<p align="center"><img src = "docs/images/Logo.png" width="500" height="250"></p>
 
 ## Please refer the instructions in below URL:
 
