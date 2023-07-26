@@ -10,8 +10,8 @@ public class PatientController {
         return "patientRegistration";
     }
 
-    @GetMapping("/patientsDetails")
+    @GetMapping("/patientDetails")
     public String getPatients() {
-        return "patientsDetails";
+        return "patientDetails";
     }
 }

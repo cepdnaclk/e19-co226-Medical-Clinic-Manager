@@ -1,18 +1,14 @@
         function sendPostRequest() {
             // Sample JSON data to be sent in the request
             const jsonData = {
-                fname: document.getElementById("fname").value,
-                lname: document.getElementById("lname").value,
-                nic: document.getElementById("nic").value,
-                address: document.getElementById("address").value,
-                contact: document.getElementById("contact").value,
-                dob:document.getElementById("dob").value,
-                insuranceDetails:document.getElementById("have_valid_insurance1").value,
-                insuranceDetails:document.getElementById("have_valid_insurance2").value
+                appointmentId: document.getElementById("appointmentId").value,
+                dueDate: document.getElementById("dueDate").value,
+                date:document.getElementById("date").value,
+                reason:document.getElementById("reason").value
             };
 
             // URL to which the POST request will be sent
-            const url = "http://localhost:8082/patients";
+            const url = "http://localhost:8082/appointments";
 
             // Headers for the request (specifying JSON content type)
             const headers = {

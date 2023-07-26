@@ -10,8 +10,8 @@ public class PatientRestController {
     @Autowired
     PatientService patientService;
     @PostMapping("/patients")
-    public Patient savePatient(@RequestBody Patient department) {
-        return patientService.savePatient(department);
+    public Patient savePatient(@RequestBody Patient patient) {
+        return patientService.savePatient(patient);
     }
     @GetMapping("/patients")
     public List<Patient> fetchPatientList() {
