@@ -6,10 +6,10 @@ import jakarta.persistence.Id;
 
 import java.util.Date;
 @Entity
-public class Appointment {
+public class Patient {
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
-    private Long appointmentid;
+    private Long patientId;
     private String fname;
     private String lname;
     private String nic;
@@ -18,12 +18,12 @@ public class Appointment {
     private Date dob;
     private String insuranceDetails;
 
-    public Long getAppointmentid() {
-        return appointmentid;
+    public Long getPatientid() {
+        return patientId;
     }
 
-    public void setAppointmentid(Long appointmentid) {
-        this.appointmentid = appointmentid;
+    public void setPatientid(Long patientId) {
+        this.patientId = patientId;
     }
 
     public String getFname() {
@@ -82,8 +82,8 @@ public class Appointment {
         this.insuranceDetails = insuranceDetails;
     }
 
-    public Appointment(Long appointmentid, String fname, String lname, String nic, String address, String contact, Date dob, String insuranceDetails) {
-        this.appointmentid = appointmentid;
+    public Patient(Long patientId, String fname, String lname, String nic, String address, String contact, Date dob, String insuranceDetails) {
+        this.patientId = patientId;
         this.fname = fname;
         this.lname = lname;
         this.nic = nic;
@@ -93,13 +93,13 @@ public class Appointment {
         this.insuranceDetails = insuranceDetails;
     }
 
-    public Appointment() {
+    public Patient() {
     }
 
     @Override
     public String toString() {
         return "Appointment{" +
-                "appointmentid=" + appointmentid +
+                "PatientId=" + patientId +
                 ", fname='" + fname + '\'' +
                 ", lname='" + lname + '\'' +
                 ", nic='" + nic + '\'' +

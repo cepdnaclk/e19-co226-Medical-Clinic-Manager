@@ -1,25 +1,28 @@
 <!DOCTYPE html>
 <html>
 <head>
-    <title>New Appointment</title>
+    <title>Patient Registration</title>
     <style>
         body {
             font-family: Arial, sans-serif;
-            margin: 20px;
+            margin: 0;
+            padding: 0;
+            font-size: 15px;
         }
-
         h2 {
-            margin-bottom: 20px;
+            padding-top: 20px;
+            padding-left: 20px;
         }
-
         table {
             border-collapse: collapse;
             width: 400px;
+            margin: 5px;
         }
 
         table, th, td {
             border: 1px solid #ccc;
-            padding: 10px;
+            padding: 5px;
+            margin-left: 20px;
         }
 
         th {
@@ -39,7 +42,8 @@
         }
 
         button {
-            margin-top: 20px;
+            margin-top: 1px;
+            margin-left: 20px;
             padding: 10px 20px;
             background-color: #000000;
             color: #fff;
@@ -50,10 +54,54 @@
         button:hover {
             background-color: #550000;
         }
+        header {
+            background-color: #2C3E50;
+            color: #fff;
+            padding: 10px;
+            text-align: left;
+        }
+
+        nav {
+            background-color: #2c3e50;
+            color: #fff;
+            padding: 10px;
+        }
+
+        nav ul {
+            list-style-type: none;
+            margin: 0;
+            padding: 0;
+        }
+
+        nav ul li {
+            display: inline-block;
+            margin-right: 20px;
+        }
+
+        nav ul li a {
+            color: #fff;
+            text-decoration: none;
+            padding: 5px 10px;
+        }
+
+        nav ul li a:hover {
+            background-color: #2980b9;
+        }
     </style>
 </head>
 <body>
-<h2>Add Appointment Details</h2>
+<header>
+    <img src="/logo.png" style="height:70px;width:300px;">
+</header>
+<nav>
+    <ul>
+        <li><a href="http://localhost:8082/">Home</a></li>
+        <li><a href="http://localhost:8082/appointments">Appointments</a></li>
+        <li><a href="http://localhost:8082/patientsDetails">Patients</a></li>
+        <li><a href="http://localhost:8082/medical_records">Medical Records</a></li>
+        <!-- Add more navigation links as needed -->
+    </ul>
+</nav>
 <form onsubmit="sendPostRequest(event)">
     <table>
         <tr>
@@ -90,7 +138,7 @@
             </td>
         </tr>
     </table>
-    <button type="submit">Submit</button>
+    <button type="submit">Register</button>
 </form>
 <script>
         function sendPostRequest() {
@@ -107,7 +155,7 @@
             };
 
             // URL to which the POST request will be sent
-            const url = "http://localhost:8082/appointments";
+            const url = "http://localhost:8082/patients";
 
             // Headers for the request (specifying JSON content type)
             const headers = {
@@ -129,7 +177,7 @@
                     // Handle the response data here
 
                     // Redirect to the new URL after successful submission
-                    window.location.href = "http://localhost:8082/appointments";
+                    window.location.href = "http://localhost:8082";
                 })
                 .catch(error => {
                     console.error("Error occurred:", error);
