@@ -18,6 +18,7 @@ This is a sample image, to show how to add images to your page. To learn more op
 
 ![Sample Image](./images/sample.png)
  -->
+<img src = "images/Logo.png" width="500" height="120">
 
 ## Team
 -  E/19/017, Amanda W.S., [email](mailto:e19017@eng.pdn.ac.lk)
