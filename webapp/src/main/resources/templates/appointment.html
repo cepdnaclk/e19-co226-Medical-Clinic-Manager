@@ -1,0 +1,141 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>New Appointment</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 20px;
+        }
+
+        h2 {
+            margin-bottom: 20px;
+        }
+
+        table {
+            border-collapse: collapse;
+            width: 400px;
+        }
+
+        table, th, td {
+            border: 1px solid #ccc;
+            padding: 10px;
+        }
+
+        th {
+            background-color: #f2f2f2;
+        }
+
+        input[type="text"],
+        input[type="date"] {
+            width: 100%;
+            padding: 8px;
+            box-sizing: border-box;
+        }
+
+        input[type="radio"] {
+            margin-right: 5px;
+            display: inline; /* Add this to align the radio buttons horizontally */
+        }
+
+        button {
+            margin-top: 20px;
+            padding: 10px 20px;
+            background-color: #000000;
+            color: #fff;
+            border: none;
+            cursor: pointer;
+        }
+
+        button:hover {
+            background-color: #550000;
+        }
+    </style>
+</head>
+<body>
+<h2>Add Appointment Details</h2>
+<form onsubmit="sendPostRequest(event)">
+    <table>
+        <tr>
+            <td><label for="fname">First Name:</label></td>
+            <td><input type="text" id="fname" name="fname" required></td>
+        </tr>
+        <tr>
+            <td><label for="lname">Last Name:</label></td>
+            <td><input type="text" id="lname" name="lname" required></td>
+        </tr>
+        <tr>
+            <td><label for="nic">NIC:</label></td>
+            <td><input type="text" id="nic" name="nic" required></td>
+        </tr>
+        <tr>
+            <td><label for="address">Address:</label></td>
+            <td><input type="text" id="address" name="address" required></td>
+        </tr>
+        <tr>
+            <td><label for="contact">Contact:</label></td>
+            <td><input type="text" id="contact" name="contact" required></td>
+        </tr>
+        <tr>
+            <td><label for="dob">Date of Birth:</label></td>
+            <td><input type="date" id="dob" name="dob" required></td>
+        </tr>
+        <tr>
+            <td><label>Validity of the Insurance:</label></td>
+            <td>
+                <input type="radio" id="have_valid_insurance1" name="have_valid_insurance" value="yes" required>
+                <label for="have_valid_insurance1">Yes</label>
+                <input type="radio" id="have_valid_insurance2" name="have_valid_insurance" value="no" required>
+                <label for="have_valid_insurance2">No</label>
+            </td>
+        </tr>
+    </table>
+    <button type="submit">Submit</button>
+</form>
+<script>
+        function sendPostRequest() {
+            // Sample JSON data to be sent in the request
+            const jsonData = {
+                fname: document.getElementById("fname").value,
+                lname: document.getElementById("lname").value,
+                nic: document.getElementById("nic").value,
+                address: document.getElementById("address").value,
+                contact: document.getElementById("contact").value,
+                dob:document.getElementById("dob").value,
+                insuranceDetails:document.getElementById("have_valid_insurance1").value,
+                insuranceDetails:document.getElementById("have_valid_insurance2").value
+            };
+
+            // URL to which the POST request will be sent
+            const url = "http://localhost:8082/appointments";
+
+            // Headers for the request (specifying JSON content type)
+            const headers = {
+                "Content-Type": "application/json"
+            };
+
+            // Options for the fetch API
+            const options = {
+                method: "POST",
+                headers: headers,
+                body: JSON.stringify(jsonData)
+            };
+
+            // Sending the POST request
+            fetch(url, options)
+                .then(response => response.json())
+                .then(data => {
+                    console.log("Response from the server:", data);
+                    // Handle the response data here
+
+                    // Redirect to the new URL after successful submission
+                    window.location.href = "http://localhost:8082/appointments";
+                })
+                .catch(error => {
+                    console.error("Error occurred:", error);
+                    // Handle errors here
+                });
+        }
+    </script>
+</body>
+</html>
