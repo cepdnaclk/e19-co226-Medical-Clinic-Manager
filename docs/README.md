@@ -9,7 +9,7 @@ title: LifeCare
 
 [comment]: # "This is the standard layout for the project, but you can clean this and use your own template"
 
-# LifeCare
+# <img src = "images/Logo.png" width="300" height="150">
 
 ---
 
