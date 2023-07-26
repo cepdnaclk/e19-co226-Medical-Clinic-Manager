@@ -3,13 +3,13 @@ layout: home
 permalink: index.html
 
 # Please update this with your repository name and title
-repository-name: eYY-XXX-project-template
-title:
+repository-name: e19-co226-Medical-Clinic-Manager
+title: LifeCare
 ---
 
 [comment]: # "This is the standard layout for the project, but you can clean this and use your own template"
 
-# Project Title
+# LifeCare
 
 ---
 
@@ -20,9 +20,9 @@ This is a sample image, to show how to add images to your page. To learn more op
  -->
 
 ## Team
--  eNumber, Name, [email](mailto:name@email.com)
--  eNumber, Name, [email](mailto:name@email.com)
--  eNumber, Name, [email](mailto:name@email.com)
+-  E/19/017, Amanda WS, [email](mailto:e19017@eng.pdn.ac.lk)
+-  E/19/028, Atugedara ANI, [email](mailto:e19018@eng.pdn.ac.lk)
+-  E/19/163, Jayasundara JMEG, [email](mailto:e19163@eng.pdn.ac.lk)
 
 ## Table of Contents
 1. [Introduction](#introduction)
