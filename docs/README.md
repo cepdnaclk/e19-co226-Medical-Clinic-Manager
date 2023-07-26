@@ -33,8 +33,6 @@ This is a sample image, to show how to add images to your page. To learn more op
 
 ## Introduction
 
-<img src = "images/Logo.png" width="500" height="120">
-
  description of the real world problem and solution, impact
 
 ## Other Sub Topics
