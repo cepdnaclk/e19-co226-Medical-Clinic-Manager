@@ -21,4 +21,9 @@ public class PatientRestController {
     public Patient fetchPatientById(@PathVariable("id") Long patientId) {
         return patientService.fetchPatientById(patientId);
     }
+    @DeleteMapping("/patients/{id}")
+    public String deletePatientById(@PathVariable("id") Long patientId) {
+        patientService.deletePatientById(patientId);
+        return "Patient Deleted Successful !";
+    }
 }

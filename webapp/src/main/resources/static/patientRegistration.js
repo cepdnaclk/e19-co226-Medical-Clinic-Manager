@@ -1,4 +1,6 @@
-        function sendPostRequest() {
+        function sendPostRequest(event) {
+            event.preventDefault(); // Prevent the default form submission
+
             // Sample JSON data to be sent in the request
             const jsonData = {
                 fname: document.getElementById("fname").value,
@@ -30,11 +32,11 @@
             fetch(url, options)
                 .then(response => response.json())
                 .then(data => {
+                    // Redirect to the new URL after successful submission
+                    window.location.href = "http://localhost:8082/appointmentForm";
+
                     console.log("Response from the server:", data);
                     // Handle the response data here
-
-                    // Redirect to the new URL after successful submission
-                    window.location.href = "http://localhost:8082/patients/{id}";
                 })
                 .catch(error => {
                     console.error("Error occurred:", error);

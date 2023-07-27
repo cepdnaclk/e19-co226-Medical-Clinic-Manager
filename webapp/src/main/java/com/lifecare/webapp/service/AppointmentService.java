@@ -11,4 +11,6 @@ public interface AppointmentService {
     public List<Appointment> fetchAppointmentList();
 
     public Appointment fetchAppointmentById(Long appointmentId);
+
+    public void deleteAppointmentById(Long appointmentId);
 }

@@ -22,4 +22,9 @@ public class AppointmentRestController {
     public Appointment fetchAppointmentById(@PathVariable("id") Long appointmentId) {
         return appointmentService.fetchAppointmentById(appointmentId);
     }
+    @DeleteMapping("/appointments/{id}")
+    public String deleteAppointmentById(@PathVariable("id") Long appointmentId) {
+        appointmentService.deleteAppointmentById(appointmentId);
+        return "Appointment Deleted Successful !";
+    }
 }

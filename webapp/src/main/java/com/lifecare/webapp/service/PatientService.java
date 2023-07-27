@@ -8,4 +8,7 @@ public interface PatientService {
     public List<Patient> fetchPatientList();
 
     public Patient fetchPatientById(Long departmentId);
+
+    public void deletePatientById(Long patientId);
+
 }
