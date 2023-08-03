@@ -11,4 +11,11 @@ public interface PatientService {
 
     public void deletePatientById(Long patientId);
 
+    public Patient updatePatient(Long id, Patient patient);
+
+    public Patient fetchPatientByNic(String nic);
+
+    public void deletePatientByNic(String nic);
+
+    public Patient fetchPatientByUsername(String username);
 }

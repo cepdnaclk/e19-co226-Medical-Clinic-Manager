@@ -48,7 +48,15 @@
 		<dependency>
 			<groupId>entity</groupId>
 			<artifactId>entity-txn</artifactId>
-			<version>0.1.4</version>
+			<version>0.1.5</version>
+		</dependency>
+        <dependency>
+            <groupId>org.projectlombok</groupId>
+            <artifactId>lombok</artifactId>
+        </dependency>
+		<dependency>
+			<groupId>org.projectlombok</groupId>
+			<artifactId>lombok</artifactId>
 		</dependency>
 	</dependencies>
 
