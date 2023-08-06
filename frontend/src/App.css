@@ -1,0 +1,26 @@
+.page-heading{
+  color:rgb(35, 73, 175);
+  font-size: 30px;
+}
+
+.underline{
+  height: 04px;
+  width: 4rem;
+  background-color: aquamarine;
+  margin-top: 10px;
+  margin-bottom: 10px;
+}
+
+.bg-c-light{
+  background-color: aliceblue;
+}
+
+.page-container{
+  display: flex;
+  flex-direction: column;
+  min-height: 100vh;
+}
+
+.content-wrap{
+  flex:1;
+}
