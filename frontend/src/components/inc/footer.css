@@ -1,0 +1,21 @@
+.footer{
+    padding-top: 1cm;
+    position: sticky;
+    padding-bottom: 0.5cm;
+    width: 100%;
+    background-color: black;
+    color: white;
+    margin-top: auto;
+  }
+
+  html{
+    height: 100%;
+  }
+
+  .topic_lifeCare{
+    color: rgb(38, 38, 158);
+  }
+
+  .nav_topic{
+    color: rgb(171, 53, 53);
+  }
