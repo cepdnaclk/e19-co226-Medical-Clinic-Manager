@@ -25,7 +25,7 @@ public class Patient {
     private String contact;
     private LocalDate dob;
     private String insuranceDetails;
-    @OneToOne(cascade = CascadeType.MERGE)
-    @JoinColumn(name = "id")
+    @OneToOne(cascade = CascadeType.REMOVE)
+    @JoinColumn(name = "uid")
     private User user;
 }

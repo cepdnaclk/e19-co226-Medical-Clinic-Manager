@@ -1,6 +1,6 @@
 import React from 'react'
 import { Link } from 'react-router-dom';
-import img2 from './imags/img2.jpeg'
+// import img2 from '../pages/imags/img2.jpeg'
 
 function Navbar() {
   return (
@@ -10,7 +10,7 @@ function Navbar() {
                 <div className='col-md-12'>
                     <nav class="navbar navbar-expand-lg bg-body-tertiary">
                         <div class="container-fluid">
-                            <img src={img2} alt='' className='navbar-logo'/>
+                            {/* <img src={img2} alt='' className='navbar-logo'/> */}
                             <a class="navbar-brand" href="#"><h2 className='topic_lifeCare'>LifeCare</h2></a>
                             <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
                             <span class="navbar-toggler-icon"></span>

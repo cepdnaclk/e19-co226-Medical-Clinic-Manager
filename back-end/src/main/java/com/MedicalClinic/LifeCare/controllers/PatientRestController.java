@@ -5,12 +5,8 @@ import com.MedicalClinic.LifeCare.service.PatientService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.access.prepost.PreAuthorize;
 import org.springframework.web.bind.annotation.*;
-
 import java.util.List;
 
-//@RestController
-//@RequestMapping("/api/v1/")
-//
 @CrossOrigin(origins = "http://localhost:3000")
 @RestController
 @RequestMapping("/api/v1/patient")
@@ -31,6 +27,11 @@ public class PatientRestController {
     @PreAuthorize("hasRole('USER') or hasRole('MODERATOR') or hasRole('ADMIN')")
     public Patient fetchPatientById(@PathVariable("id") Long id) {
         return patientService.fetchPatientById(id);
+    }
+    @GetMapping("/findbyuserid/{uid}")
+    @PreAuthorize("hasRole('USER') or hasRole('MODERATOR') or hasRole('ADMIN')")
+    public boolean existsPatientByUid(@PathVariable("uid") Long uid) {
+        return patientService.existsPatientByUid(uid);
     }
     @PutMapping("/save/{id}")
     @PreAuthorize("hasRole('USER')")

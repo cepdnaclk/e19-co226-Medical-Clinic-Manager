@@ -24,7 +24,7 @@ public class Manager {
     private String address;
     private String contact;
     private LocalDate dob;
-    @OneToOne(cascade = CascadeType.MERGE)
-    @JoinColumn(name = "id")
+    @OneToOne(cascade = CascadeType.REMOVE)
+    @JoinColumn(name = "uid")
     private User user;
 }

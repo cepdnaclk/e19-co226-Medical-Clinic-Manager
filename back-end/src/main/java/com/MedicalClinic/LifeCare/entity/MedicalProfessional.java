@@ -26,7 +26,7 @@ public class MedicalProfessional {
     private String contact;
     private LocalDate dob;
     private String speciality;
-    @OneToOne()
-    @JoinColumn(name = "id")
+    @OneToOne(cascade = CascadeType.REMOVE)
+    @JoinColumn(name = "uid")
     private User user;
 }

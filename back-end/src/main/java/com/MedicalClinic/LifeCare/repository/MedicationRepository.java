@@ -10,4 +10,6 @@ import java.util.List;
 public interface MedicationRepository extends JpaRepository<Medication, Long> {
     public List<Medication> findByPatientPatientId(Long patientid);
     public List<Medication> findByMedicalProfessionalProfessionalId(Long professionalId);
+    public void deleteByPatientPatientId(Long patientId);
+
 }

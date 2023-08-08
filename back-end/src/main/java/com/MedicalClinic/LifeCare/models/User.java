@@ -16,8 +16,8 @@ import jakarta.validation.constraints.Size;
     })
 public class User {
   @Id
-  @GeneratedValue(strategy = GenerationType.IDENTITY)
-  private Long id;
+  @GeneratedValue(strategy = GenerationType.AUTO)
+  private Long uid;
 
   @NotBlank
   @Size(max = 20)
@@ -48,11 +48,11 @@ public class User {
   }
 
   public Long getId() {
-    return id;
+    return uid;
   }
 
-  public void setId(Long id) {
-    this.id = id;
+  public void setId(Long uid) {
+    this.uid = uid;
   }
 
   public String getUsername() {

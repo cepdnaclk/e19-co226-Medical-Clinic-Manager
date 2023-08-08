@@ -15,4 +15,5 @@ public interface PatientService {
 
     public Patient updatePatient(Long id, Patient patient);
 
+    public boolean existsPatientByUid(Long uid);
 }
