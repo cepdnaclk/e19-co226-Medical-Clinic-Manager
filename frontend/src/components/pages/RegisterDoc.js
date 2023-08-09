@@ -1,7 +1,7 @@
 import React, { useState } from 'react';
 import { Container, Form, Button, Card } from 'react-bootstrap';
 
-function Login() {
+function RegisterDoc() {
   const [isCheckboxChecked, setIsCheckboxChecked] = useState(false);
   const [isFormFilled, setIsFormFilled] = useState(false);
 
@@ -19,7 +19,7 @@ function Login() {
       <Container>
         <Card className="shadow">
           <Card.Body>
-            <h2 className='topic mt-3'>Log in</h2>
+            <h2 className='topic mt-3'>Register as a Doctor</h2>
             <pre></pre>
             <section className='section bg-c-light border-top border-bottom'>
               <div className='container'>
@@ -43,9 +43,29 @@ function Login() {
                         </div>
                       </div>
 
-                      <Form.Group className="mb-3" controlId="formBasicPassword">
-                        <Form.Label>Password</Form.Label>
-                        <Form.Control type="password" placeholder="Password" onChange={handleFormChange} required />
+                      <Form.Group className="mb-3" controlId="formBasicNIC">
+                        <Form.Label>NIC</Form.Label>
+                        <Form.Control type="text" placeholder="Enter NIC" onChange={handleFormChange} required />
+                      </Form.Group>
+
+                      <Form.Group className="mb-3" controlId="formBasicDOB">
+                        <Form.Label>Date of Birth</Form.Label>
+                        <Form.Control type="date" onChange={handleFormChange} required />
+                      </Form.Group>
+
+                      <Form.Group className="mb-3" controlId="formBasicAddress">
+                        <Form.Label>Address</Form.Label>
+                        <Form.Control type="text" placeholder="Enter address" onChange={handleFormChange} required />
+                      </Form.Group>
+
+                      <Form.Group className="mb-3" controlId="formBasicContact">
+                        <Form.Label>Contact Number</Form.Label>
+                        <Form.Control type="text" placeholder="Enter contact number" onChange={handleFormChange} required />
+                      </Form.Group>
+
+                      <Form.Group className="mb-3" controlId="formBasicInsurance">
+                        <Form.Label>Speciality</Form.Label>
+                        <Form.Control type="text" placeholder="Enter insurance provider" onChange={handleFormChange} required />
                       </Form.Group>
                       
                       <Form.Group className="mb-3" controlId="formBasicCheckbox">
@@ -69,4 +89,4 @@ function Login() {
   );
 }
 
-export default Login;
+export default RegisterDoc;

@@ -7,7 +7,8 @@ export default function Home() {
   return (
     <div className='body'>
         <Container><h1 className='topic mt-3'><b>Welcome to LifeCare</b></h1></Container>
-        <img src={img1} alt=''/>
+        <pre></pre>
+        <img src={img1} alt='' className='homeimg'/>
         <pre></pre>
         <section className='section'>
           <div className='container'>

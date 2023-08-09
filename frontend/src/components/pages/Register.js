@@ -43,9 +43,29 @@ function Register() {
                         </div>
                       </div>
 
-                      <Form.Group className="mb-3" controlId="formBasicPassword">
-                        <Form.Label>Password</Form.Label>
-                        <Form.Control type="password" placeholder="Password" onChange={handleFormChange} required />
+                      <Form.Group className="mb-3" controlId="formBasicNIC">
+                        <Form.Label>NIC</Form.Label>
+                        <Form.Control type="text" placeholder="Enter NIC" onChange={handleFormChange} required />
+                      </Form.Group>
+
+                      <Form.Group className="mb-3" controlId="formBasicDOB">
+                        <Form.Label>Date of Birth</Form.Label>
+                        <Form.Control type="date" onChange={handleFormChange} required />
+                      </Form.Group>
+
+                      <Form.Group className="mb-3" controlId="formBasicAddress">
+                        <Form.Label>Address</Form.Label>
+                        <Form.Control type="text" placeholder="Enter address" onChange={handleFormChange} required />
+                      </Form.Group>
+
+                      <Form.Group className="mb-3" controlId="formBasicContact">
+                        <Form.Label>Contact Number</Form.Label>
+                        <Form.Control type="text" placeholder="Enter contact number" onChange={handleFormChange} required />
+                      </Form.Group>
+
+                      <Form.Group className="mb-3" controlId="formBasicInsurance">
+                        <Form.Label>Insurance Provider</Form.Label>
+                        <Form.Control type="text" placeholder="Enter insurance provider" onChange={handleFormChange} required />
                       </Form.Group>
                       
                       <Form.Group className="mb-3" controlId="formBasicCheckbox">

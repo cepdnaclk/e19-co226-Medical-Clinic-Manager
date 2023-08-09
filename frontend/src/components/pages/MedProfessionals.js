@@ -27,36 +27,41 @@ const medProfessionalsData = [
   // ... more medical professionals data
 ];
 
-const MedProfessionals = () => {
-  const renderMedProfCard = (medProf) => {
-    return (
-      <div key={medProf.id} className="mx-3 my-3">
-        <div className="card shadow container">
-          <div className="card-body px-3 py-2">
-            <h6 className="appobold">{`${medProf.fname} ${medProf.lname}`}</h6>
-            <p>
-              <span className="appoDetail">Speciality:</span> {medProf.speciality} <br />
-              <span className="appoDetail">NIC:</span> {medProf.nic} <br />
-              <span className="appoDetail">Address:</span> {medProf.address} <br />
-              <span className="appoDetail">Phone Number:</span> {medProf.phoneNumber} <br />
-              <span className="appoDetail">Date of Birth:</span> {medProf.dob}
-            </p>
+export default function MedProfessionals() {
+  return (
+    <div className='body'>
+      <Container>
+        <h2 className='topic mt-3'>Details of Medical Professionals</h2>
+      </Container>
+      <pre></pre>
+      <section className='section bg-c-light border-top border-bottom'>
+        <div className='container'>
+          <div className='row'>
+            <div className='col-md-12'>
+              <pre></pre>
+            </div>
+
+            {medProfessionalsData.map((medProf) => (
+              <div className='col-md-4 my-2' key={medProf.id}>
+                <div className='card shadow container'>
+                  <div className='card-body px-3 py-2'>
+                    <h6 className='appobold'>
+                      {`${medProf.fname} ${medProf.lname}`}
+                    </h6>
+                    <p>
+                      <span className='appoDetail'>Speciality:</span> {medProf.speciality} <br />
+                      <span className='appoDetail'>NIC:</span> {medProf.nic} <br />
+                      <span className='appoDetail'>Address:</span> {medProf.address} <br />
+                      <span className='appoDetail'>Phone Number:</span> {medProf.phoneNumber} <br />
+                      <span className='appoDetail'>Date of Birth:</span> {medProf.dob}
+                    </p>
+                  </div>
+                </div>
+              </div>
+            ))}
           </div>
         </div>
-      </div>
-    );
-  };
-
-  return (
-    <div className="body">
-      <Container>
-        <h2 className="topic mt-3">Details of Medical Professionals</h2>
-      </Container>
-      <div className="d-flex flex-wrap">
-        {medProfessionalsData.map((medProf) => renderMedProfCard(medProf))}
-      </div>
+      </section>
     </div>
   );
-};
-
-export default MedProfessionals;
+}

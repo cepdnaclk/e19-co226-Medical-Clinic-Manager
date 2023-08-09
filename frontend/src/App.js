@@ -9,7 +9,17 @@ import MedProfessionals from './components/pages/MedProfessionals';
 import Footer from './components/inc/Footer';
 import NewAppoin from './components/pages/NewAppoin';
 import Register from './components/pages/Register';
-import Login from './components/pages/Login';
+import Login from './components/pages/Signup';
+import Medications from './components/pages/Medications';
+import PatientMedic from './components/pages/PatientMedic';
+import Signin from './components/pages/Signin';
+import SigninDoc from './components/pages/SigninDoc';
+import AppointPatient from './components/pages/AppointPatient';
+import AppointmentDoc from './components/pages/AppointmentDoc';
+import Signup from './components/pages/Signup';
+import RegisterDoc from './components/pages/RegisterDoc';
+import MedProfManager from './components/pages/MedProfManager';
+import MedicatManager from './components/pages/MedicatManager';
 
 function App() {
   return (
@@ -19,14 +29,22 @@ function App() {
 
         <Routes>
 
-          <Route exact path='/' element={<Home/>}></Route>
+          <Route exact path='/h' element={<Home/>}></Route>
           <Route exact path='/appoinments' element={<Appoinments/>}></Route>
+          <Route exact path='/appointPatient' element={<AppointPatient/>}></Route>
+          <Route exact path='/appointmentDoc' element={<AppointmentDoc/>}></Route>
           <Route exact path='/staff' element={<Staff/>}></Route>
           <Route exact path='/managers' element={<Managers/>}></Route>
           <Route exact path='/medprofessionals' element={<MedProfessionals/>}></Route>
+          <Route exact path='/medprofManager' element={<MedProfManager/>}></Route>
           <Route exact path='/newAppoinment' element={<NewAppoin/>}></Route>
           <Route exact path='/register' element={<Register/>}></Route>
-          <Route exact path='/login' element={<Login/>}></Route>
+          <Route exact path='/registerDoc' element={<RegisterDoc/>}></Route>
+          <Route exact path='/signin' element={<Signin/>}></Route>
+          <Route exact path='/signinDoc' element={<SigninDoc/>}></Route>
+          <Route exact path='/signup' element={<Signup/>}></Route>
+          <Route exact path='/medications' element={<Medications/>}></Route>
+          <Route exact path='/' element={<MedicatManager/>}></Route>
 
         </Routes>
 
