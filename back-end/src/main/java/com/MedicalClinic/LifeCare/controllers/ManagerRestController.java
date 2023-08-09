@@ -28,6 +28,11 @@ public class ManagerRestController {
     public Manager fetchManagerById(@PathVariable("id") Long id) {
         return managerService.fetchManagerById(id);
     }
+    @GetMapping("/findbyuserid/{uid}")
+    @PreAuthorize("hasRole('USER') or hasRole('MODERATOR') or hasRole('ADMIN')")
+    public boolean existsPatientByUid(@PathVariable("uid") Long uid) {
+        return managerService.existsPatientByUid(uid);
+    }
     @PutMapping("/save/{id}")
     @PreAuthorize("hasRole('ADMIN')")
     public Manager updateManager(@PathVariable("id") Long id, @RequestBody Manager manager){

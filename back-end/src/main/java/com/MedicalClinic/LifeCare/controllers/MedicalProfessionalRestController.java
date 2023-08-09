@@ -31,6 +31,11 @@ public class MedicalProfessionalRestController {
     public MedicalProfessional fetchMedicalProfessionalById(@PathVariable("id") Long id){
         return medicalProfessionalService.fetchMedicalProfessionalById(id);
     }
+    @GetMapping("/findbyuserid/{uid}")
+    @PreAuthorize("hasRole('USER') or hasRole('MODERATOR') or hasRole('ADMIN')")
+    public boolean existsPatientByUid(@PathVariable("uid") Long uid) {
+        return medicalProfessionalService.existsPatientByUid(uid);
+    }
     @PutMapping("/save/{id}")
     @PreAuthorize("hasRole('MODERATOR')")
     public MedicalProfessional updateMedicalProfessionalById(@PathVariable Long id, @RequestBody MedicalProfessional medicalProfessional) {

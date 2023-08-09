@@ -7,4 +7,5 @@ import org.springframework.stereotype.Repository;
 @Repository
 public interface MedicalProfessionalRepository extends JpaRepository<MedicalProfessional, Long> {
     boolean existsById(Long Id);
+    boolean existsByUserUid(Long Uid);
 }

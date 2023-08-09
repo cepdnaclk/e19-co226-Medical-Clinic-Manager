@@ -111,4 +111,9 @@ public class ManagerServiceImpl implements ManagerService{
         }
         throw new UnauthorizedAccessException("Unauthorized to access manager data");
     }
+
+    @Override
+    public boolean existsPatientByUid(Long uid) {
+        return managerRepository.existsByUserId(uid);
+    }
 }

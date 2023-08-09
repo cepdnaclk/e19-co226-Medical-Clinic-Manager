@@ -14,4 +14,6 @@ public interface MedicalProfessionalService {
     public List<MedicalProfessional> fetchMedicalProfessionalList();
 
     public MedicalProfessional updateMedicalProfessionalById(Long id, MedicalProfessional medicalProfessional);
+
+    public boolean existsPatientByUid(Long uid);
 }

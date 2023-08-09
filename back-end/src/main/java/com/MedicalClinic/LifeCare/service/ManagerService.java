@@ -10,4 +10,6 @@ public interface ManagerService {
     public Manager fetchManagerById(Long managerId);
     public Manager updateManager(Long id, Manager manager);
     public String deleteManagerById(Long managerId);
+
+    public boolean existsPatientByUid(Long uid);
 }

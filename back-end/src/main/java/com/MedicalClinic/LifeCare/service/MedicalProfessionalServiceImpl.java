@@ -99,4 +99,9 @@ public class MedicalProfessionalServiceImpl implements MedicalProfessionalServic
         }
         throw new UnauthorizedAccessException("Unauthorized to access medical professional data");
     }
+
+    @Override
+    public boolean existsPatientByUid(Long uid) {
+        return medicalProfessionalRepository.existsByUserUid(uid);
+    }
 }

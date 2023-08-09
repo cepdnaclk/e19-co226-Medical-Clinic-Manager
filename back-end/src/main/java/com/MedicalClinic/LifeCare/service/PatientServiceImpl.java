@@ -2,16 +2,13 @@ package com.MedicalClinic.LifeCare.service;
 
 import com.MedicalClinic.LifeCare.entity.Patient;
 import com.MedicalClinic.LifeCare.exception.UnauthorizedAccessException;
-import com.MedicalClinic.LifeCare.models.User;
-import com.MedicalClinic.LifeCare.repository.ManagerRepository;
-import com.MedicalClinic.LifeCare.repository.MedicalProfessionalRepository;
-import com.MedicalClinic.LifeCare.repository.PatientRepository;
-import com.MedicalClinic.LifeCare.repository.UserRepository;
+import com.MedicalClinic.LifeCare.repository.*;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.core.Authentication;
 import org.springframework.security.core.context.SecurityContextHolder;
 import org.springframework.security.core.userdetails.UserDetails;
 import org.springframework.stereotype.Service;
+import org.springframework.transaction.annotation.Transactional;
 
 import java.util.List;
 import java.util.Objects;
@@ -27,6 +24,12 @@ public class PatientServiceImpl implements PatientService {
 
     @Autowired
     ManagerRepository managerRepository;
+
+    @Autowired
+    AppointmentRepository appointmentRepository;
+
+    @Autowired
+    MedicationRepository medicationRepository;
 
     @Override
     public Patient savePatient(Patient patient) {
@@ -54,28 +57,20 @@ public class PatientServiceImpl implements PatientService {
 
     @Override
     public Patient fetchPatientById(Long patientId) {
-            Authentication auth = SecurityContextHolder.getContext().getAuthentication();
-            UserDetails userDetails1 = (UserDetails) auth.getPrincipal();
-            String username = userDetails1.getUsername();
-            Patient patient = patientRepository.findById(patientId).get();
-            /*
-            ---------------------------
-            | check Patient (himOnly) |
-            ---------------------------
-             */
-            String relatedusername = Objects.requireNonNull(userRepository.findById(patient.getUser().getId()).orElse(null)).getUsername();
-            System.out.println(relatedusername);
-            boolean himOnly = username.equals(relatedusername);
-
-            if (himOnly) {
-                return patient;
-            }
-            throw new UnauthorizedAccessException("Unauthorized to access patient data");
+        return patientRepository.findById(patientId).get();
     }
 
     @Override
+    @Transactional
     public void deletePatientById(Long patientId) {
-        patientRepository.deleteById(patientId);
+        if (patientRepository.existsById(patientId)) {
+            medicationRepository.deleteByPatientPatientId(patientId);
+            appointmentRepository.deleteByPatientPatientId(patientId);
+            patientRepository.deleteById(patientId);
+        }
+        else {
+            throw new UnauthorizedAccessException("No such a patient!");
+        }
     }
 
     @Override
@@ -104,5 +99,10 @@ public class PatientServiceImpl implements PatientService {
             return patientRepository.save(patientDB);
         }
         throw new UnauthorizedAccessException("Unauthorized to access patient data");
+    }
+
+    @Override
+    public boolean existsPatientByUid(Long uid) {
+        return patientRepository.existsByUserUid(uid);
     }
 }

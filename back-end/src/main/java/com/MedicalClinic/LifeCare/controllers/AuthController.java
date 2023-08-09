@@ -33,9 +33,9 @@ import com.MedicalClinic.LifeCare.repository.UserRepository;
 import com.MedicalClinic.LifeCare.security.jwt.JwtUtils;
 import com.MedicalClinic.LifeCare.security.services.UserDetailsImpl;
 
-@CrossOrigin(origins = "*", maxAge = 3600)
+@CrossOrigin
 @RestController
-@RequestMapping("/api/auth")
+@RequestMapping("/api/v1/auth")
 public class AuthController {
   @Autowired
   AuthenticationManager authenticationManager;
@@ -67,8 +67,8 @@ public class AuthController {
         .collect(Collectors.toList());
 
     return ResponseEntity.ok(new JwtResponse(jwt, 
-                         userDetails.getId(), 
-                         userDetails.getUsername(), 
+                         userDetails.getId(),
+                         userDetails.getUsername(),
                          userDetails.getEmail(), 
                          roles));
   }
@@ -187,7 +187,7 @@ public class AuthController {
   }
 
   @PostMapping("/admin/signup")
-  @PreAuthorize("hasRole('ADMIN')")
+//  @PreAuthorize("hasRole('ADMIN')")
   public ResponseEntity<?> registerAdmin(@Valid @RequestBody SignupRequest signUpRequest) {
     if (userRepository.existsByUsername(signUpRequest.getUsername())) {
       return ResponseEntity
