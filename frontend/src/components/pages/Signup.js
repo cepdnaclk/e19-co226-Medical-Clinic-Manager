@@ -33,18 +33,19 @@ function Signup() {
   };
 
   return (
-    <div className='body'>
+    <div className='body '>
       <Container>
-        <Card className="shadow">
-          <Card.Body>
-            <h2 className='topic mt-3'>Sign up</h2>
-            <pre></pre>
-            <section className='section bg-c-light border-top border-bottom'>
-              <div className='container'>
-                <div className='row'>
-                  <div className='col-md-12'>
+        <div className='d-flex justify-content-center'>
+          <Card className="shadow col-md-7">
+            <Card.Body>
+              <h2 className='topic mt-3'>Sign up</h2>
+              <pre></pre>
+              <section className='section bg-c-light border-top border-bottom'>
+                <div className='container'>
+                  <div className='row'>
+                    <div className='col-md-12'>
 
-                    <Form>
+                      <Form>
                       <Form.Group className="mb-3" controlId="formBasicUsername">
                         <Form.Label>Username</Form.Label>
                         <Form.Control type="text" placeholder="Enter username" onChange={handleFormChange} required />
@@ -64,29 +65,28 @@ function Signup() {
                         <Form.Label>Retype Password</Form.Label>
                         <Form.Control type="password" placeholder="Retype password" onChange={handleFormChange} required />
                       </Form.Group>
-
-                      
-
-                      <div className="d-flex justify-content-between align-items-center mt-3">
-                        <Button variant="primary" type="submit" disabled={!isFormFilled}>
-                          <Link to="/register" className="btn btn-primary">
-                            Sign up
-                          </Link>
-                        </Button>
-                        <Button variant="primary" type="submit">
-                          <Link to="/signin" className="btn btn-primary">
-                            Back to Sign in
-                          </Link>
-                        </Button>
-                      </div>
-                    </Form>
-                    <pre></pre>
+                        
+                        <div className="d-flex justify-content-between align-items-center mt-3">
+                          <Button variant="primary" type="submit" disabled={!isFormFilled}>
+                            <Link to="/register" className="btn btn-primary btn-sm">
+                              Sign up
+                            </Link>
+                          </Button>
+                          <Button variant="primary" type="submit">
+                            <Link to="/signin" className="btn btn-primary btn-sm">
+                              Back to Sign in
+                            </Link>
+                          </Button>
+                        </div>
+                      </Form>
+                      <pre></pre>
+                    </div>
                   </div>
                 </div>
-              </div>
-            </section>
-          </Card.Body>
-        </Card>
+              </section>
+            </Card.Body>
+          </Card>
+        </div>
       </Container>
     </div>
   );
