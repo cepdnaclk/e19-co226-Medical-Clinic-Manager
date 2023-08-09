@@ -104,3 +104,7 @@
     background-color: #3498db;
   }
   
+  .homeimg{
+    width: auto; 
+  max-height: 400px; 
+  }

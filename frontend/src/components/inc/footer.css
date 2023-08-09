@@ -1,21 +1,50 @@
 .footer{
-    padding-top: 1cm;
-    position: sticky;
-    padding-bottom: 0.5cm;
-    width: 100%;
-    background-color: black;
-    color: white;
-    margin-top: auto;
-  }
+  padding-top: 1cm;
+  position: sticky;
+  padding-bottom: 0.5cm;
+  width: 100%;
+  background-color: black;
+  color: white;
+  margin-top: auto;
+}
 
-  html{
-    height: 100%;
-  }
+.navback{
+  background-color: rgb(17, 17, 111);
+}
 
-  .topic_lifeCare{
-    color: rgb(38, 38, 158);
-  }
+.navbar-container {
+  padding-left: 20px; /* Adjust the padding as needed to change the starting point */
+}
 
-  .nav_topic{
-    color: rgb(171, 53, 53);
-  }
+html{
+  height: 100%;
+}
+
+.topic_lifeCare{
+  color: white;
+}
+
+.nav_topic{
+  color: white;
+}
+
+.nav_subtopic{
+  color: rgb(17, 17, 111);
+}
+
+.navbar-toggler-icon::after {
+  content: '';
+  display: inline-block;
+  width: 1em;
+  height: 1em;
+  vertical-align: -0.125em; /* Adjust vertical alignment as needed */
+  background-image: url("data:image/svg+xml;charset=utf-8,%3Csvg viewBox='0 0 16 16' xmlns='http://www.w3.org/2000/svg' fill='%23ff0000'%3E%3Cpath d='M1.413 4.346a1 1 0 0 1 1.415 0L8 9.585l5.172-5.171a1 1 0 0 1 1.415 1.414l-6 6a1 1 0 0 1-1.415 0l-6-6a1 1 0 0 1 0-1.414z'/%3E%3C/svg%3E");
+}
+
+/* Navbar.css */
+.navbar-logo {
+width: auto; /* Set the width as needed */
+max-height: 40px; /* Adjust the max-height to your preference */
+border-radius: 100%;
+
+}
