@@ -22,6 +22,12 @@ import MedicatManager from './components/pages/MedicatManager';
 import RegisterManag from './components/pages/RegisterManag';
 
 function App() {
+  const [isSignedIn, setIsSignedIn] = React.useState(false);
+
+  const handleFormSubmit = () => {
+    // Perform form submission logic here
+    setIsSignedIn(true);
+  };
   return (
     <Router>
       <div>
@@ -29,7 +35,7 @@ function App() {
 
         <Routes>
 
-          <Route exact path='/' element={<Home/>}></Route>
+          <Route exact path='/home' element={<Home/>}></Route>
           <Route exact path='/appoinments' element={<Appoinments/>}></Route>
           <Route exact path='/appointPatient' element={<AppointPatient/>}></Route>
           <Route exact path='/appointmentDoc' element={<AppointmentDoc/>}></Route>
@@ -41,17 +47,14 @@ function App() {
           <Route exact path='/register' element={<Register/>}></Route>
           <Route exact path='/registerManag' element={<RegisterManag/>}></Route>
           <Route exact path='/registerDoc' element={<RegisterDoc/>}></Route>
-          <Route exact path='/signin' element={<Signin/>}></Route>
+          <Route exact path='/signin' element={<Signin handleFormSubmit={handleFormSubmit}/>}></Route>
           <Route exact path='/signinDoc' element={<SigninDoc/>}></Route>
           <Route exact path='/signup' element={<Signup/>}></Route>
           <Route exact path='/medications' element={<Medications/>}></Route>
-<<<<<<< HEAD
           <Route exact path='/medicate' element={<MedicatManager/>}></Route>
-=======
           <Route exact path='/medicatManager' element={<MedicatManager/>}></Route>
->>>>>>> fc9f04462672bf39a0ea79dc7a6412bc2347bd97
 
-        </Routes>
+          </Routes>
 
         <Footer/>
         
