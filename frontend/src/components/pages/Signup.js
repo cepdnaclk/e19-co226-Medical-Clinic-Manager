@@ -57,8 +57,8 @@ function Signup() {
   const handleSubmit = async () => {
     try {
       console.log(formData);
-      await signupService.handleSignup(formData);
-      navigate("/register");
+      signupService.handleSignup(formData);
+      navigate("/signin");
       alert("Signup Success!");
     } catch (error) {
       console.error("Signup failed:", error);

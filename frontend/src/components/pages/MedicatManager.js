@@ -17,7 +17,7 @@ const medicationsData = [
     timesPerDay: 2,
   },
   {
-    id: 1,
+    id: 2,
     patient: {
       fname: 'John',
       lname: 'Doe',
@@ -31,7 +31,7 @@ const medicationsData = [
     timesPerDay: 2,
   },
   {
-    id: 1,
+    id: 3,
     patient: {
       fname: 'John',
       lname: 'Down',
