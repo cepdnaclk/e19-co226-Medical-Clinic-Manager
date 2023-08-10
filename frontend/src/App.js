@@ -38,7 +38,7 @@ function App() {
           <Route exact path='/medprofessionals' element={<MedProfessionals/>}></Route>
           <Route exact path='/medprofManager' element={<MedProfManager/>}></Route>
           <Route exact path='/newAppoinment' element={<NewAppoin/>}></Route>
-          <Route exact path='/' element={<Register/>}></Route>
+          <Route exact path='/register' element={<Register/>}></Route>
           <Route exact path='/registerManag' element={<RegisterManag/>}></Route>
           <Route exact path='/registerDoc' element={<RegisterDoc/>}></Route>
           <Route exact path='/signin' element={<Signin/>}></Route>
