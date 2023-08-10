@@ -127,7 +127,7 @@ function CustomNavbar(isSignedIn) {
 
             {isSignedIn && (
                 <Navbar.Text>
-                Signed in as: <a href="#Home" onClick={() => setShowOffcanvas(true)}>saji{username}</a>
+                Signed in as: <a href="#Home" onClick={() => setShowOffcanvas(true)}>None{username}</a>
                 </Navbar.Text>
             )}
           </Navbar.Collapse>
