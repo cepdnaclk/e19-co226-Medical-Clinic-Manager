@@ -41,11 +41,13 @@ function Navbar() {
                         <h8 className='nav_topic'>Appointments</h8>
                       </Link>
                     </li>
-                    <li className='nav-item'>
-                      <Link to='/medications' className='nav-link'>
-                        <h8 className='nav_topic'>Medications</h8>
-                      </Link>
-                    </li>
+                    {!isHomePage && ( // Show the Medications link if not on the home page
+                      <li className='nav-item'>
+                        <Link to='/medications' className='nav-link'>
+                          <h8 className='nav_topic'>Medications</h8>
+                        </Link>
+                      </li>
+                    )}
                     <li className='nav-item dropdown'>
                       <a
                         className='nav-link dropdown-toggle'
