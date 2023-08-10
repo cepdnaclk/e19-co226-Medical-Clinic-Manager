@@ -2,6 +2,7 @@ import React, { useEffect, useState } from 'react';
 import { Link,useLocation } from 'react-router-dom';
 import { Navbar, Nav, NavDropdown, Offcanvas, Card, Button } from 'react-bootstrap';
 import img2 from './imags/img2.png';
+import axios from 'axios';
 
 function CustomNavbar(isSignedIn) {
   const [username, setUsername] = useState('');
@@ -18,11 +19,24 @@ function CustomNavbar(isSignedIn) {
 
 
   useEffect(() => {
-    // Make API calls to fetch data from the database
-    // ...
-
-    // Update state variables with fetched data
-    // ...
+  //   const patient = JSON.parse(localStorage.getItem('patient'));
+  //   const token = patient.user.accessToken;
+  //   axios.get('http://localhost:8080/api/v1/patient/find/' + patient.patientId, {
+  //     headers: {
+  //       Authorization: `Bearer ${token}`
+  //     }
+  // })
+  //     .then(response => response.json())
+  //     .then(data => {
+  //       setUsername(data.fname + ' ' + data.lname);
+  //       setNicNumber(data.nic);
+  //       setAddress(data.address);
+  //       setDob(data.dob);
+  //       // setFormData(data);
+  //     })
+  //     .catch(error => {
+  //       console.error("Error fetching data:", error);
+  //     });
   }, []);
 
   const handleCloseOffcanvas = () => {

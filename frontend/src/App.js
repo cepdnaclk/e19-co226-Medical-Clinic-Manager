@@ -37,22 +37,24 @@ function App() {
         <Routes>
 
           <Route exact path='/home' element={<Home/>}></Route>
-          <Route exact path='/appoinments' element={<Appoinments/>}></Route>
-          <Route exact path='/appointPatient' element={<AppointPatient/>}></Route>
-          <Route exact path='/appointmentDoc' element={<AppointmentDoc/>}></Route>
-          <Route exact path='/staff' element={<Staff/>}></Route>
-          <Route exact path='/managers' element={<Managers/>}></Route>
-          <Route exact path='/medprofessionals' element={<MedProfessionals/>}></Route>
-          <Route exact path='/medprofManager' element={<MedProfManager/>}></Route>
-          <Route exact path='/newAppoinment' element={<NewAppoin/>}></Route>
-          <Route exact path='/register' element={<Register/>}></Route>
-          <Route exact path='/registerManag' element={<RegisterManag/>}></Route>
-          <Route exact path='/registerDoc' element={<RegisterDoc/>}></Route>
-          <Route exact path='/signin' element={<Signin handleFormSubmit={handleFormSubmit}/>}></Route>
-          <Route exact path='/signinDoc' element={<SigninDoc/>}></Route>
-          <Route exact path='/signup' element={<Signup/>}></Route>
-          <Route exact path='/medications' element={<Medications/>}></Route>
-          <Route exact path='/medicate' element={<MedicatManager/>}></Route>
+          <Route exact path='/appoinments' element={<Appoinments/>}></Route> // all appointments
+          <Route exact path='/appointPatient' element={<AppointPatient/>}></Route> // my appointments
+          <Route exact path='/appointmentDoc' element={<AppointmentDoc/>}></Route> // doctor view of appointments
+          {/* <Route exact path='/staff' element={<Staff/>}></Route>  */} // exact copy of new appointment
+          <Route exact path='/managers' element={<Managers/>}></Route> // all managers
+          <Route exact path='/medprofessionals' element={<MedProfessionals/>}></Route> // all medprofs
+          <Route exact path='/medprofManager' element={<MedProfManager/>}></Route> // all med profs managers view
+          <Route exact path='/newAppoinment' element={<NewAppoin/>}></Route> // new appoinment
+          <Route exact path='/register' element={<Register/>}></Route> // need more details from user
+          <Route exact path='/registerManag' element={<RegisterManag/>}></Route> // need more details from manager
+          <Route exact path='/registerDoc' element={<RegisterDoc/>}></Route> // need more details from medprof
+          <Route exact path='/signin' element={<Signin handleFormSubmit={handleFormSubmit}/>}></Route> // signin
+          {/* <Route exact path='/signinDoc' element={<SigninDoc/>}></Route> */} // unnecessary
+          <Route exact path='/signup' element={<Signup/>}></Route> // user signup
+          <Route exact path='/medications' element={<Medications/>}></Route> // all medications
+          // have some issues ===========================================================================
+          <Route exact path='/medicate' element={<MedicatManager/>}></Route> // doctor view of medications 
+          //==============================================================================================
           <Route exact path='/medicatManager' element={<MedicatManager/>}></Route>
 
           </Routes>
