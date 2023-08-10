@@ -1,6 +1,7 @@
 import React from 'react';
 import { Link, useLocation } from 'react-router-dom';
-import img2 from './imags/img2.jpeg';
+import img2 from './imags/img2.png';
+import { FiLogIn } from "react-icons/fi";
 
 function Navbar() {
   const location = useLocation();
@@ -13,10 +14,9 @@ function Navbar() {
         <div className='row'>
           <div className='col-md-12'>
             <nav className='navbar navbar-expand-lg bg-body-tertiary'>
-              <div className='container-fluid navback navbar-container'>
-                <img src={img2} alt='' className='navbar-logo' />
+              <div className='container-fluid navback bg-dark navbar-container'>
+                <img src={img2} alt='' className='d-flex justify-content-center align-items-center' style={{ width: '180px', height: '73px', padding: '5px'}}/>
                 <a className='navbar-brand' href="#">
-                  <h2 className='topic_lifeCare'>LifeCare</h2>
                 </a>
                 <button
                   className='navbar-toggler'
@@ -30,38 +30,41 @@ function Navbar() {
                   <span className='navbar-toggler-icon'></span>
                 </button>
                 <div className='collapse navbar-collapse' id='navbarSupportedContent'>
-                  <ul className='navbar-nav me-auto mb-2 mb-lg-0'>
+                  <ul className='navbar-nav me-auto mb-lg-0 d-flex justify-content-center align-items-center'>
                     <li className='nav-item'>
                       <Link to='/' className='nav-link active'>
-                        <h8 className='nav_topic'>Home</h8>
+                        {/* <h5 className='nav_topic'>Home</h5> */}
+                        <button type="button" class="btn btn-dark"><b>Home</b></button>
                       </Link>
                     </li>
                     <li className='nav-item'>
                       <Link to='/appoinments' className='nav-link'>
-                        <h8 className='nav_topic'>Appointments</h8>
+                        {/* <h5 className='nav_topic'>Appointments</h5> */}
+                        <button type="button" class="btn btn-dark"><b>Appointments</b></button>
                       </Link>
                     </li>
-                    {!isHomePage && ( // Show the Medications link if not on the home page
-                      <li className='nav-item'>
-                        <Link to='/medications' className='nav-link'>
-                          <h8 className='nav_topic'>Medications</h8>
-                        </Link>
-                      </li>
-                    )}
+                    <li className='nav-item'>
+                      <Link to='/medications' className='nav-link'>
+                        {/* <h5 className='nav_topic'>Medications</h5> */}
+                        <button type="button" class="btn btn-dark"><b>Medications</b></button>
+                      </Link>
+                    </li>
                     <li className='nav-item dropdown'>
                       <a
-                        className='nav-link dropdown-toggle'
+                        className='nav-link dropdown-toggle d-flex justify-content-center align-items-center'
                         href='#'
                         role='button'
                         data-bs-toggle='dropdown'
                         aria-expanded='false'
                       >
-                        <h8 className='nav_topic'>Staff</h8>
+                        {/* <h5 className='nav_topic'>Staff</h5> */}
+                        <button type="button" class="btn btn-dark"><b>Staff</b></button>
                       </a>
                       <ul className='dropdown-menu'>
                         <li>
                           <Link to='/managers' className='dropdown-item'>
-                            <h8 className='nav_subtopic'>Managers</h8>
+                            {/* <h5 className='nav_subtopic'>Managers</h5> */}
+                            <button type="button" class="btn btn-light"><b>Managers</b></button>
                           </Link>
                         </li>
                         <li>
@@ -69,7 +72,8 @@ function Navbar() {
                         </li>
                         <li>
                           <Link to='/medprofessionals' className='dropdown-item'>
-                            <h8 className='nav_subtopic'>MedProfessionals</h8>
+                            {/* <h5 className='nav_subtopic'>MedProfessionals</h5> */}
+                            <button type="button" class="btn btn-light"><b>MedProfessionals</b></button>
                           </Link>
                         </li>
                       </ul>
@@ -78,12 +82,12 @@ function Navbar() {
                       <>
                         <li className='nav-item'>
                           <Link to='/signin' className='nav-link'>
-                            <h8 className='nav_topic'>Sign in</h8>
+                          <button type="button" class="btn btn-light"><b><FiLogIn/> Sign in</b></button>
                           </Link>
                         </li>
                         <li className='nav-item'>
                           <Link to='/signup' className='nav-link'>
-                            <h8 className='nav_topic'>Sign up</h8>
+                          <button type="button" class="btn btn-light"><b>Sign up</b></button>
                           </Link>
                         </li>
                       </>

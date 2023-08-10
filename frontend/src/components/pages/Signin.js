@@ -1,5 +1,6 @@
 import React, { useState } from 'react';
 import { Container, Form, Button, Card } from 'react-bootstrap';
+import { Link } from 'react-router-dom';
 
 function Signin() {
   const [isFormFilled, setIsFormFilled] = useState(false);
@@ -21,29 +22,31 @@ function Signin() {
                 <div className='container'>
                   <div className='row'>
                     <div className='col-md-12'>
-
                       <Form>
                         <Form.Group className="mb-3" controlId="formBasicUsername">
                           <Form.Label>Username</Form.Label>
                           <Form.Control type="text" placeholder="Enter username" onChange={handleFormChange} required />
                         </Form.Group>
-
-                        <Form.Group className="mb-3" controlId="formBasicPassword">
-                          <Form.Label>Password</Form.Label>
-                          <Form.Control type="password" placeholder="Password" onChange={handleFormChange} required />
-                        </Form.Group>
-
-                        <Button variant="primary" type="submit" disabled={!isFormFilled}>
+                      <Form.Group className="mb-3" controlId="formBasicPassword">
+                        <Form.Label>Password</Form.Label>
+                        <Form.Control type="password" placeholder="Password" onChange={handleFormChange} required />
+                      </Form.Group>
+                      <div className="d-flex justify-content-center">
+                        <Button variant="primary" type="submit" className="me-5" disabled={!isFormFilled}>
                           Sign in
                         </Button>
-                      </Form>
-                      <pre></pre>
-                    </div>
+                        <Button variant="primary" type="submit">
+                          <Link to="/signup" className="text-white" style={{ textDecoration: 'none' }}>Sign up</Link>
+                        </Button>
+                      </div>
+                    </Form>
+                    <pre></pre>
                   </div>
                 </div>
-              </section>
-            </Card.Body>
-          </Card>
+              </div>
+            </section>
+          </Card.Body>
+        </Card>
         </div>
       </Container>
     </div>
