@@ -6,9 +6,11 @@ import img1 from './images/img1.jpg'
 export default function Home() {
   return (
     <div className='body'>
-        <Container><h1 className='topic mt-3'><b>Welcome to LifeCare</b></h1></Container>
+        <Container>
+          <h3 className='topic mt-3'><b>Welcome to LifeCare</b></h3>
+        </Container>
         <pre></pre>
-        <img src={img1} alt='' className='homeimg'/>
+        {/* <img src={img1} alt='' className='homeimg'/> */}
         <pre></pre>
         <section className='section'>
           <div className='container'>
