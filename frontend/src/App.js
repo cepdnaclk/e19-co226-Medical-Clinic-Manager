@@ -45,11 +45,7 @@ function App() {
           <Route exact path='/signinDoc' element={<SigninDoc/>}></Route>
           <Route exact path='/signup' element={<Signup/>}></Route>
           <Route exact path='/medications' element={<Medications/>}></Route>
-<<<<<<< HEAD
-          <Route exact path='/medicate' element={<MedicatManager/>}></Route>
-=======
           <Route exact path='/medicatManager' element={<MedicatManager/>}></Route>
->>>>>>> fc9f04462672bf39a0ea79dc7a6412bc2347bd97
 
         </Routes>
 

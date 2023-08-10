@@ -7,17 +7,15 @@ function Navbar() {
   const location = useLocation();
   const isHomePage = location.pathname === '/';
   
-
   return (
-    <div className='navbar-dark shadow'>
+    <div className='navback shadow'>
       <div>
         <div className='row'>
           <div className='col-md-12'>
             <nav className='navbar navbar-expand-lg bg-body-tertiary'>
-              <div className='container-fluid navback bg-dark navbar-container'>
+              <div className='container-fluid navback navbar-container'>
                 <img src={img2} alt='' className='d-flex justify-content-center align-items-center' style={{ width: '180px', height: '73px', padding: '5px'}}/>
-                <a className='navbar-brand' href="#">
-                </a>
+                <a className='navbar-brand' href="#"></a>
                 <button
                   className='navbar-toggler'
                   type='button'
@@ -33,20 +31,17 @@ function Navbar() {
                   <ul className='navbar-nav me-auto mb-lg-0 d-flex justify-content-center align-items-center'>
                     <li className='nav-item'>
                       <Link to='/' className='nav-link active'>
-                        {/* <h5 className='nav_topic'>Home</h5> */}
-                        <button type="button" class="btn btn-dark"><b>Home</b></button>
+                        <button type="button" className="btn btn-primary"><b>Home</b></button>
                       </Link>
                     </li>
                     <li className='nav-item'>
                       <Link to='/appoinments' className='nav-link'>
-                        {/* <h5 className='nav_topic'>Appointments</h5> */}
-                        <button type="button" class="btn btn-dark"><b>Appointments</b></button>
+                        <button type="button" className="btn nav_button"><b>Appointments</b></button>
                       </Link>
                     </li>
                     <li className='nav-item'>
                       <Link to='/medications' className='nav-link'>
-                        {/* <h5 className='nav_topic'>Medications</h5> */}
-                        <button type="button" class="btn btn-dark"><b>Medications</b></button>
+                        <button type="button" className="btn btn-primary"><b>Medications</b></button>
                       </Link>
                     </li>
                     <li className='nav-item dropdown'>
@@ -57,14 +52,12 @@ function Navbar() {
                         data-bs-toggle='dropdown'
                         aria-expanded='false'
                       >
-                        {/* <h5 className='nav_topic'>Staff</h5> */}
-                        <button type="button" class="btn btn-dark"><b>Staff</b></button>
+                        <button type="button" className="btn nav_button"><b className='nav_topic'>Staff</b></button>
                       </a>
                       <ul className='dropdown-menu'>
                         <li>
                           <Link to='/managers' className='dropdown-item'>
-                            {/* <h5 className='nav_subtopic'>Managers</h5> */}
-                            <button type="button" class="btn btn-light"><b>Managers</b></button>
+                            <button type="button" className="btn btn-light"><b className='navback'>Managers</b></button>
                           </Link>
                         </li>
                         <li>
@@ -72,8 +65,7 @@ function Navbar() {
                         </li>
                         <li>
                           <Link to='/medprofessionals' className='dropdown-item'>
-                            {/* <h5 className='nav_subtopic'>MedProfessionals</h5> */}
-                            <button type="button" class="btn btn-light"><b>MedProfessionals</b></button>
+                            <button type="button" className="btn btn-light"><b>MedProfessionals</b></button>
                           </Link>
                         </li>
                       </ul>
@@ -82,12 +74,12 @@ function Navbar() {
                       <>
                         <li className='nav-item'>
                           <Link to='/signin' className='nav-link'>
-                          <button type="button" class="btn btn-light"><b><FiLogIn/> Sign in</b></button>
+                            <button type="button" className="btn btn-light"><b><FiLogIn/> Sign in</b></button>
                           </Link>
                         </li>
                         <li className='nav-item'>
                           <Link to='/signup' className='nav-link'>
-                          <button type="button" class="btn btn-light"><b>Sign up</b></button>
+                            <button type="button" className="btn btn-light"><b>Sign up</b></button>
                           </Link>
                         </li>
                       </>

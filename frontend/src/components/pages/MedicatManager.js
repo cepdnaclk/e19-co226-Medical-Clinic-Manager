@@ -47,32 +47,12 @@ const medicationsData = [
   // ... more medication data
 ];
 
-const doctors = ['Dr. Smith', 'Dr. Johnson', 'Dr. Brown', 'Dr. Wilson']; // List of doctors
-
 const MedicatManager = () => {
   const [medications, setMedications] = useState(medicationsData);
 
   const handleDelete = (id) => {
     const updatedMedications = medications.filter((med) => med.id !== id);
     setMedications(updatedMedications);
-  };
-
-  const handleAssignDoctor = (id, selectedDoctor) => {
-    const updatedMedications = medications.map((med) => {
-      if (med.id === id) {
-        return { ...med, assignedDoctor: selectedDoctor };
-      }
-      return med;
-    });
-    setMedications(updatedMedications);
-  };
-
-  const renderDoctorOptions = () => {
-    const options = [<option key='default' value=''>Assign Doctor</option>];
-    doctors.forEach((doctor) => {
-      options.push(<option key={doctor} value={doctor}>{doctor}</option>);
-    });
-    return options;
   };
 
   const groupedMedications = {};
@@ -104,16 +84,7 @@ const MedicatManager = () => {
                         <span className='appoDetail'>Medicine Name:</span> {medication.medicineName} <br />
                         <span className='appoDetail'>Dose:</span> {medication.dose} <br />
                         <span className='appoDetail'>Times Per Day:</span> {medication.timesPerDay} <br/>
-                        <span className='appoDetail'>
-                          Assign Doctor:
-                          <Form.Select
-                            className='ms-2'
-                            value={medication.assignedDoctor || ''}
-                            onChange={(e) => handleAssignDoctor(medication.id, e.target.value)}
-                          >
-                            {renderDoctorOptions()}
-                          </Form.Select>
-                        </span> <br/>
+                        <pre/>
                         <Button variant='primary' className='ms-2' onClick={() => handleDelete(medication.id)}>
                           Delete
                         </Button>

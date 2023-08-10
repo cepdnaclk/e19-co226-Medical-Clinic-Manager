@@ -28,8 +28,8 @@ html{
   color: white;
 }
 
-.nav_subtopic{
-  color: rgb(17, 17, 111);
+.nav_button{
+  color: rgb(135, 170, 167);
 }
 
 .navbar-toggler-icon::after {
