@@ -9,7 +9,6 @@ import MedProfessionals from './components/pages/MedProfessionals';
 import Footer from './components/inc/Footer';
 import NewAppoin from './components/pages/NewAppoin';
 import Register from './components/pages/Register';
-import Login from './components/pages/Signup';
 import Medications from './components/pages/Medications';
 import PatientMedic from './components/pages/PatientMedic';
 import Signin from './components/pages/Signin';
@@ -20,6 +19,7 @@ import Signup from './components/pages/Signup';
 import RegisterDoc from './components/pages/RegisterDoc';
 import MedProfManager from './components/pages/MedProfManager';
 import MedicatManager from './components/pages/MedicatManager';
+import RegisterManag from './components/pages/RegisterManag';
 
 function App() {
   return (
@@ -38,13 +38,18 @@ function App() {
           <Route exact path='/medprofessionals' element={<MedProfessionals/>}></Route>
           <Route exact path='/medprofManager' element={<MedProfManager/>}></Route>
           <Route exact path='/newAppoinment' element={<NewAppoin/>}></Route>
-          <Route exact path='/register' element={<Register/>}></Route>
+          <Route exact path='/' element={<Register/>}></Route>
+          <Route exact path='/registerManag' element={<RegisterManag/>}></Route>
           <Route exact path='/registerDoc' element={<RegisterDoc/>}></Route>
           <Route exact path='/signin' element={<Signin/>}></Route>
           <Route exact path='/signinDoc' element={<SigninDoc/>}></Route>
           <Route exact path='/signup' element={<Signup/>}></Route>
           <Route exact path='/medications' element={<Medications/>}></Route>
+<<<<<<< HEAD
           <Route exact path='/medicate' element={<MedicatManager/>}></Route>
+=======
+          <Route exact path='/medicatManager' element={<MedicatManager/>}></Route>
+>>>>>>> fc9f04462672bf39a0ea79dc7a6412bc2347bd97
 
         </Routes>
 

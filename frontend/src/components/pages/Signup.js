@@ -35,6 +35,7 @@ function Signup() {
     }
   };
 
+<<<<<<< HEAD
   const signupService = new SignupUserService();
 
   const postData = {
@@ -57,6 +58,21 @@ function Signup() {
                 <div className='container'>
                   <div className='row'>
                     <div className='col-md-12'>
+=======
+  return (
+    <div className='body '>
+      <Container>
+        <div className='d-flex justify-content-center'>
+          <Card className="shadow col-md-7">
+            <Card.Body>
+              <h2 className='topic mt-3'>Sign up</h2>
+              <pre></pre>
+              <section className='section bg-c-light border-top border-bottom'>
+                <div className='container'>
+                  <div className='row'>
+                    <div className='col-md-12'>
+
+>>>>>>> fc9f04462672bf39a0ea79dc7a6412bc2347bd97
                       <Form>
                       <Form.Group className="mb-3" controlId="formBasicUsername">
                         <Form.Label>Username</Form.Label>
@@ -79,7 +95,11 @@ function Signup() {
                       </Form.Group>
                         
                         <div className="d-flex justify-content-between align-items-center mt-3">
+<<<<<<< HEAD
                           <Button variant="primary" type="submit" onClick={async () => {try {await signupService.handleSignup(postData);} catch (error) {console.error("Signup failed:", error);}}} disabled={!isFormFilled}>
+=======
+                          <Button variant="primary" type="submit" disabled={!isFormFilled}>
+>>>>>>> fc9f04462672bf39a0ea79dc7a6412bc2347bd97
                             <Link to="/register" className="btn btn-primary btn-sm">
                               Sign up
                             </Link>
