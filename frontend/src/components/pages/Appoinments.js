@@ -31,6 +31,7 @@ export default function Appointments() {
         <div className='container'>
           <div className='row'>
             <div className='col-md-12'>
+              <pre></pre>
             </div>
 
             {appointmentsData.map((appointment) => (

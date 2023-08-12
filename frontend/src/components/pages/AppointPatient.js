@@ -11,18 +11,10 @@ const appointmentsData = [
     reason: 'Checkup',
     medProf: 'Dr. John Doe',
   },
-  {
-    id: 1,
-    title: 'Appointment 1',
-    date: '2023-08-10',
-    dueDate: '2023-08-08',
-    reason: 'Checkup',
-    medProf: 'Dr. John Doe',
-  },
   // ... more appointment data
 ];
 
-const isCurrentUserPatient = true; // Set this based on your logic
+const isCurrentUserPatient = false; // Set this based on your logic
 
 export default function AppointPatient() {
   return (

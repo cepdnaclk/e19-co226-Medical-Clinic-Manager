@@ -28,8 +28,8 @@ html{
   color: white;
 }
 
-.nav_subtopic{
-  color: rgb(17, 17, 111);
+.nav_button{
+  color: rgb(135, 170, 167);
 }
 
 .navbar-toggler-icon::after {
@@ -45,45 +45,6 @@ html{
 .navbar-logo {
 width: auto; /* Set the width as needed */
 max-height: 40px; /* Adjust the max-height to your preference */
-/*border-radius: 100%;*/
+border-radius: 100%;
 
-}
-
-.bg-c-light{
-  background-color: #d5e1fa;
-}
-
-.section {
-  font-family: 'Open Sans', sans-serif;
-  background-color: #e9ecf2;
-  margin-top: 20px;
-  padding: 20px;
-  border-radius: 10px;
-  box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.1);
-}
-
-.appoDetail{
-  font-weight: 600;
-  color: rgb(61, 132, 207);
-}
-
-.offcanva-topic {
-  color: #387eae;
-  font-weight: 600;
-  font-size: 34px;
-  font-family: 'Open Sans', sans-serif;
-}
-
-.shadow{
-  box-shadow: #387eae;
-}
-
-.navbar-text-edit{
-  margin-right: 10px; 
-  opacity:80% ;
-}
-
-#staff-dropdown{
-  color: white;
-  opacity: 100%;
 }
