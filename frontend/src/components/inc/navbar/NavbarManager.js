@@ -31,7 +31,7 @@ function CustomNavbar(isSignedIn) {
       let details;
       if(details !== null) {
         details = response.data;
-        localStorage.setItem('managerId', details.managerId)
+        sessionStorage.setItem('managerId', details.managerId)
         // set profile data
         setFname(details.fname);
         setLname(details.lname);
@@ -67,8 +67,8 @@ function CustomNavbar(isSignedIn) {
     setAddress(address);
     setDob(dob);
 
-    const user = JSON.parse(localStorage.getItem('user'));
-    const managerId = localStorage.getItem('managerId');
+    const user = JSON.parse(sessionStorage.getItem('user'));
+    const managerId = sessionStorage.getItem('managerId');
     const token = user.accessToken;
     console.log(token);
     try {
@@ -108,7 +108,7 @@ function CustomNavbar(isSignedIn) {
 
   const signout = () => {
     alert('Are you sure !'); // make a popup
-    localStorage.clear();
+    sessionStorage.clear();
   }
 
   const handleFieldChange = (event) => {

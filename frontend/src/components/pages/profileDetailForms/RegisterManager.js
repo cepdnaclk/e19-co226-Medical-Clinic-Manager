@@ -19,13 +19,13 @@ function RegisterManager() {
   });
 
     // Refresh the page if user object exists (only once)
-    const storedUser = JSON.parse(localStorage.getItem('user'));
+    const storedUser = JSON.parse(sessionStorage.getItem('user'));
     if (!storedUser) {
       window.location.reload();
     }
 
   useEffect(() => {
-    const storedUser = JSON.parse(localStorage.getItem('user'));
+    const storedUser = JSON.parse(sessionStorage.getItem('user'));
     if (storedUser) {
 
       // Update the user id in the formData
@@ -58,7 +58,7 @@ function RegisterManager() {
     e.preventDefault(); // Prevent the default form submission
     try {
       // Retrieve the stored user object
-      const storedUser = JSON.parse(localStorage.getItem('user'));
+      const storedUser = JSON.parse(sessionStorage.getItem('user'));
       if (storedUser && storedUser.accessToken) {
         await registerManager.handleRegisterUser(formData, storedUser.accessToken);
         navigate("/manager/home");

@@ -1,37 +1,41 @@
 import React, { useState } from 'react';
 import { Container, Form, Button } from 'react-bootstrap';
-import NavbarPatient from '../../../inc/navbar/NavbarPatient';
+import NavbarMedProf from '../../../inc/navbar/NavbarMedProf';
 import axios from 'axios';
 import { useNavigate } from 'react-router-dom';
 
-function NewAppoin() {
+function NewMedication() {
   const [isFormFilled, setIsFormFilled] = useState(false);
-  const [appointment, setAppointment] = useState(
+  const [medication, setMedication] = useState(
     {
       patient: {
-          patientId: '',
-          user: {
-            id: ''
-          }
+          patientId: ''
       },
-      accept: false
+      medicalProfessional:{
+        professionalId: '',
+        user: {
+          username: ''
+        }
+      }
   })
 
   const handleFormChange = (e) => {
-      const { name, value } = e.target;
-      setAppointment((prevData) => ({
+    const { name, value } = e.target;
+    if (name === 'name' || name === 'startDate' || name === 'endDate' || name === 'dosage') {
+      setMedication((prevData) => ({
         ...prevData,
         [name]: value,
       }));
-
-    if (appointment.date !== '' && appointment.dueDate !== '' && appointment.reason !== '') {
+    }
+    // Check if the form is filled
+    if (medication.name !== '' && medication.startDate !== '' && medication.endDate !== '' && medication.dosage !== '') {
       setIsFormFilled(true);
     } else {
       setIsFormFilled(false);
     }
   };
 
-  // console.log(appointment);
+  // console.log(medication);
 
   const navigate = new useNavigate();
 
@@ -39,78 +43,95 @@ function NewAppoin() {
   const saveNewAppo = async () => {
     try {
       const userJSON = sessionStorage.getItem('user');
-      const patientId = sessionStorage.getItem('patientId');
+      const patietJSON = sessionStorage.getItem('patient');
       const user = JSON.parse(userJSON);
+      const patient = JSON.parse(patietJSON);
+      const professionalId = sessionStorage.getItem('professionalId');
 
-      appointment.patient.patientId = patientId;
-      appointment.patient.user.id = user.id;
+      medication.patient.patientId = patient.patientId;
+      medication.medicalProfessional.user.username = user.username;
+      medication.medicalProfessional.professionalId = professionalId;
 
       const token = user.accessToken;
 
       const response = axios.post(
-      'http://localhost:8080/api/v1/appointment/save',
-        appointment, 
+      'http://localhost:8080/api/v1/medication/save',
+        medication, 
         {
           headers: {
               Authorization: `Bearer ${token}`
           }
         });
+
+        document.body.appendChild(medication);
+
     } catch (error) {
       console.error('Error saving data !', error)
     }
     alert('Save successful !');
-    navigate('/patient/appointments');
+    navigate('/medprof/my_patients/medications');
     // Clear the editing field
-    setAppointment('');
+    setMedication('');
   };
 
   const navigateBack = () => {
-    navigate('/patient/appointments');
+    navigate('/patient/medications');
   };
 
 
 
   return (
     <>
-    <NavbarPatient/>
+    <NavbarMedProf/>
     <div className='body'>
       <pre></pre>
       <div className='d-flex justify-content-center'>
       <section className='section col-md-4 bg-c-light border-top border-bottom'>
-      <h2 className='topic mt-3 fs-2 d-flex justify-content-center'>New Appointment</h2>
+      <h2 className='topic mt-3 fs-2 d-flex justify-content-center'>New Medication</h2>
         <div className='container'>
           <div className='row'>
             <div className='col-md-12'>
               <Form>
                 <Form.Group className='mb-3' id='formBasicDate'>
-                  <Form.Label>Date</Form.Label>
+                  <Form.Label>Medication Name</Form.Label>
                   <Form.Control
-                    type='date'
-                    placeholder='Date'
+                    type='text'
+                    placeholder='medication name'
                     onChange={handleFormChange}
-                    name='date'
+                    name='name'
                     required
                   />
                 </Form.Group>
 
                 <Form.Group className='mb-3' id='formBasicDueDate'>
-                  <Form.Label>Due date</Form.Label>
+                  <Form.Label>Start date</Form.Label>
                   <Form.Control
                     type='date'
-                    placeholder='Due date'
+                    placeholder='start date'
                     onChange={handleFormChange}
-                    name='dueDate'
+                    name='startDate'
                     required
                   />
                 </Form.Group>
 
                 <Form.Group className='mb-3' id='formBasicReason'>
-                  <Form.Label>Reason</Form.Label>
+                  <Form.Label>End Date</Form.Label>
+                  <Form.Control
+                    type='date'
+                    placeholder='end date'
+                    onChange={handleFormChange}
+                    name='endDate'
+                    required
+                  />
+                </Form.Group>
+
+                <Form.Group className='mb-3' id='formBasicReason'>
+                  <Form.Label>Dosage</Form.Label>
                   <Form.Control
                     type='text'
-                    placeholder='Reason'
+                    placeholder='dosage'
                     onChange={handleFormChange}
-                    name='reason'
+                    name='dosage'
                     required
                   />
                 </Form.Group>
@@ -135,4 +156,4 @@ function NewAppoin() {
   );
 }
 
-export default NewAppoin;
+export default NewMedication;

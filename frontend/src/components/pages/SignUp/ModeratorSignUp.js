@@ -58,7 +58,7 @@ function UserSignup() {
   const handleSubmit = async () => {
     try {
       console.log(formData);
-      const userJSON = localStorage.getItem('user');
+      const userJSON = sessionStorage.getItem('user');
       const user = JSON.parse(userJSON);
       signupService.handleSignup(formData, user.accessToken);
       navigate("/signin");

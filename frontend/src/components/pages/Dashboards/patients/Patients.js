@@ -12,7 +12,7 @@ export default function Patient() {
   // API call
   const fetchAllPatients = async () => {
     try {
-    const userJSON = localStorage.getItem('user');
+      const userJSON = sessionStorage.getItem('user');
       const user = JSON.parse(userJSON);
       const token = user.accessToken;
       const response = await axios.get('http://localhost:8080/api/v1/patient/all',
@@ -47,7 +47,7 @@ export default function Patient() {
 
   const handleDelete = async (id) => {
     try {
-      const userJSON = localStorage.getItem('user');
+      const userJSON = sessionStorage.getItem('user');
       const user = JSON.parse(userJSON);
       const token = user.accessToken;
       const response = await axios.delete('http://localhost:8080/api/v1/patient/delete/' + id,
@@ -74,7 +74,7 @@ export default function Patient() {
   };
 
   let role;
-  const user = JSON.parse(localStorage.getItem('user'));
+  const user = JSON.parse(sessionStorage.getItem('user'));
   if (user  !== null){
     role = user.roles[0];
   } else {
@@ -106,29 +106,31 @@ export default function Patient() {
       <section className='section bg-c-light border-top border-bottom'>
         <div className='container'>
             <div className='col-md-5'>
-                <div class="input-group mb-3">
-                    <input
-                        type="text"
-                        className="form-control me-2"
-                        placeholder="Search Patients by First Name"
-                        value={serh}
-                        onChange={(e) => setSerh(e.target.value)}
-                        />
-                        <div>
-                            <button className="btn me-2 btn-outline-dark te" name="search" onClick={() => search(serh)} type="button">
-                                Search
-                            </button>
-                            <button className="btn btn-outline-dark" name='clear' value='a' onClick={clear} type="button">
-                                Clear
-                            </button>
-                        </div>
-                    </div>
-                </div>
+              <div class="input-group mb-3">
+                {/* search box */}
+                  <input
+                      type="text"
+                      className="form-control me-2"
+                      placeholder="Search Patients by First Name"
+                      value={serh}
+                      onChange={(e) => setSerh(e.target.value)}
+                  />
+                  <div>
+                      <button className="btn me-2 btn-outline-primary te" name="search" onClick={() => search(serh)} type="button">
+                          Search
+                      </button>
+                      <button className="btn btn-outline-danger" name='clear' value='a' onClick={clear} type="button">
+                          Clear
+                      </button>
+                  </div>
+              </div>
+            </div>
+            
                 {(gvalue !== '') ? (<div className='row'>
                     {patients.map((patient) => (
                     <div className='col-md-4 my-2' key={patient.id}>
-                        <div className='card shadow container'>
-                        <div className='card-body px-3 py-2'>
+                        <div className='card shadow container bg-dark'>
+                        <div className='card-body px-3 py-2 bg-light'>
                             <h6 className='appobold'>
                             {`${patient.fname} ${patient.lname}`}
                             </h6>
@@ -139,9 +141,9 @@ export default function Patient() {
                             <span className='appoDetail'>Date of Birth:</span> {patient.dob} <br />
                             <span className='appoDetail'>Insurance Provider:</span> {patient.insuranceDetails}
                             </p>
-                            <div className='d-flex'>
+                            <div className='d-flex justify-content-end mb-1'>
                                 {(role === 'ROLE_ADMIN') &&
-                                    <Button variant='primary' className='ms-2' onClick={() => handleDelete(patient.patientId)}>
+                                    <Button variant='primary' className='ms-2 btn-light btn-outline-danger' onClick={() => handleDelete(patient.patientId)}>
                                         Delete
                                     </Button>
                                 }

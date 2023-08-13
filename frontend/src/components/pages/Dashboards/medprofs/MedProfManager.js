@@ -30,7 +30,7 @@ export default function MedProfessionals() {
 
   const handleDelete = async (id) => {
     try {
-      const userJSON = localStorage.getItem('user');
+      const userJSON = sessionStorage.getItem('user');
       const user = JSON.parse(userJSON);
       const token = user.accessToken;
       const response = await axios.delete('http://localhost:8080/api/v1/medprof/delete/' + id,
@@ -67,8 +67,8 @@ export default function MedProfessionals() {
 
             {medprofs.map((medProf) => (
               <div className='col-md-4 my-2' key={medProf.id}>
-                <div className='card shadow container'>
-                  <div className='card-body px-3 py-2'>
+                <div className='card shadow container bg-dark'>
+                  <div className='card-body px-3 py-2 bg-light'>
                     <h6 className='appobold'>
                       {`${medProf.fname} ${medProf.lname}`}
                     </h6>
@@ -79,8 +79,8 @@ export default function MedProfessionals() {
                       <span className='appoDetail'>Phone Number:</span> {medProf.contact} <br />
                       <span className='appoDetail'>Date of Birth:</span> {medProf.dob}
                     </p>
-                    <div className='d-flex'>
-                      <Button variant='primary' className='ms-2' onClick={() => handleDelete(medProf.professionalId)}>
+                    <div className='d-flex justify-content-end mb-1'>
+                      <Button variant='primary' className='ms-2 btn-light btn-outline-danger' onClick={() => handleDelete(medProf.professionalId)}>
                         Delete
                       </Button>
                     </div>

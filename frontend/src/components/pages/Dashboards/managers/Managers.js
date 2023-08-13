@@ -34,7 +34,7 @@ const Managers = () => {
   }, []);
   
   let role;
-  const user = JSON.parse(localStorage.getItem('user'));
+  const user = JSON.parse(sessionStorage.getItem('user'));
   if (user  !== null){
     role = user.roles[0];
   } else {
@@ -62,8 +62,8 @@ const Managers = () => {
           <div className='row'>
             {managers.map((manager) => (
               <div className='col-md-4 my-2' key={manager.id}>
-                <div className='card shadow container'>
-                  <div className='card-body px-3 py-2'>
+                <div className='card shadow container bg-dark'>
+                  <div className='card-body bg-light px-3 py-2'>
                     <h6 className='appobold mt-2'>
                       {`${manager.fname} ${manager.lname}`}
                     </h6>

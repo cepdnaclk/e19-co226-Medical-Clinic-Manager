@@ -17,10 +17,20 @@ import AppointmentMedProf from './components/pages/Dashboards/appos/AppointmentM
 import NewAppoin from './components/pages/Dashboards/appos/NewAppoin';
 import NoAppoinsManager from './components/pages/Dashboards/appos/NoAppoinsManager';
 import NoAppoinsMedProf from './components/pages/Dashboards/appos/NoAppoinsMedProf';
+import AppointmentMedProfPatient from './components/pages/Dashboards/appos/AppointmentMedProfPatient';
 import Managers from './components/pages/Dashboards/managers/Managers';
 import MedProfManager from './components/pages/Dashboards/medprofs/MedProfManager';
 import MedProfessionals from './components/pages/Dashboards/medprofs/MedProfessionals';
 import Patient from './components/pages/Dashboards/patients/Patients';
+import MyPatients from './components/pages/Dashboards/patients/MyPatients';
+import MedProfMedications from './components/pages/Dashboards/medications/MedProfMedications';
+import PatientMedications from './components/pages/Dashboards/medications/PatientMedications';
+import MedicationMedProfPatient from './components/pages/Dashboards/medications/MedicationMedProfPatient';
+import NewMedication from './components/pages/Dashboards/medications/NewMedication';
+
+import SessionStorageTest from './components/SessionStorageTest';
+
+
 
 function App() {
   const [isSignedIn, setIsSignedIn] = React.useState(false);
@@ -56,6 +66,15 @@ function App() {
           <Route exact path='/manager/medprofs/all' element={<MedProfManager/>}></Route> // all medprofs manager view
           <Route exact path='/medprofs/all' element={<MedProfessionals/>}></Route> // all medprofs
           <Route exact path='/patients' element={<Patient/>}></Route>
+          <Route exact path='/medprof/my_patients' element={<MyPatients/>}></Route>
+          <Route exact path='/medprof/my_patients/appos' element={<AppointmentMedProfPatient/>}></Route>
+          <Route exact path='/medprof/medications' element={<MedProfMedications/>}></Route>
+          <Route exact path='/patient/medications' element={<PatientMedications/>}></Route>
+          <Route exact path='/medprof/my_patients/medications' element={<MedicationMedProfPatient/>}></Route>
+          <Route exact path='/medprof/new_medication' element={<NewMedication/>}></Route>
+          
+          <Route exact path='/test' element={<SessionStorageTest/>}></Route>
+          
 
           {/* <Route exact path='/appointments' element={<Appoinments/>}></Route> // all appointments
           

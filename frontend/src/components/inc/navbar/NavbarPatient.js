@@ -32,7 +32,7 @@ function CustomNavbar(isSignedIn) {
       let details;
       if(details !== null) {
         details = response.data;
-        localStorage.setItem('patientId', details.patientId)
+        sessionStorage.setItem('patientId', details.patientId)
         // set profile data
         setFname(details.fname);
         setLname(details.lname);
@@ -70,8 +70,8 @@ const handleSave = () => {
   setDob(dob);
   setInsurancedetails(insuranceDetails);
 
-  const user = JSON.parse(localStorage.getItem('user'));
-  const patientId = localStorage.getItem('patientId');
+  const user = JSON.parse(sessionStorage.getItem('user'));
+  const patientId = sessionStorage.getItem('patientId');
   const token = user.accessToken;
   console.log(token);
   try {
@@ -112,7 +112,7 @@ const handleCancel = () => {
 
 const signout = () => {
   alert('Are you sure !'); // make a popup
-  localStorage.clear();
+  sessionStorage.clear();
 }
 
 const handleFieldChange = (event) => {
@@ -167,7 +167,7 @@ const handleFieldChange = (event) => {
                 </Link>
               </Nav.Item>
               <Nav.Item>
-                <Link to="/medications" className="nav-link">
+                <Link to="/patient/medications" className="nav-link">
                   <h7 className="nav_topic">Medications</h7>
                 </Link>
               </Nav.Item>

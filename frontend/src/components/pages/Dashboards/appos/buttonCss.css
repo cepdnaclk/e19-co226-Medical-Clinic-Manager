@@ -1,0 +1,11 @@
+.custom-button {
+    background-color: #f8f9fa;
+    /* Set your default background color */
+    border: none;
+    transition: background-color 0.3s ease-in-out;
+}
+
+.custom-button:hover {
+    background-color: #000000;
+    /* Set your hover background color */
+}

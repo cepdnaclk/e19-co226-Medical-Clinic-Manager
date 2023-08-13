@@ -3,7 +3,7 @@ import axios from "axios";
 class FetchPatientProfileService {
     handleProfileData = async () => {
         try {
-            const userJSON = localStorage.getItem('user');
+            const userJSON = sessionStorage.getItem('user');
             // console.log('userJSON:', userJSON); // Add this line to check the value
             const user = JSON.parse(userJSON);
             const token = user.accessToken;

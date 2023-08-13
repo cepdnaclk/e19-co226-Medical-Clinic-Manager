@@ -31,7 +31,7 @@ export default function MedProfessionals() {
   }, []);
 
   let role;
-  const user = JSON.parse(localStorage.getItem('user'));
+  const user = JSON.parse(sessionStorage.getItem('user'));
   if (user  !== null){
     role = user.roles[0];
   } else {
@@ -58,8 +58,8 @@ export default function MedProfessionals() {
 
             {medprofs.map((medProf) => (
               <div className='col-md-4 my-2' key={medProf.id}>
-                <div className='card shadow container'>
-                  <div className='card-body px-3 py-2'>
+                <div className='card shadow container bg-dark'>
+                  <div className='card-body px-3 py-2 bg-light'>
                     <h6 className='appobold'>
                       {`${medProf.fname} ${medProf.lname}`}
                     </h6>

@@ -13,10 +13,10 @@ const AppointmentPatient = () => {
 // API call http://localhost:8080/api/v1/appointment/find/patientid/{patientid}
 const fetchAppointmentsByPatientId = async () => {
   try {
-    const userJSON = localStorage.getItem('user');
+    const userJSON = sessionStorage.getItem('user');
     const user = JSON.parse(userJSON);
     const token = user.accessToken;
-    const patientId = localStorage.getItem('patientId');
+    const patientId = sessionStorage.getItem('patientId');
     const response = await axios.get('http://localhost:8080/api/v1/appointment/find/patientid/' + patientId, {
         headers: {
             Authorization: `Bearer ${token}`
@@ -39,7 +39,7 @@ const fetchAppointmentsByPatientId = async () => {
 
 const handleDelete = async (id) => {
   try {
-    const userJSON = localStorage.getItem('user');
+    const userJSON = sessionStorage.getItem('user');
     const user = JSON.parse(userJSON);
     const token = user.accessToken;
     const response = await axios.delete('http://localhost:8080/api/v1/appointment/delete/' + id,
@@ -83,7 +83,7 @@ if (appointments.length === 0){
 
 const isAPatient = async () => {
   try {
-    const user = JSON.parse(localStorage.getItem('user'));
+    const user = JSON.parse(sessionStorage.getItem('user'));
     const token = user.accessToken;
     const response = await axios.get("http://localhost:8080/api/v1/patient/existsbyuserid/" + user.id, {
       headers: {
@@ -121,7 +121,7 @@ const isCurrentUserPatient = checkCurrentUserPatient();
             <div className='col-md-12'>
               {isCurrentUserPatient ? (
                 <Link to="/patient/new_appointment" className='btn-link'>
-                  <Button className='bg-dark text-light ms-1'>
+                  <Button className='btn-light btn-outline-dark ms-1'>
                     <span><MdLibraryAdd/> New Appointment</span>
                   </Button>
                 </Link>
@@ -155,11 +155,11 @@ const isCurrentUserPatient = checkCurrentUserPatient();
                   </div>
                   <div className="d-flex justify-content-end">
                   {!appointment.accept ? (
-                    <Button variant='primary' className='ms-2 bg-danger' onClick={() => handleDelete(appointment.appointmentId)}>
+                    <Button variant='primary' className='ms-2 btn-light btn-outline-danger' onClick={() => handleDelete(appointment.appointmentId)}>
                       Delete
                     </Button>
                   ) : (
-                    <Button variant='primary' className='ms-2 bg-success' disabled={true} onClick={() => handleDelete(appointment.appointmentId)}>
+                    <Button variant='primary' className='ms-2 btn-light btn-outline-success' disabled={true} onClick={() => handleDelete(appointment.appointmentId)}>
                       Delete
                     </Button>
                   ) }

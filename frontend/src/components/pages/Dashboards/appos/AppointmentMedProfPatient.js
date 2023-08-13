@@ -7,17 +7,25 @@ import axios from 'axios';
 import { useEffect } from 'react';
 import NavbarMedProf from '../../../inc/navbar/NavbarMedProf';
 
-const AppointmentDoc = () => {
+let fname;
+let lname;
+let nic;
+const AppointmentMedProfPatient = () => {
   const [appointments, setAppointments] = useState([]);
 
 // API call http://localhost:8080/api/v1/appointment/find/patientid/{patientid}
-const fetchAppointmentsByMedProfId = async () => {
+const fetchAppointmentsByMedProfIdPatientId = async () => {
   try {
     const userJSON = sessionStorage.getItem('user');
     const user = JSON.parse(userJSON);
     const token = user.accessToken;
     const professionalId = sessionStorage.getItem('professionalId');
-    const response = await axios.get('http://localhost:8080/api/v1/appointment/find/medprofid/' + professionalId, {
+    const patientJSON = JSON.parse(sessionStorage.getItem('patient'));
+    const pId = patientJSON.patientId;
+    fname = patientJSON.fname;
+    lname = patientJSON.lname;
+    nic = patientJSON.nic;
+    const response = await axios.get('http://localhost:8080/api/v1/appointment/find/' + professionalId + '/' + pId, {
         headers: {
             Authorization: `Bearer ${token}`
         }
@@ -42,7 +50,7 @@ const navigate = new useNavigate();
 useEffect(() => {
   const fetchData = async () => {
     try {
-      const appointmentsData = await fetchAppointmentsByMedProfId();
+      const appointmentsData = await fetchAppointmentsByMedProfIdPatientId();
       setAppointments(appointmentsData);
     } catch (error) {
       // Handle error if needed
@@ -108,15 +116,30 @@ const handleDeny = async (appointment) => {
     }
     window.location.reload();
 };
-const isCurrentUserPatient = false; // Set this based on your logic
 
-  return (
+
+return (
     <>
     <NavbarMedProf/>
     <div className='body'>
       <Container>
-        <h2 className='topic mt-3'>
-          Appointments
+        <div className='row mb-0'>
+          <div className="col-3 me-3">
+            <h2 className='topic mt-3 fs-1'>
+              Appointments
+            </h2>
+          </div>
+          <div className="col-3 mt-4">
+              <Link to='/medprof/my_patients'>
+                <Button className="btn-light btn-outline-dark">
+                  Back to My Patients
+                </Button>
+              </Link>
+          </div>
+        </div>
+        <h2 className='topic mt-3 fs-5'>
+          {fname} {lname} <br/>
+          (NIC : {nic}) <br/>
         </h2>
       </Container>
       <pre></pre>
@@ -157,4 +180,4 @@ const isCurrentUserPatient = false; // Set this based on your logic
   );
 }
 
-export default AppointmentDoc;
+export default AppointmentMedProfPatient;

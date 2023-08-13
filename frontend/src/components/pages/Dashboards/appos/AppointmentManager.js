@@ -11,7 +11,7 @@ const AppointmentMedProf = () => {
   useEffect(() => {
     const fetchAppointmentsByPatientId = async () => {
       try {
-        const userJSON = localStorage.getItem('user');
+        const userJSON = sessionStorage.getItem('user');
         const user = JSON.parse(userJSON);
         const token = user.accessToken;
         const response = await axios.get('http://localhost:8080/api/v1/appointment/find/all', {
@@ -27,7 +27,7 @@ const AppointmentMedProf = () => {
 
     const fetchMedProfs = async () => {
       try {
-        const userJSON = localStorage.getItem('user');
+        const userJSON = sessionStorage.getItem('user');
         const user = JSON.parse(userJSON);
         const token = user.accessToken;
         const response = await axios.get('http://localhost:8080/api/v1/medprof/all', {
@@ -61,7 +61,7 @@ const AppointmentMedProf = () => {
   const handleSave = async (appointment) => {
     console.log(appointment);
     try {
-      const userJSON = localStorage.getItem('user');
+      const userJSON = sessionStorage.getItem('user');
       const user = JSON.parse(userJSON);
       const token = user.accessToken;
       const response = await axios.put('http://localhost:8080/api/v1/appointment/save/' + appointment.appointmentId,
@@ -84,7 +84,7 @@ const AppointmentMedProf = () => {
 
   const handleDelete = async (id) => {
     try {
-      const userJSON = localStorage.getItem('user');
+      const userJSON = sessionStorage.getItem('user');
       const user = JSON.parse(userJSON);
       const token = user.accessToken;
       const response = await axios.delete('http://localhost:8080/api/v1/appointment/delete/' + id,
@@ -167,10 +167,10 @@ const AppointmentMedProf = () => {
                               </Form.Select>
                             </span>
                             <br />
-                            <Button variant='primary' className={appointment.medicalProfessional ? 'ms-2 me-2 bg-warning text-black': 'ms-2 me-2 bg-danger'} onClick={() => handleSave(appointment)}>
+                            <Button variant='primary' className={appointment.medicalProfessional ? 'ms-2 me-2 btn-light btn-outline-warning text-dark': 'ms-2 me-2 btn-light btn-outline-danger'} onClick={() => handleSave(appointment)}>
                               Save
                             </Button>
-                            <Button variant='primary' className={appointment.medicalProfessional ? 'ms-2 bg-warning text-black': 'ms-2 bg-danger'} onClick={() => handleDelete(appointment.appointmentId)}>
+                            <Button variant='primary' className={appointment.medicalProfessional ? 'ms-2 btn-light btn-outline-warning text-dark': 'ms-2 btn-light btn-outline-danger'} onClick={() => handleDelete(appointment.appointmentId)}>
                               Delete
                             </Button>
                           </>
@@ -188,10 +188,10 @@ const AppointmentMedProf = () => {
                               </Form.Select>
                             </span>
                             <br />
-                            <Button variant='primary' className='ms-2 me-2 bg-success' disabled={true} onClick={() => handleSave(appointment)}>
+                            <Button variant='primary' className='ms-2 me-2 btn-light btn-outline-success' disabled={true} onClick={() => handleSave(appointment)}>
                               Save
                             </Button>
-                            <Button variant='primary' className='ms-2 bg-success' disabled={true} onClick={() => handleDelete(appointment.appointmentId)}>
+                            <Button variant='primary' className='ms-2 btn-light btn-outline-success' disabled={true} onClick={() => handleDelete(appointment.appointmentId)}>
                               Delete
                             </Button>
                           </>
