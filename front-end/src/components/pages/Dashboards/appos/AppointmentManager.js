@@ -3,8 +3,13 @@ import { Container, Button, Form } from 'react-bootstrap';
 import axios from 'axios';
 import NavbarManager from '../../../inc/navbar/NavbarManager';
 import { useNavigate } from 'react-router-dom';
+import './../patients/Search.css'
+import { BiSearch } from 'react-icons/bi';
+import { IconContext } from 'react-icons';
 
-const AppointmentMedProf = () => {
+
+const AppointmentManager = () => {
+  const [searchInput, setSearchInput] = useState('');
   const [appointments, setAppointments] = useState([]);
   const [doctors, setDoctors] = useState([]);
 
@@ -65,22 +70,27 @@ const AppointmentMedProf = () => {
       const user = JSON.parse(userJSON);
       const token = user.accessToken;
       const response = await axios.put('http://localhost:8080/api/v1/appointment/save/' + appointment.appointmentId,
-      appointment,
-       {
-        headers: {
-          Authorization: `Bearer ${token}`
+        {
+          ...appointment,
+          medicalProfessional: { professionalId: appointment.medicalProfessional.professionalId } // Only send the professionalId
+        },
+        {
+          headers: {
+            Authorization: `Bearer ${token}`
+          }
         }
-      });
-      if(response.status===200) {
-        alert('Save successfull !');
+      );
+      if (response.status === 200) {
+        alert('Save successful!');
       } else {
-        alert('Save unsuccessfull !');
+        alert('Save unsuccessful!');
       }
     } catch (error) {
       console.error("Error saving appointment:", error);
     }
     window.location.reload();
   };
+  
 
   const handleDelete = async (id) => {
     try {
@@ -104,16 +114,16 @@ const AppointmentMedProf = () => {
     window.location.reload();
   };
 
-  const handleAssignDoctor = (id, selectedDoctor) => {
+  const handleAssignDoctor = (id, selectedDoctorId) => {
     const updatedAppointments = appointments.map((appo) => {
       if (appo.appointmentId === id) {
-        return { ...appo, medicalProfessional: {professionalId: selectedDoctor}};
+        return { ...appo, medicalProfessional: { professionalId: selectedDoctorId } };
       }
       return appo;
     });
     setAppointments(updatedAppointments);
-    console.log(updatedAppointments);
   };
+  
 
   const renderDoctorOptions = () => {
     const options = [<option key='' value=''>Assign Doctor</option>];
@@ -123,8 +133,13 @@ const AppointmentMedProf = () => {
     return options;
   };
 
+  const filteredAppos = appointments.filter(appointment => {
+    const today = `${appointment.dueDate}`;
+    return today.includes(searchInput.toLowerCase());
+  });
+
   const groupedAppointments = {};
-  appointments.forEach((appointment) => {
+  filteredAppos.forEach((appointment) => {
     const patientName = `${appointment.patient.fname} ${appointment.patient.lname} (NIC: ${appointment.patient.nic})`;
     if (!groupedAppointments[patientName]) {
       groupedAppointments[patientName] = [];
@@ -143,6 +158,15 @@ const AppointmentMedProf = () => {
       
       <section className='section bg-c-light border-top border-bottom'>
         <div className='container'>
+
+        <IconContext.Provider value={{ color: 'white', size: '25px' }}>
+          <div class="search-box">
+              <button class="btn-search"><i class="fas fa-search"><BiSearch/></i></button>
+              <input type="text" class="input-search" placeholder="Search by Due Date" value={searchInput}
+                  onChange={e => setSearchInput(e.target.value)}/>
+          </div>
+        </IconContext.Provider>
+
           {Object.entries(groupedAppointments).map(([patientName, appos]) => (
             <div className='row my-2' key={patientName}>
               <h6 className='appobold'>{patientName}</h6>
@@ -210,4 +234,4 @@ const AppointmentMedProf = () => {
   );
 };
 
-export default AppointmentMedProf;
+export default AppointmentManager;

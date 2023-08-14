@@ -95,11 +95,6 @@ export default function Patient() {
     navigate('/medprof/my_patients/appos');
   };
 
-  const viewMedications = (p) => {
-    sessionStorage.setItem('patient', JSON.stringify(p));
-    navigate('/medprof/my_patients/medications');
-  };
-
 const appointmentCount = (patientId) => {
     const countArray = counts.find((countsArray) => countsArray[0] === patientId);
     return countArray ? countArray[1] : 0;
@@ -163,9 +158,6 @@ const appointmentCount = (patientId) => {
                             <div className="col-6 text-end mt-n2 mb-2">
                                 <Button className="btn-light btn-outline-dark mb-2" onClick={() => viewAppos(patient)}>
                                     ViewAppos
-                                </Button>
-                                <Button className="btn-light btn-outline-dark" onClick={() => viewMedications(patient)}>
-                                    viewMedications
                                 </Button>
                             </div>
                         </div>

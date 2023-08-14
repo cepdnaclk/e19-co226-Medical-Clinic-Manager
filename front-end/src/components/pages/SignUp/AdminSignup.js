@@ -66,7 +66,7 @@ function UserSignup() {
         const user = JSON.parse(userJSON);
         signupService.handleSignup(formData, user.accessToken);
         setIsLoading(false);
-        navigate("/signin");
+        navigate(-1);
         alert("Signup Success!");
     }, 500);
     } catch (error) {

@@ -6,11 +6,15 @@ import { useState } from 'react';
 import axios from 'axios';
 import { useEffect } from 'react';
 import NavbarMedProf from '../../../inc/navbar/NavbarMedProf';
+import './../patients/Search.css'
+import { BiSearch } from 'react-icons/bi';
+import { IconContext } from 'react-icons';
 
 let fname;
 let lname;
 let nic;
 const AppointmentMedProfPatient = () => {
+  const [searchInput, setSearchInput] = useState('');
   const [appointments, setAppointments] = useState([]);
 
 // API call http://localhost:8080/api/v1/appointment/find/patientid/{patientid}
@@ -117,6 +121,15 @@ const handleDeny = async (appointment) => {
     window.location.reload();
 };
 
+const handleMedication = async (appointment) => {
+  sessionStorage.setItem('appointmentId', appointment.appointmentId);
+  navigate("/medprof/my_patients/appointment/medications");
+};
+
+const filteredAppos = appointments.filter(appointment => {
+  const today = `${appointment.dueDate}`;
+  return today.includes(searchInput.toLowerCase());
+});
 
 return (
     <>
@@ -145,12 +158,21 @@ return (
       <pre></pre>
       <section className='section bg-c-light border-top border-bottom'>
         <div className='container'>
+
+        <IconContext.Provider value={{ color: 'white', size: '25px' }}>
+          <div class="search-box">
+              <button class="btn-search"><i class="fas fa-search"><BiSearch/></i></button>
+              <input type="text" class="input-search" placeholder="Search by Due Date" value={searchInput}
+                  onChange={e => setSearchInput(e.target.value)}/>
+          </div>
+        </IconContext.Provider>
+
           <div className='row'>
             <div className='col-md-12'>
               <pre></pre>
             </div>
 
-            {appointments.map((appointment) => (
+            {filteredAppos.map((appointment) => (
               <div className='col-md-4 my-2' key={appointment.appointmentId}>
                 <div className={appointment.accept ?'card bg-success shadow container':'card bg-danger shadow container'}>
                   <div className='card-body bg-light px-3 py-2'>
@@ -167,6 +189,7 @@ return (
                     <div className='d-flex'>
                       <Button variant='primary' disabled={appointment.accept ? true: false} className='ms-2 btn-light btn-outline-success' onClick={() => handleAccept(appointment)}>Accept</Button>
                       <Button variant='primary' disabled={appointment.accept ? false: true} className='ms-2 btn-light btn-outline-danger' onClick={() => handleDeny(appointment)}>Deny</Button>
+                      <Button variant='primary' disabled={appointment.accept ? false: true} className='ms-2 btn-light btn-outline-primary' onClick={() => handleMedication(appointment)}>Medications</Button>
                     </div>
                   </div>
                 </div>

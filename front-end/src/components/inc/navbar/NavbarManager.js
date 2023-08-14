@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from 'react';
-import { Link,useLocation } from 'react-router-dom';
+import { Link,useLocation, useNavigate } from 'react-router-dom';
 import { Navbar, Nav, NavDropdown, Offcanvas, Card, Button } from 'react-bootstrap';
 import img2 from './../imags/img2.png';
 import FetchManagerProfileService from '../../services/FetchManagerProfileService';
@@ -15,6 +15,7 @@ function CustomNavbar(isSignedIn) {
   const [address, setAddress] = useState('');
   const [dob, setDob] = useState('');
   const [role, setRole] = useState('');
+  const [username, setUsername] = useState('');
   const [showOffcanvas, setShowOffcanvas] = useState(false);
   const [editingField, setEditingField] = useState('');
 
@@ -40,6 +41,7 @@ function CustomNavbar(isSignedIn) {
         setAddress(details.address);
         setDob(details.dob);
         setRole(details.user.roles[0].name);
+        setUsername(details.user.username);
       }
     } catch (error) {
       console.error("Error fetching profile data:", error);
@@ -134,6 +136,16 @@ function CustomNavbar(isSignedIn) {
       default:
         break;
     }
+  };
+
+  const navigate = new useNavigate();
+  
+  const navAdvanced = () => {
+    navigate("/change_username_email_password");
+  };
+
+  const navSignup = () => {
+    navigate("/moderator/signup");
   };
 
   return (
@@ -289,8 +301,19 @@ function CustomNavbar(isSignedIn) {
                 )}
               </p>
               <p className='appoDetail'>
+                User Name: {username}
+              </p>
+              <p className='appoDetail'>
                 Role: {role}
               </p>
+              <div>
+                <Button className='btn-dark btn-outline-danger me-2' onClick={navAdvanced}>
+                  Advanced
+                </Button>
+                <Button className='btn-dark btn-outline-primary' onClick={navSignup}>
+                  Sign Up New Moderator
+                </Button>
+              </div>
             </Card.Body>
           </Card>
         </Offcanvas.Body>

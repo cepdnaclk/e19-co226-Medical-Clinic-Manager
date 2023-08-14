@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from 'react';
-import { Link,useLocation } from 'react-router-dom';
+import { Link,useLocation, useNavigate } from 'react-router-dom';
 import { Navbar, Nav, NavDropdown, Offcanvas, Card, Button } from 'react-bootstrap';
 import img2 from './../imags/img2.png';
 import FetchMedProfProfileService from '../../services/FetchMedProfProfileService';
@@ -16,6 +16,7 @@ function CustomNavbar(isSignedIn) {
   const [dob, setDob] = useState('');
   const[speciality, setSpeciality] = useState('');
   const [role, setRole] = useState('');
+  const [username, setUsername] = useState('');
   const [showOffcanvas, setShowOffcanvas] = useState(false);
   const [editingField, setEditingField] = useState('');
 
@@ -42,6 +43,7 @@ function CustomNavbar(isSignedIn) {
         setDob(details.dob);
         setSpeciality(details.speciality);
         setRole(details.user.roles[0].name);
+        setUsername(details.user.username);
       }
     } catch (error) {
       console.error("Error fetching profile data:", error);
@@ -143,6 +145,12 @@ function CustomNavbar(isSignedIn) {
     }
   };
 
+  const navigate = new useNavigate();
+
+  const navAdvanced = () => {
+    navigate("/change_username_email_password");
+  };
+
   return (
     <>
       <Navbar expand="lg" bg="body-tertiary bg-dark" variant="dark" className="navbar-dark shadow">
@@ -174,11 +182,6 @@ function CustomNavbar(isSignedIn) {
               <Nav.Item>
                 <Link to="/medprof/appointments" className="nav-link">
                   <h7 className="nav_topic">Appointments</h7>
-                </Link>
-              </Nav.Item>
-              <Nav.Item>
-                <Link to="/medprof/medications" className="nav-link">
-                  <h7 className="nav_topic">Medications</h7>
                 </Link>
               </Nav.Item>
               <NavDropdown title="Staff" id="staff-dropdown">
@@ -320,8 +323,16 @@ function CustomNavbar(isSignedIn) {
                 )}
               </p>
               <p className='appoDetail'>
+                User Name: {username}
+              </p>
+              <p className='appoDetail'>
                 Role: {role}
               </p>
+              <div>
+                <Button className='btn-dark btn-outline-danger' onClick={navAdvanced}>
+                  Advanced
+                </Button>
+              </div>
             </Card.Body>
           </Card>
         </Offcanvas.Body>

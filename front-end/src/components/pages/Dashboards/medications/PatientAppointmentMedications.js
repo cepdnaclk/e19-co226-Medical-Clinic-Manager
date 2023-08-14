@@ -3,10 +3,9 @@ import { Container, Button } from 'react-bootstrap';
 import NavbarPatient from '../../../inc/navbar/NavbarPatient';
 import axios from 'axios';
 import { useEffect } from 'react';
-import { Link } from 'react-router-dom';
-import { MdLibraryAdd } from 'react-icons/md';
+import { useNavigate } from 'react-router-dom';
 
-export default function PatientMedications() {
+export default function PatientAppointmentMedications() {
     const [medications, setMedications] = useState([]);
     const [isLoading, setIsLoading] = useState(true);
 
@@ -17,7 +16,8 @@ export default function PatientMedications() {
       const user = JSON.parse(userJSON);
       const token = user.accessToken;
       const patientId = sessionStorage.getItem('patientId');
-      const response = await axios.get('http://localhost:8080/api/v1/medication/find/patientid/' + patientId,
+      const appointmentId = sessionStorage.getItem('appointmentId');
+      const response = await axios.get('http://localhost:8080/api/v1/medication/find/' + patientId + '/' + appointmentId,
       {
        headers: {
          Authorization: `Bearer ${token}`
@@ -46,6 +46,12 @@ export default function PatientMedications() {
     settingMedications();
   }, []);
 
+  const navigate = new useNavigate();
+
+  const handleBack = () => {
+    navigate(-1);
+  };
+
   return (
     <>
     <NavbarPatient/>
@@ -56,6 +62,11 @@ export default function PatientMedications() {
             <h2 className='topic mt-3 fs-1'>
               Medications
             </h2>
+          </div>
+          <div className="col-3 mt-4">
+              <Button className="btn-light btn-outline-dark" onClick={handleBack}>
+                Back to Appointments
+              </Button>
           </div>
         </div>
       </Container>

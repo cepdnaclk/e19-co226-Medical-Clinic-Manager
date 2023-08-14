@@ -64,7 +64,7 @@ function UserSignup() {
         console.log(formData);
         signupService.handleSignup(formData);
         setIsLoading(false);
-        navigate("/signin");
+        navigate(-1);
         alert("Signup Success!");
       }, 500);
     } catch (error) {

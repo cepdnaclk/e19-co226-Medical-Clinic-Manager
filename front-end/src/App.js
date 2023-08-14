@@ -24,11 +24,12 @@ import MedProfessionals from './components/pages/Dashboards/medprofs/MedProfessi
 import Patient from './components/pages/Dashboards/patients/Patients';
 import MyPatients from './components/pages/Dashboards/patients/MyPatients';
 import MedProfMedications from './components/pages/Dashboards/medications/MedProfMedications';
-import PatientMedications from './components/pages/Dashboards/medications/PatientMedications';
-import MedicationMedProfPatient from './components/pages/Dashboards/medications/MedicationMedProfPatient';
 import NewMedication from './components/pages/Dashboards/medications/NewMedication';
+import MedicationMedProfPatientAppointment from './components/pages/Dashboards/medications/MedicationMedProfPatientAppointment';
+import PatientAppointmentMedications from './components/pages/Dashboards/medications/PatientAppointmentMedications';
 
 import SessionStorageTest from './components/SessionStorageTest';
+import ChangeUserNameEmailPassword from './components/pages/Dashboards/change_username_pswd/ChangeUserNameEmailPassword';
 
 
 
@@ -70,9 +71,10 @@ function App() {
           <Route exact path='/medprof/my_patients' element={<MyPatients/>}></Route>
           <Route exact path='/medprof/my_patients/appos' element={<AppointmentMedProfPatient/>}></Route>
           <Route exact path='/medprof/medications' element={<MedProfMedications/>}></Route>
-          <Route exact path='/patient/medications' element={<PatientMedications/>}></Route>
-          <Route exact path='/medprof/my_patients/medications' element={<MedicationMedProfPatient/>}></Route>
+          <Route exact path='/patient/appointment/medications' element={<PatientAppointmentMedications/>}></Route>
+          <Route exact path='/medprof/my_patients/appointment/medications' element={<MedicationMedProfPatientAppointment/>}></Route>
           <Route exact path='/medprof/new_medication' element={<NewMedication/>}></Route>
+          <Route exact path='/change_username_email_password' element={<ChangeUserNameEmailPassword/>}></Route>
           
 
           <Route exact path='/test' element={<SessionStorageTest/>}></Route>

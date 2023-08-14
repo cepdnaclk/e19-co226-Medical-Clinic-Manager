@@ -16,6 +16,9 @@ function NewMedication() {
         user: {
           username: ''
         }
+      },
+      appointment: {
+        appointmentId: ''
       }
   })
 
@@ -44,6 +47,7 @@ function NewMedication() {
     try {
       const userJSON = sessionStorage.getItem('user');
       const patietJSON = sessionStorage.getItem('patient');
+      const appointmentId = sessionStorage.getItem('appointmentId');
       const user = JSON.parse(userJSON);
       const patient = JSON.parse(patietJSON);
       const professionalId = sessionStorage.getItem('professionalId');
@@ -51,6 +55,7 @@ function NewMedication() {
       medication.patient.patientId = patient.patientId;
       medication.medicalProfessional.user.username = user.username;
       medication.medicalProfessional.professionalId = professionalId;
+      medication.appointment.appointmentId = appointmentId;
 
       const token = user.accessToken;
 
@@ -69,13 +74,13 @@ function NewMedication() {
       console.error('Error saving data !', error)
     }
     alert('Save successful !');
-    navigate('/medprof/my_patients/medications');
+    navigate('/medprof/my_patients/appointment/medications');
     // Clear the editing field
     setMedication('');
   };
 
   const navigateBack = () => {
-    navigate('/patient/medications');
+    navigate('/medprof/my_patients/appointment/medications');
   };
 
 
@@ -136,10 +141,10 @@ function NewMedication() {
                   />
                 </Form.Group>
                   <div className='d-flex d-flex justify-content-center'>
-                  <Button variant='primary' type='submit' className='me-5' onClick={saveNewAppo} disabled={!isFormFilled}>
+                  <Button variant='primary' type='submit' className='me-5 btn-light btn-outline-primary' onClick={saveNewAppo} disabled={!isFormFilled}>
                     Save
                   </Button>
-                  <Button variant='primary' type='submit' onClick={navigateBack}>
+                  <Button variant='primary' className='btn-light btn-outline-primary' type='submit' onClick={navigateBack}>
                     Back
                   </Button>
                 </div>

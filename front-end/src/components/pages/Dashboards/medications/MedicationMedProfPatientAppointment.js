@@ -11,7 +11,7 @@ import { MdLibraryAdd } from 'react-icons/md';
 let fname;
 let lname;
 let nic;
-const MedicationMedProfPatient = () => {
+const MedicationMedProfPatientAppointment = () => {
   const [medications, setMedications] = useState([]);
 
 // API call http://localhost:8080/api/v1/medication/find/patientid/{patientid}
@@ -23,15 +23,16 @@ const fetchMedicationsByMedProfIdPatientId = async () => {
     const professionalId = sessionStorage.getItem('professionalId');
     const patientJSON = JSON.parse(sessionStorage.getItem('patient'));
     const pId = patientJSON.patientId;
+    const appointmentId = sessionStorage.getItem('appointmentId');
     fname = patientJSON.fname;
     lname = patientJSON.lname;
     nic = patientJSON.nic;
-    const response = await axios.get('http://localhost:8080/api/v1/medication/find/' + professionalId + '/' + pId, {
+    const response = await axios.get('http://localhost:8080/api/v1/medication/find/' + professionalId + '/' + pId + '/' + appointmentId, {
         headers: {
             Authorization: `Bearer ${token}`
         }
     });
-    console.log('http://localhost:8080/api/v1/medication/find/' + professionalId + '/' + pId);
+    console.log('http://localhost:8080/api/v1/medication/find/' + professionalId + '/' + pId + '/' + appointmentId);
     // Check the status code directly
     if (response.status === 401) {
         console.log('Unauthorized'); // Handle unauthorized case
@@ -91,6 +92,9 @@ const handleDelete = async (medication) => {
     window.location.reload();
 };
 
+const handleBack = () => {
+  navigate(-1);
+};
 
 return (
     <>
@@ -104,11 +108,9 @@ return (
             </h2>
           </div>
           <div className="col-3 mt-4">
-              <Link to='/medprof/my_patients'>
-                <Button className="btn-light btn-outline-dark">
-                  Back to My Patients
-                </Button>
-              </Link>
+              <Button className="btn-light btn-outline-dark" onClick={handleBack}>
+                Back to Appointments
+              </Button>
           </div>
         </div>
         <h2 className='topic mt-3 fs-5'>
@@ -153,4 +155,4 @@ return (
   );
 }
 
-export default MedicationMedProfPatient;
+export default MedicationMedProfPatientAppointment;

@@ -1,20 +1,20 @@
 import React, { useState } from 'react';
 import { Container, Form, Button, Card } from 'react-bootstrap';
-import { Link } from 'react-router-dom';
-import SignupModeratorService from '../../services/signup/SignupModeratorService';
 import { useNavigate } from 'react-router-dom';
-import ModSignupimg from './ModSignup.png';
-import Loader from '../Loader';
+import UserSigninimg from './../../signin/SigninLogo.png';
+import Loader from './../../Loader';
+import axios from 'axios';
 
-function UserSignup() {
+function ChangeUserNameEmailPassword() {
   const [isLoading, setIsLoading] = useState(false);
   const navigate = useNavigate();
 
   const [isFormFilled, setIsFormFilled] = useState(false);
   const [formData, setFormData] = useState({
-    username: '',
-    email: '',
-    password: ''
+    Password: '',
+    newUsername: '',
+    newEmail: '',
+    newPassword: ''
   });
   const [retypePassword, setRetypePassword] = useState('');
 
@@ -33,12 +33,12 @@ function UserSignup() {
   };
 
   const handlePasswordChange = (e) => {
-    const newPassword = e.target.value;
+    const newpassword = e.target.value;
     setFormData((prevData) => ({
       ...prevData,
-      password: newPassword
+      newPassword: newpassword
     }));
-    checkPasswordMatch(newPassword, retypePassword);
+    checkPasswordMatch(newpassword, retypePassword);
   };
 
   const handleRetypePasswordChange = (e) => {
@@ -55,38 +55,41 @@ function UserSignup() {
     }
   };
 
-  const signupService = new SignupModeratorService();
+  const user = JSON.parse(sessionStorage.getItem('user'));
+
+  const handleUpdate = async (data) => {
+    const respond = await axios.put("http://localhost:8080/api/v1/user/update/" + user.id, data);
+  }
+
 
   const handleSubmit = async () => {
     setIsLoading(true);
     try {
-      setTimeout(async () => {
+        setTimeout(async () => {
         console.log(formData);
-        const userJSON = sessionStorage.getItem('user');
-        const user = JSON.parse(userJSON);
-        signupService.handleSignup(formData, user.accessToken);
+        handleUpdate(formData);
         setIsLoading(false);
+        alert("update success!");
         navigate(-1);
-        alert("Signup Success!");
       }, 500);
     } catch (error) {
-      console.error("Signup failed:", error);
+      console.error("update failed:", error);
     }
   };
 
   const handleBack = () => {
-    navigate("/");
+    navigate(-1);
   };
 
   return (
     <>{isLoading? <Loader/>: (<>
-    <div className='body '>
+    <div className='body'>
       <Container>
         <div className='d-flex justify-content-center'>
-          <Card className="shadow col-md-4">
+          <Card className="shadow col-md-5">
             <Card.Body>
-            <h2 className='d-flex justify-content-center'>
-                <img src={ModSignupimg} alt=''  style={{ width: '100px', height: 'auto' }} className='img-fluid' />
+            <h2 className='d-flex justify-content-center topic fs-2 mb-0'>
+                Renew Login Credentials
               </h2>
               <pre></pre>
               <section className='section bg-c-light border-top border-bottom'>
@@ -94,29 +97,34 @@ function UserSignup() {
                   <div className='row'>
                     <div className='col-md-12'>
                       <Form>
-                        <Form.Group className="mb-3" controlId="formBasicUsername">
-                          <Form.Label>Username</Form.Label>
-                          <Form.Control type="text" name="username" placeholder="Enter username" onChange={handleInputChange} required />
+                        <Form.Group className="mb-1" controlId="formBasicEmail">
+                          <Form.Label>Existing Password</Form.Label>
+                          <Form.Control type="password" name="password" placeholder="Enter Existing Password" onChange={handleInputChange} required />
                         </Form.Group>
 
-                        <Form.Group className="mb-3" controlId="formBasicEmail">
-                          <Form.Label>Email</Form.Label>
-                          <Form.Control type="email" name="email" placeholder="Enter email" onChange={handleInputChange} required />
+                        <Form.Group className="mb-1" controlId="formBasicUsername">
+                          <Form.Label>New Username</Form.Label>
+                          <Form.Control type="text" name="newUsername" placeholder="Enter New Username" onChange={handleInputChange} required />
                         </Form.Group>
 
-                        <Form.Group className="mb-3" controlId="formBasicPassword">
-                          <Form.Label>Password</Form.Label>
-                          <Form.Control type="password" name="password" placeholder="Password" onChange={handlePasswordChange} required />
+                        <Form.Group className="mb-1" controlId="formBasicUsername">
+                          <Form.Label>New Email</Form.Label>
+                          <Form.Control type="text" name="newEmail" placeholder="Enter New Email" onChange={handleInputChange} required />
                         </Form.Group>
 
-                        <Form.Group className="mb-3" controlId="formBasicRetypePassword">
-                          <Form.Label>Retype Password</Form.Label>
-                          <Form.Control type="password" placeholder="Retype password" onChange={handleRetypePasswordChange} required />
+                        <Form.Group className="mb-1" controlId="formBasicPassword">
+                          <Form.Label>New Password</Form.Label>
+                          <Form.Control type="password" name="newPassword" placeholder="New Password" onChange={handlePasswordChange} required />
+                        </Form.Group>
+
+                        <Form.Group className="mb-1" controlId="formBasicRetypePassword">
+                          <Form.Label>Retype New Password</Form.Label>
+                          <Form.Control type="password" placeholder="Retype New password" onChange={handleRetypePasswordChange} required />
                         </Form.Group>
 
                         <div className="d-flex justify-content-between align-items-center mt-3">
                         <Button variant="primary" type="button" className="btn-light btn-outline-primary" onClick={handleSubmit} disabled={!isFormFilled}>
-                            Sign up
+                            Save
                           </Button>
                           <Button variant="primary" type="button" onClick={handleBack} className="btn-light btn-outline-primary">
                             Back
@@ -138,4 +146,4 @@ function UserSignup() {
   );
 }
 
-export default UserSignup;
+export default ChangeUserNameEmailPassword;

@@ -6,8 +6,12 @@ import NavbarPatient from '../../../inc/navbar/NavbarPatient';
 import { useNavigate } from 'react-router-dom';
 import { useEffect } from 'react';
 import {MdLibraryAdd} from 'react-icons/md';
+import './../patients/Search.css'
+import { BiSearch } from 'react-icons/bi';
+import { IconContext } from 'react-icons';
 
 const AppointmentPatient = () => {
+  const [searchInput, setSearchInput] = useState('');
   const [appointments, setAppointments] = useState('');
 
 // API call http://localhost:8080/api/v1/appointment/find/patientid/{patientid}
@@ -102,6 +106,15 @@ const checkCurrentUserPatient = async () => {
   // console.log(isPatient);
 };
 
+const handleMedications = (appointmentId) => {
+  sessionStorage.setItem('appointmentId', appointmentId);
+  navigate("/patient/appointment/medications");
+};
+
+const filteredAppos = appointments.filter(appointment => {
+  const today = `${appointment.dueDate}`;
+  return today.includes(searchInput.toLowerCase());
+});
 
 const isCurrentUserPatient = checkCurrentUserPatient();
 
@@ -119,12 +132,20 @@ const isCurrentUserPatient = checkCurrentUserPatient();
         <div className='container'>
           <div className='row'>
             <div className='col-md-12'>
-              {isCurrentUserPatient ? (
+              {isCurrentUserPatient ? (<>
                 <Link to="/patient/new_appointment" className='btn-link'>
                   <Button className='btn-light btn-outline-dark ms-1'>
                     <span><MdLibraryAdd/> New Appointment</span>
                   </Button>
                 </Link>
+                <IconContext.Provider value={{ color: 'white', size: '25px' }}>
+                <div class="search-box mt-4">
+                    <button class="btn-search"><i class="fas fa-search"><BiSearch/></i></button>
+                    <input type="text" class="input-search" placeholder="Search by Due Date" value={searchInput}
+                        onChange={e => setSearchInput(e.target.value)}/>
+                </div>
+              </IconContext.Provider>
+              </>
               ) : (
                 <div><h className='regfont'>If you are not a registered patient, please make the appoinment after being registered.</h>
                 <Link to="/register" className='btn-link'>
@@ -137,7 +158,7 @@ const isCurrentUserPatient = checkCurrentUserPatient();
               <pre></pre>
             </div>
 
-            {appointments.map((appointment) => (          
+            {filteredAppos.map((appointment) => (          
               <div className='col-md-4 my-2' key={appointment.appointmentId}>
                 <div className={appointment.accept ?'card bg-success shadow container':'card bg-danger shadow container'}>
                 <div className='card-body bg-light px-3 py-2 d-flex flex-column justify-content-between'>
@@ -154,14 +175,22 @@ const isCurrentUserPatient = checkCurrentUserPatient();
                     </p>
                   </div>
                   <div className="d-flex justify-content-end">
-                  {!appointment.accept ? (
+                  {!appointment.accept ? (<>
                     <Button variant='primary' className='ms-2 btn-light btn-outline-danger' onClick={() => handleDelete(appointment.appointmentId)}>
                       Delete
                     </Button>
-                  ) : (
+                    <Button variant='primary' className='ms-2 btn-light btn-outline-primary' disabled={true} onClick={() => handleMedications(appointment.appointmentId)}>
+                      Medications
+                    </Button>
+                  </>
+                  ) : (<>
                     <Button variant='primary' className='ms-2 btn-light btn-outline-success' disabled={true} onClick={() => handleDelete(appointment.appointmentId)}>
                       Delete
                     </Button>
+                    <Button variant='primary' className='ms-2 btn-light btn-outline-primary' disabled={false} onClick={() => handleMedications(appointment.appointmentId)}>
+                      Medications
+                    </Button>
+                    </>
                   ) }
                   </div>
                 </div>
