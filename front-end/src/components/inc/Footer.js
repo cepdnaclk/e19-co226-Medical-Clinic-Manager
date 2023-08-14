@@ -1,6 +1,6 @@
 import React from 'react'
 import "./footer.css"
-import img from './../inc/imags/img2.png';
+import img from './../pages/Dashboards/root/HomeLogo.png';
 
 function Footer() {
   return (
@@ -10,7 +10,7 @@ function Footer() {
                 <div className='col-md-6'>
                     <h6>Contact Info</h6>
                     <hr/>
-                    <img src={img} alt=''  style={{ width: '150px', height: 'auto' }} className='img-fluid' /><br/>
+                    <img src={img} alt=''  style={{ width: '100px', height: 'auto' }} className='img-fluid mb-2' /><br/>
                     <div><p className='text-white mb-1'>Kurunegala road, Narammala</p></div>
                     <div><p className='text-white mb-1'>+94 76 637 0774</p></div>
                     <div><p className='text-white mb-1'>clinic@lifecare.com</p></div>
@@ -19,12 +19,22 @@ function Footer() {
                 <div className='col-md-6'>
                     <h6>About </h6>
                     <hr/>
-                    <p></p>
+                    <p>
+                        Our platform empowers clinics to efficiently handle appointments, 
+                        medications, and vital medical information, all in one centralized 
+                        and secure location. Patients can easily schedule appointments, access 
+                        their medical history, and receive timely reminders, fostering a 
+                        sense of engagement and empowerment in their healthcare journey. 
+                        LifeCare enables doctors to optimize their practice by providing 
+                        them with a convenient interface to manage patient records, prescribe 
+                        medications, and stay organized.
+                    </p>
                 </div>
 
             </div>
+            <hr/>
             <div className='d-flex justify-content-center font-family-base'>
-                <pre>* all rights reserved *</pre>
+                <pre>all rights reserved.</pre>
             </div>
         </div>
     </section>

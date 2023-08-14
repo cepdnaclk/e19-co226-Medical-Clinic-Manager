@@ -4,8 +4,10 @@ import { Link } from 'react-router-dom';
 import SignupUserService from '../../services/signup/SignupUserService';
 import { useNavigate } from 'react-router-dom';
 import UserSignupimg from './UserSignup.png';
+import Loader from '../Loader';
 
 function UserSignup() {
+  const [isLoading, setIsLoading] = useState(false);
   const navigate = useNavigate();
 
   const [isFormFilled, setIsFormFilled] = useState(false);
@@ -56,24 +58,33 @@ function UserSignup() {
   const signupService = new SignupUserService();
 
   const handleSubmit = async () => {
+    setIsLoading(true);
     try {
-      console.log(formData);
-      signupService.handleSignup(formData);
-      navigate("/signin");
-      alert("Signup Success!");
+        setTimeout(async () => {
+        console.log(formData);
+        signupService.handleSignup(formData);
+        setIsLoading(false);
+        navigate("/signin");
+        alert("Signup Success!");
+      }, 500);
     } catch (error) {
       console.error("Signup failed:", error);
     }
   };
 
+  const handleBack = () => {
+    navigate("/");
+  };
+
   return (
+    <>{isLoading? <Loader/>: (<>
     <div className='body '>
       <Container>
         <div className='d-flex justify-content-center'>
           <Card className="shadow col-md-4">
             <Card.Body>
             <h2 className='d-flex justify-content-center'>
-                <img src={UserSignupimg} alt=''  style={{ width: '150px', height: 'auto' }} className='img-fluid' />
+                <img src={UserSignupimg} alt=''  style={{ width: '100px', height: 'auto' }} className='img-fluid' />
               </h2>
               <pre></pre>
               <section className='section bg-c-light border-top border-bottom'>
@@ -102,13 +113,11 @@ function UserSignup() {
                         </Form.Group>
 
                         <div className="d-flex justify-content-between align-items-center mt-3">
-                          <Button variant="primary" type="button" onClick={handleSubmit} disabled={!isFormFilled}>
+                        <Button variant="primary" type="button" className="btn-light btn-outline-primary" onClick={handleSubmit} disabled={!isFormFilled}>
                             Sign up
                           </Button>
-                          <Button variant="primary" type="submit">
-                            <Link to="/signin" className="text-white" style={{ textDecoration: 'none' }}>
-                              Back to Sign in
-                            </Link>
+                          <Button variant="primary" type="button" onClick={handleBack} className="btn-light btn-outline-primary">
+                            Back
                           </Button>
                         </div>
                       </Form>
@@ -122,6 +131,8 @@ function UserSignup() {
         </div>
       </Container>
     </div>
+    </>)}
+    </>
   );
 }
 

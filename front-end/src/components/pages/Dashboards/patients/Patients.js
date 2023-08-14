@@ -4,6 +4,7 @@ import NavbarManager from '../../../inc/navbar/NavbarManager';
 import NavbarMedProf from '../../../inc/navbar/NavbarMedProf';
 import axios from 'axios';
 import { useEffect } from 'react';
+import Loader from '../../Loader';
 
 export default function Patient() {
     const [patients, setPatients] = useState([]);
@@ -30,10 +31,13 @@ export default function Patient() {
   };
   const settingPatients = async () => {
     try {
-      const mdprs = await fetchAllPatients();
-      console.log(mdprs);
-      setPatients(mdprs);
-      setIsLoading(false); // Set loading state to false when data is fetched
+      setTimeout(async () => {
+        const mdprs = await fetchAllPatients();
+        console.log(mdprs);
+        setPatients(mdprs);
+        setIsLoading(false); // Set loading state to false when data is fetched
+      }, 500);
+
     } catch (error) {
       console.error("Error fetching patients:", error);
       setIsLoading(false); // Set loading state to false even in case of an error
@@ -95,6 +99,7 @@ export default function Patient() {
 
   return (
     <>
+    {isLoading? <Loader/>:(<>
     {
       (role === 'ROLE_ADMIN') ? <NavbarManager/> : <NavbarMedProf/>
     }
@@ -157,6 +162,7 @@ export default function Patient() {
         </div>
       </section>
     </div>
+    </>)}
     </>
   );
 }

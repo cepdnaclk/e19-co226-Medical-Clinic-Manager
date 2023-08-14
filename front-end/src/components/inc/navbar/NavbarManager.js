@@ -139,11 +139,11 @@ function CustomNavbar(isSignedIn) {
   return (
     <>
       <Navbar expand="lg" bg="body-tertiary" variant="dark" className="navbar-dark shadow">
-        <div className="container-fluid navback navbar-container">
+        <div className="container-fluid navback navbar-container bg-dark">
           <Link to="/manager/home" className="navbar-brand">
             <img src={img2} alt='' className='navbar-logo' />
           </Link>
-          {/*<Link to="/home" className="navbar-brand">
+          {/*<Link to="/" className="navbar-brand">
             <h2 className='topic_lifeCare'>LifeCare</h2>
           </Link>*/}
           <Navbar.Toggle aria-controls="navbarSupportedContent" />
@@ -339,7 +339,7 @@ function Navbar() {
                 <div className='collapse navbar-collapse' id='navbarSupportedContent'>
                   <ul className='navbar-nav me-auto mb-lg-0 d-flex justify-content-center align-items-center'>
                     <li className='nav-item'>
-                      <Link to='/home' className='nav-link active'>
+                      <Link to='/' className='nav-link active'>
                         {/* <h7 className='nav_topic'>Home</h7> */}{/*
                         <button type="button" class="btn btn-dark"><b>Home</b></button>
                       </Link>

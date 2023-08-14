@@ -4,9 +4,11 @@ import { Link } from 'react-router-dom';
 import SignupAdminService from '../../services/signup/SignupAdminService';
 import { useNavigate } from 'react-router-dom';
 import AdminSignupimg from './AdminSignup.png';
+import Loader from '../Loader';
 
 function UserSignup() {
   const navigate = useNavigate();
+  const [isLoading, setIsLoading] = useState(false);
 
   const [isFormFilled, setIsFormFilled] = useState(false);
   const [formData, setFormData] = useState({
@@ -56,27 +58,37 @@ function UserSignup() {
   const signupService = new SignupAdminService();
 
   const handleSubmit = async () => {
+    setIsLoading(true);
     try {
-      console.log(formData);
-      const userJSON = sessionStorage.getItem('user');
-      const user = JSON.parse(userJSON);
-      signupService.handleSignup(formData, user.accessToken);
-      navigate("/signin");
-      alert("Signup Success!");
+      setTimeout(async () => {
+        console.log(formData);
+        const userJSON = sessionStorage.getItem('user');
+        const user = JSON.parse(userJSON);
+        signupService.handleSignup(formData, user.accessToken);
+        setIsLoading(false);
+        navigate("/signin");
+        alert("Signup Success!");
+    }, 500);
     } catch (error) {
       console.error("Signup failed:", error);
     }
   };
 
+  const handleBack = () => {
+    navigate("/");
+  };
+
   return (
+    <>
+    {isLoading? <Loader/>: (<>
     <div className='body d-flex justify-content-center align-items-center'>
       <Container>
         <div className='d-flex justify-content-center'>
           <Card className="shadow col-md-4">
             <Card.Body>
-            <h2 className='d-flex justify-content-center'>
-                <img src={AdminSignupimg} alt=''  style={{ width: '150px', height: 'auto' }} className='img-fluid' />
-              </h2>
+              <div className='d-flex justify-content-center'>
+                <img src={AdminSignupimg} alt=''  style={{ width: '100px', height: 'auto' }} className='img-fluid' />
+              </div>
               <pre></pre>
               <section className='section bg-c-light border-top border-bottom'>
                 <div className='container'>
@@ -104,13 +116,11 @@ function UserSignup() {
                         </Form.Group>
 
                         <div className="d-flex justify-content-between align-items-center mt-3">
-                          <Button variant="primary" type="button" onClick={handleSubmit} disabled={!isFormFilled}>
+                          <Button variant="primary" type="button" onClick={handleSubmit} className="btn-light btn-outline-primary" disabled={!isFormFilled}>
                             Sign up
                           </Button>
-                          <Button variant="primary" type="submit">
-                            <Link to="/signin" className="text-white" style={{ textDecoration: 'none' }}>
-                              Back to Sign in
-                            </Link>
+                          <Button variant="primary" type="button" onClick={handleBack} className="btn-light btn-outline-primary">
+                            Back
                           </Button>
                         </div>
                       </Form>
@@ -124,6 +134,8 @@ function UserSignup() {
         </div>
       </Container>
     </div>
+    </>)}
+    </>
   );
 }
 

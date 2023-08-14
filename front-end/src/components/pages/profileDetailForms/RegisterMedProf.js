@@ -128,7 +128,7 @@ function RegisterMedProf() {
                       <Form.Group className="mb-3" controlId="formBasicCheckbox">
                         <Form.Check type="checkbox" label="I hereby agree to the terms of policy" onChange={handleCheckboxChange} required />
                       </Form.Group>
-                      <Button variant="primary" type="submit" disabled={!isCheckboxChecked}>
+                      <Button variant="primary" type="submit" className="btn-light btn-outline-primary" disabled={!isCheckboxChecked}>
                         Submit
                       </Button>
                     </Form>

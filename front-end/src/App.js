@@ -32,6 +32,7 @@ import SessionStorageTest from './components/SessionStorageTest';
 
 
 
+
 function App() {
   const [isSignedIn, setIsSignedIn] = React.useState(false);
 
@@ -73,6 +74,7 @@ function App() {
           <Route exact path='/medprof/my_patients/medications' element={<MedicationMedProfPatient/>}></Route>
           <Route exact path='/medprof/new_medication' element={<NewMedication/>}></Route>
           
+
           <Route exact path='/test' element={<SessionStorageTest/>}></Route>
           
 
