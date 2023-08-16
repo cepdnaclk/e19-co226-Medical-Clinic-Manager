@@ -4,9 +4,19 @@ This project was bootstrapped with [Create React App](https://github.com/faceboo
 
 ## Available Scripts
 
-In the project directory, you can run:
+In the project directory, you can run following respectively:
 
-### `npm start`
+### `npm install -g create-react-app`    
+
+### `npx create-react-app .`
+
+### `npm install react react-router-dom`
+
+### `npm install react-modal`
+
+### `npm install axios`
+
+### `npm run start`
 
 Runs the app in the development mode.\
 Open [http://localhost:3000](http://localhost:3000) to view it in your browser.
