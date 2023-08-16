@@ -6,6 +6,7 @@ import axios from 'axios';
 import Signinlogo from './SigninLogo.png';
 import Loader from '../Loader';
 
+
 function Signin() {
   const [isFormFilled, setIsFormFilled] = useState(false);
   const [isLoading, setIsLoading]  = useState(false);
@@ -32,62 +33,84 @@ function Signin() {
     setIsLoading(true);
     try {
       setTimeout(async () => {
-        // console.log(formData);
-        const response = await signinService.handleSignin(formData);
-        const user = JSON.parse(sessionStorage.getItem('user'));
-        const token = user.accessToken;
-        // console.log(user);
-        const isPatient = user.roles[0] === "ROLE_USER";
-        const isMedprof = user.roles[0] === "ROLE_MODERATOR";
-        const isManager = user.roles[0] === "ROLE_ADMIN";
-        const inPatient = await axios.get("http://localhost:8080/api/v1/patient/existsbyuserid/" + user.id, {
-          headers: {
-              Authorization: `Bearer ${token}`
+        try {
+          // console.log(formData);
+          const response = await signinService.handleSignin(formData);
+
+          const user = JSON.parse(sessionStorage.getItem('user'));
+          const token = user.accessToken;
+          // console.log(user);
+          const isPatient = user.roles[0] === "ROLE_USER";
+          const isMedprof = user.roles[0] === "ROLE_MODERATOR";
+          const isManager = user.roles[0] === "ROLE_ADMIN";
+          const inPatient = await axios.get("http://localhost:8080/api/v1/patient/existsbyuserid/" + user.id, {
+            headers: {
+                Authorization: `Bearer ${token}`
+            }
+          });
+          const inMedprof = await axios.get("http://localhost:8080/api/v1/medprof/existsbyuserid/" + user.id, {
+            headers: {
+                Authorization: `Bearer ${token}`
+            }
+          });
+          const inManager = await axios.get("http://localhost:8080/api/v1/manager/existsbyuserid/" + user.id, {
+            headers: {
+                Authorization: `Bearer ${token}`
+            }
+          });
+          console.log(isPatient);
+          console.log(isMedprof);
+          console.log(isManager);
+          console.log(inPatient.data);
+          console.log(inMedprof.data);
+          console.log(inManager.data);
+          if (isPatient) {
+            if (inPatient.data) {
+              setIsLoading(false);
+              navigate("/patient/home");
+            } else {
+              navigate("/patient/register");
+            }
+          } else if (isMedprof) {
+            if (inMedprof.data) {
+              setIsLoading(false);
+              navigate("/medprof/home");
+            } else {
+              setIsLoading(false);
+              navigate("/medprof/register");
+              console.log("here");
+            }
+          } else if (isManager) {
+            if (inManager.data) {
+              navigate("/manager/home");
+            } else {
+              navigate("/manager/register");
+            }
           }
-        });
-        const inMedprof = await axios.get("http://localhost:8080/api/v1/medprof/existsbyuserid/" + user.id, {
-          headers: {
-              Authorization: `Bearer ${token}`
-          }
-        });
-        const inManager = await axios.get("http://localhost:8080/api/v1/manager/existsbyuserid/" + user.id, {
-          headers: {
-              Authorization: `Bearer ${token}`
-          }
-        });
-        console.log(isPatient);
-        console.log(isMedprof);
-        console.log(isManager);
-        console.log(inPatient.data);
-        console.log(inMedprof.data);
-        console.log(inManager.data);
-        if (isPatient) {
-          if (inPatient.data) {
-            setIsLoading(false);
-            navigate("/patient/home");
+        } catch (error) {
+          setIsLoading(false);
+          console.error("Signin failed:", error);
+          console.log("Error:", error); // Log the error object
+          if (error.response && error.response.status === 403) {
+            alert("Invalid password. Please try again.");
+          } else if (error.response && error.response.status === 401) {
+            console.log("Unauthorized. Please check your credentials.");
+            alert("Unauthorized. Please check your credentials.");
           } else {
-            navigate("/patient/register");
-          }
-        } else if (isMedprof) {
-          if (inMedprof.data) {
-            setIsLoading(false);
-            navigate("/medprof/home");
-          } else {
-            setIsLoading(false);
-            navigate("/medprof/register");
-            console.log("here");
-          }
-        } else if (isManager) {
-          if (inManager.data) {
-            navigate("/manager/home");
-          } else {
-            navigate("/manager/register");
+            alert("Signin Failed!");
           }
         }
-      }, 3000);
+      }, 2000);
     } catch (error) {
+      setIsLoading(false);
       console.error("Signin failed:", error);
-      alert("Signin Failed!");
+      if (error.response && error.response.status === 403) {
+        alert("Invalid password. Please try again.");
+      } else if (error.response && error.response.status === 401) {
+        alert("Unauthorized. Please check your credentials.");
+      } else {
+        alert("Signin Failed!");
+      }
     }
   };
 

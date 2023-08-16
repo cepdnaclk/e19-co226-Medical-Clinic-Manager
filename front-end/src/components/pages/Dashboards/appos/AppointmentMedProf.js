@@ -56,12 +56,12 @@ useEffect(() => {
   fetchData();
 }, []);
 
-console.log(appointments);
+// console.log(appointments);
 
-if (appointments.length === 0){
-  navigate('/medprof/no_appointments');
-  return null;
-}
+// if (appointments.length === 0){
+//   navigate('/medprof/no_appointments');
+//   return null;
+// }
 
 const handleAccept = async (appointment) => {
   appointment.accept = true;
@@ -113,11 +113,6 @@ const handleDeny = async (appointment) => {
     window.location.reload();
 };
 
-const handleMedication = async (appointment) => {
-  sessionStorage.setItem('appointmentId', appointment.appointmentId);
-  navigate("/medprof/my_patients/appointment/medications");
-};
-
 const filteredAppos = appointments.filter(appointment => {
   const today = `${appointment.dueDate}`;
   return today.includes(searchInput.toLowerCase());
@@ -166,7 +161,6 @@ const filteredAppos = appointments.filter(appointment => {
                     <div className='d-flex'>
                       <Button variant='primary' disabled={appointment.accept ? true: false} className='ms-2 btn-light btn-outline-success' onClick={() => handleAccept(appointment)}>Accept</Button>
                       <Button variant='primary' disabled={appointment.accept ? false: true} className='ms-2 btn-light btn-outline-danger' onClick={() => handleDeny(appointment)}>Deny</Button>
-                      <Button variant='primary' disabled={appointment.accept ? false: true} className='ms-2 btn-light btn-outline-primary' onClick={() => handleMedication(appointment)}>Medications</Button>
                     </div>
                   </div>
                 </div>

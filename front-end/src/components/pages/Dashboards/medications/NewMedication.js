@@ -51,7 +51,6 @@ function NewMedication() {
       const user = JSON.parse(userJSON);
       const patient = JSON.parse(patietJSON);
       const professionalId = sessionStorage.getItem('professionalId');
-
       medication.patient.patientId = patient.patientId;
       medication.medicalProfessional.user.username = user.username;
       medication.medicalProfessional.professionalId = professionalId;
@@ -74,13 +73,13 @@ function NewMedication() {
       console.error('Error saving data !', error)
     }
     alert('Save successful !');
-    navigate('/medprof/my_patients/appointment/medications');
+    navigate(-1);
     // Clear the editing field
     setMedication('');
   };
 
   const navigateBack = () => {
-    navigate('/medprof/my_patients/appointment/medications');
+    navigate(-1);
   };
 
 
@@ -141,10 +140,10 @@ function NewMedication() {
                   />
                 </Form.Group>
                   <div className='d-flex d-flex justify-content-center'>
-                  <Button variant='primary' type='submit' className='me-5 btn-light btn-outline-primary' onClick={saveNewAppo} disabled={!isFormFilled}>
+                  <Button variant='primary' type='button' className='me-5 btn-light btn-outline-primary' onClick={saveNewAppo} disabled={!isFormFilled}>
                     Save
                   </Button>
-                  <Button variant='primary' className='btn-light btn-outline-primary' type='submit' onClick={navigateBack}>
+                  <Button variant='primary' className='btn-light btn-outline-primary' type='button' onClick={navigateBack}>
                     Back
                   </Button>
                 </div>

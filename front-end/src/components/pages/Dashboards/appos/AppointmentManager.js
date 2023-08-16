@@ -168,10 +168,10 @@ const AppointmentManager = () => {
         </IconContext.Provider>
 
           {Object.entries(groupedAppointments).map(([patientName, appos]) => (
-            <div className='row my-2' key={patientName}>
+            <div className='row my-2 mb-2' key={patientName}>
               <h6 className='appobold'>{patientName}</h6>
               {appos.map((appointment) => (
-                <div className='col-md-4' key={appointment.id}>
+                <div className='col-md-4 mb-3' key={appointment.id}>
                   <div className={appointment.accept ?'card bg-success shadow container':(appointment.medicalProfessional !== null) ?'card bg-warning shadow container':'card bg-danger shadow container'}>
                   <div className='card-body bg-light px-3 py-2'>
                       <p>

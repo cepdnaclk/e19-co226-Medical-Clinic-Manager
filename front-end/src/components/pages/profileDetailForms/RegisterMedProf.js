@@ -77,7 +77,7 @@ function RegisterMedProf() {
       <div className='d-flex justify-content-center'>
         <Card className="shadow col-md-8">
           <Card.Body>
-            <h2 className='topic mt-3 fs-2 d-flex justify-content-center'>Hello there! We nedd more about you...</h2>
+            <h2 className='topic mt-3 fs-2 d-flex justify-content-center'>Hello there! We need more about you...</h2>
             <section className='section bg-c-light border-top border-bottom'>
               <div className='container'>
                 <div className='row'>

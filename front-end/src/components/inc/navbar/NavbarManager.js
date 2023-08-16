@@ -209,109 +209,134 @@ function CustomNavbar(isSignedIn) {
         </div>
       </Navbar>
 
-      <Offcanvas show={showOffcanvas} onHide={handleCloseOffcanvas} placement="end" backdropClassName="bg-offcanvas">
+      <Offcanvas style={{width:"500px"}} show={showOffcanvas} onHide={handleCloseOffcanvas} placement="end" backdropClassName="bg-offcanvas">
         <Offcanvas.Header closeButton className="bg-c-light">
           <Offcanvas.Title><h7 className='offcanva-topic'>Profile</h7></Offcanvas.Title>
         </Offcanvas.Header>
         <Offcanvas.Body className="bg-c-light">
-          <Card className='shadow'>
+          <Card className='shadow col-md-12'>
             <Card.Body>
-              <p className='appoDetail'>
-                First Name: {editingField === 'fname' ? (
-                  <>
-                    <input type="text" value={fname} onChange={handleFieldChange} />
-                    <Button variant="primary" size="sm" onClick={handleSave}>Save</Button>
-                    <Button variant="secondary" size="sm" onClick={handleCancel}>Cancel</Button>
-                  </>
-                ) : (
-                  <>
-                    {fname}
-                    <Button variant="link" size="sm" onClick={() => handleEdit('fname')}>Edit</Button>
-                  </>
-                )}
-              </p>
-              <p className='appoDetail'>
-                Last Name: {editingField === 'lname' ? (
-                  <>
-                    <input type="text" value={lname} onChange={handleFieldChange} />
-                    <Button variant="primary" size="sm" onClick={handleSave}>Save</Button>
-                    <Button variant="secondary" size="sm" onClick={handleCancel}>Cancel</Button>
-                  </>
-                ) : (
-                  <>
-                    {lname}
-                    <Button variant="link" size="sm" onClick={() => handleEdit('lname')}>Edit</Button>
-                  </>
-                )}
-              </p>
-              <p className='appoDetail'>
-                Contact: {editingField === 'contact' ? (
-                  <>
-                    <input type="text" value={contact} onChange={handleFieldChange} />
-                    <Button variant="primary" size="sm" onClick={handleSave}>Save</Button>
-                    <Button variant="secondary" size="sm" onClick={handleCancel}>Cancel</Button>
-                  </>
-                ) : (
-                  <>
-                    {contact}
-                    <Button variant="link" size="sm" onClick={() => handleEdit('contact')}>Edit</Button>
-                  </>
-                )}
-              </p>
-              <p className='appoDetail'>
-                NIC Number: {editingField === 'nic' ? (
-                  <>
-                    <input type="text" value={nic} onChange={handleFieldChange} />
-                    <Button variant="primary" size="sm" onClick={handleSave}>Save</Button>
-                    <Button variant="secondary" size="sm" onClick={handleCancel}>Cancel</Button>
-                  </>
-                ) : (
-                  <>
-                    {nic}
-                    <Button variant="link" size="sm" onClick={() => handleEdit('nic')}>Edit</Button>
-                  </>
-                )}
-              </p>
-              <p className='appoDetail'>
-                Address: {editingField === 'address' ? (
-                  <>
-                    <input type="text" value={address} onChange={handleFieldChange} />
-                    <Button variant="primary" size="sm" onClick={handleSave}>Save</Button>
-                    <Button variant="secondary" size="sm" onClick={handleCancel}>Cancel</Button>
-                  </>
-                ) : (
-                  <>
-                    {address}
-                    <Button variant="link" size="sm" onClick={() => handleEdit('address')}>Edit</Button>
-                  </>
-                )}
-              </p>
-              <p className='appoDetail'>
-                Date of Birth: {editingField === 'dob' ? (
-                  <>
-                    <input type="text" value={dob} onChange={handleFieldChange} />
-                    <Button variant="primary" size="sm" onClick={handleSave}>Save</Button>
-                    <Button variant="secondary" size="sm" onClick={handleCancel}>Cancel</Button>
-                  </>
-                ) : (
-                  <>
-                    {dob}
-                    <Button variant="link" size="sm" onClick={() => handleEdit('dob')}>Edit</Button>
-                  </>
-                )}
-              </p>
-              <p className='appoDetail'>
-                User Name: {username}
-              </p>
-              <p className='appoDetail'>
-                Role: {role}
-              </p>
+            <table>
+  <tbody>
+    <tr className='appoDetail mb-2'>
+      <td>First Name:</td>
+      <td>
+        {editingField === 'fname' ? (
+          <>
+            <input type="text" value={fname} onChange={handleFieldChange} />
+            <Button variant="primary" size="sm" onClick={handleSave}>Save</Button>
+            <Button variant="secondary" size="sm" onClick={handleCancel}>Cancel</Button>
+          </>
+        ) : (
+          <>
+            &nbsp; {fname}
+            <Button variant="link" size="sm" onClick={() => handleEdit('fname')}>Edit</Button>
+          </>
+        )}
+      </td>
+    </tr>
+    <tr className='appoDetail mb-2'>
+      <td>Last Name:</td>
+      <td>
+        {editingField === 'lname' ? (
+          <>
+            <input type="text" value={lname} onChange={handleFieldChange} />
+            <Button variant="primary" size="sm" onClick={handleSave}>Save</Button>
+            <Button variant="secondary" size="sm" onClick={handleCancel}>Cancel</Button>
+          </>
+        ) : (
+          <>
+            &nbsp; {lname}
+            <Button variant="link" size="sm" onClick={() => handleEdit('lname')}>Edit</Button>
+          </>
+        )}
+      </td>
+    </tr>
+    <tr className='appoDetail mb-2'>
+      <td>Contact:</td>
+      <td>
+        {editingField === 'contact' ? (
+          <>
+            <input type="text" value={contact} onChange={handleFieldChange} />
+            <Button variant="primary" size="sm" onClick={handleSave}>Save</Button>
+            <Button variant="secondary" size="sm" onClick={handleCancel}>Cancel</Button>
+          </>
+        ) : (
+          <>
+            &nbsp; {contact}
+            <Button variant="link" size="sm" onClick={() => handleEdit('contact')}>Edit</Button>
+          </>
+        )}
+      </td>
+    </tr>
+    <tr className='appoDetail mb-2'>
+      <td>NIC Number:</td>
+      <td>
+        {editingField === 'nic' ? (
+          <>
+            <input type="text" value={nic} onChange={handleFieldChange} />
+            <Button variant="primary" size="sm" onClick={handleSave}>Save</Button>
+            <Button variant="secondary" size="sm" onClick={handleCancel}>Cancel</Button>
+          </>
+        ) : (
+          <>
+            &nbsp; {nic}
+            <Button variant="link" size="sm" onClick={() => handleEdit('nic')}>Edit</Button>
+          </>
+        )}
+      </td>
+    </tr>
+    <tr className='appoDetail mb-2'>
+      <td>Address:</td>
+      <td>
+        {editingField === 'address' ? (
+          <>
+            <input type="text" value={address} onChange={handleFieldChange} />
+            <Button variant="primary" size="sm" onClick={handleSave}>Save</Button>
+            <Button variant="secondary" size="sm" onClick={handleCancel}>Cancel</Button>
+          </>
+        ) : (
+          <>
+            &nbsp; {address}
+            <Button variant="link" size="sm" onClick={() => handleEdit('address')}>Edit</Button>
+          </>
+        )}
+      </td>
+    </tr>
+    <tr className='appoDetail mb-2'>
+      <td>Date of Birth:</td>
+      <td>
+        {editingField === 'dob' ? (
+          <>
+            <input type="text" value={dob} onChange={handleFieldChange} />
+            <Button variant="primary" size="sm" onClick={handleSave}>Save</Button>
+            <Button variant="secondary" size="sm" onClick={handleCancel}>Cancel</Button>
+          </>
+        ) : (
+          <>
+            &nbsp; {dob}
+            <Button variant="link" size="sm" onClick={() => handleEdit('dob')}>Edit</Button>
+          </>
+        )}
+      </td>
+    </tr>
+    <tr className='appoDetail mb-2'>
+      <td>User Name:</td>
+      <td>&nbsp; {username}</td>
+    </tr>
+    <tr className='appoDetail mb-2'>
+      <td>Role:</td>
+      <td>&nbsp; MANAGER</td>
+    </tr>
+  </tbody>
+</table>
+
               <div>
-                <Button className='btn-dark btn-outline-danger me-2' onClick={navAdvanced}>
+                <Button className='btn-light btn-outline-danger me-2 mt-4' onClick={navAdvanced}>
                   Advanced
                 </Button>
-                <Button className='btn-dark btn-outline-primary' onClick={navSignup}>
-                  Sign Up New Moderator
+                <Button className='btn-light btn-outline-primary mt-4' onClick={navSignup}>
+                  Sign Up New Medical Professional
                 </Button>
               </div>
             </Card.Body>

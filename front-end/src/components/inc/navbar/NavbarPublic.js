@@ -47,23 +47,11 @@ function PublicNavbar() {
             {isHomePage && (
                     <>
                     <Navbar.Text>
-                    <NavDropdown title="Sign up" id="Signup-dropdown">
-                      <NavDropdown.Item>
+                      <Nav.Item>
                         <Link to="/user/signup" className="dropdown-item">
-                          <h7 className="nav_subtopic">User</h7>
+                          <h7 className="nav_topic">Signup</h7>
                         </Link>
-                      </NavDropdown.Item>
-                      <NavDropdown.Item>
-                        <Link to="/moderator/signup" className="dropdown-item">
-                          <h7 className="nav_subtopic">Moderator</h7>
-                        </Link>
-                      </NavDropdown.Item>
-                      <NavDropdown.Item>
-                        <Link to="/admin/signup" className="dropdown-item">
-                          <h7 className="nav_subtopic">Admin</h7>
-                        </Link>
-                      </NavDropdown.Item>
-                    </NavDropdown>
+                      </Nav.Item>
                     </Navbar.Text>
                     <Navbar.Text>
                         <Link to='/signin' className='nav-link'>

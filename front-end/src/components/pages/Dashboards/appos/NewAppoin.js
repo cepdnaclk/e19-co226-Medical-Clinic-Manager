@@ -5,9 +5,11 @@ import axios from 'axios';
 import { useNavigate } from 'react-router-dom';
 
 function NewAppoin() {
+  const today = new Date().toISOString().split('T')[0];
   const [isFormFilled, setIsFormFilled] = useState(false);
   const [appointment, setAppointment] = useState(
     {
+      date : today,
       patient: {
           patientId: '',
           user: {
@@ -65,7 +67,7 @@ function NewAppoin() {
   };
 
   const navigateBack = () => {
-    navigate('/patient/appointments');
+    navigate("/patient/appointments");
   };
 
 
@@ -87,7 +89,9 @@ function NewAppoin() {
                   <Form.Control
                     type='date'
                     placeholder='Date'
-                    onChange={handleFormChange}
+                    value={today}
+                    // onChange={handleFormChange}
+                    disabled={true}
                     name='date'
                     required
                   />
@@ -118,7 +122,7 @@ function NewAppoin() {
                   <Button variant='primary' type='submit' className='me-5' onClick={saveNewAppo} disabled={!isFormFilled}>
                     Save
                   </Button>
-                  <Button variant='primary' type='submit' onClick={navigateBack}>
+                  <Button variant='primary' type='button' onClick={navigateBack}>
                     Back
                   </Button>
                 </div>

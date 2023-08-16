@@ -207,15 +207,19 @@ const navAdvanced = () => {
         </div>
       </Navbar>
 
-      <Offcanvas show={showOffcanvas} onHide={handleCloseOffcanvas} placement="end" backdropClassName="bg-offcanvas">
+      <Offcanvas style={{width:"500px"}} show={showOffcanvas} onHide={handleCloseOffcanvas} placement="end" backdropClassName="bg-offcanvas">
         <Offcanvas.Header closeButton className="bg-c-light">
           <Offcanvas.Title><h7 className='offcanva-topic mt-3 fs-2'>Profile</h7></Offcanvas.Title>
         </Offcanvas.Header>
         <Offcanvas.Body className="bg-c-light">
           <Card className='shadow'>
             <Card.Body>
-              <p className='appoDetail'>
-                First Name: {editingField === 'fname' ? (
+            <table>
+          <tbody>
+            <tr className='appoDetail mb-2'>
+              <td>First Name:</td>
+              <td>
+                {editingField === 'fname' ? (
                   <>
                     <input type="text" value={fname} onChange={handleFieldChange} />
                     <Button variant="primary" size="sm" onClick={handleSave}>Save</Button>
@@ -223,13 +227,16 @@ const navAdvanced = () => {
                   </>
                 ) : (
                   <>
-                    {fname}
+                    &nbsp; {fname}
                     <Button variant="link" size="sm" onClick={() => handleEdit('fname')}>Edit</Button>
                   </>
                 )}
-              </p>
-              <p className='appoDetail'>
-                Last Name: {editingField === 'lname' ? (
+              </td>
+            </tr>
+            <tr className='appoDetail mb-2'>
+              <td>Last Name:</td>
+              <td>
+                {editingField === 'lname' ? (
                   <>
                     <input type="text" value={lname} onChange={handleFieldChange} />
                     <Button variant="primary" size="sm" onClick={handleSave}>Save</Button>
@@ -237,27 +244,16 @@ const navAdvanced = () => {
                   </>
                 ) : (
                   <>
-                    {lname}
+                    &nbsp; {lname}
                     <Button variant="link" size="sm" onClick={() => handleEdit('lname')}>Edit</Button>
                   </>
                 )}
-              </p>
-              <p className='appoDetail'>
-                NIC Number: {editingField === 'nic' ? (
-                  <>
-                    <input type="text" value={nic} onChange={handleFieldChange} />
-                    <Button variant="primary" size="sm" onClick={handleSave}>Save</Button>
-                    <Button variant="secondary" size="sm" onClick={handleCancel}>Cancel</Button>
-                  </>
-                ) : (
-                  <>
-                    {nic}
-                    <Button variant="link" size="sm" onClick={() => handleEdit('nic')}>Edit</Button>
-                  </>
-                )}
-              </p>
-              <p className='appoDetail'>
-                Contact: {editingField === 'contact' ? (
+              </td>
+            </tr>
+            <tr className='appoDetail mb-2'>
+              <td>Contact:</td>
+              <td>
+                {editingField === 'contact' ? (
                   <>
                     <input type="text" value={contact} onChange={handleFieldChange} />
                     <Button variant="primary" size="sm" onClick={handleSave}>Save</Button>
@@ -265,13 +261,33 @@ const navAdvanced = () => {
                   </>
                 ) : (
                   <>
-                    {contact}
+                    &nbsp; {contact}
                     <Button variant="link" size="sm" onClick={() => handleEdit('contact')}>Edit</Button>
                   </>
                 )}
-              </p>
-              <p className='appoDetail'>
-                Address: {editingField === 'address' ? (
+              </td>
+            </tr>
+            <tr className='appoDetail mb-2'>
+              <td>NIC Number:</td>
+              <td>
+                {editingField === 'nic' ? (
+                  <>
+                    <input type="text" value={nic} onChange={handleFieldChange} />
+                    <Button variant="primary" size="sm" onClick={handleSave}>Save</Button>
+                    <Button variant="secondary" size="sm" onClick={handleCancel}>Cancel</Button>
+                  </>
+                ) : (
+                  <>
+                    &nbsp; {nic}
+                    <Button variant="link" size="sm" onClick={() => handleEdit('nic')}>Edit</Button>
+                  </>
+                )}
+              </td>
+            </tr>
+            <tr className='appoDetail mb-2'>
+              <td>Address:</td>
+              <td>
+                {editingField === 'address' ? (
                   <>
                     <input type="text" value={address} onChange={handleFieldChange} />
                     <Button variant="primary" size="sm" onClick={handleSave}>Save</Button>
@@ -279,13 +295,16 @@ const navAdvanced = () => {
                   </>
                 ) : (
                   <>
-                    {address}
+                    &nbsp; {address}
                     <Button variant="link" size="sm" onClick={() => handleEdit('address')}>Edit</Button>
                   </>
                 )}
-              </p>
-              <p className='appoDetail'>
-                Date of Birth: {editingField === 'dob' ? (
+              </td>
+            </tr>
+            <tr className='appoDetail mb-2'>
+              <td>Date of Birth:</td>
+              <td>
+                {editingField === 'dob' ? (
                   <>
                     <input type="text" value={dob} onChange={handleFieldChange} />
                     <Button variant="primary" size="sm" onClick={handleSave}>Save</Button>
@@ -293,13 +312,16 @@ const navAdvanced = () => {
                   </>
                 ) : (
                   <>
-                    {dob}
+                    &nbsp; {dob}
                     <Button variant="link" size="sm" onClick={() => handleEdit('dob')}>Edit</Button>
                   </>
                 )}
-              </p>
-              <p className='appoDetail'>
-                Insurance Provider: {editingField === 'insuranceDetails' ? (
+              </td>
+            </tr>
+            <tr className='appoDetail mb-2'>
+              <td>Insurance Provider:</td>
+              <td>
+                {editingField === 'insuranceDetails' ? (
                   <>
                     <input type="text" value={insuranceDetails} onChange={handleFieldChange} />
                     <Button variant="primary" size="sm" onClick={handleSave}>Save</Button>
@@ -307,19 +329,24 @@ const navAdvanced = () => {
                   </>
                 ) : (
                   <>
-                    {insuranceDetails}
+                    &nbsp; {insuranceDetails}
                     <Button variant="link" size="sm" onClick={() => handleEdit('insuranceDetails')}>Edit</Button>
                   </>
                 )}
-              </p>
-              <p className='appoDetail'>
-                User Name: {username}
-              </p>
-              <p className='appoDetail'>
-                Role: {role}
-              </p>
+              </td>
+            </tr>
+            <tr className='appoDetail mb-2'>
+              <td>User Name:</td>
+              <td>{username}</td>
+            </tr>
+            <tr className='appoDetail mb-2'>
+              <td>Role:</td>
+              <td> PATIENT</td>
+            </tr>
+          </tbody>
+        </table>
               <div>
-                <Button className='btn-dark btn-outline-danger' onClick={navAdvanced}>
+                <Button className='btn-light btn-outline-danger mt-4' onClick={navAdvanced}>
                   Advanced
                 </Button>
               </div>

@@ -75,7 +75,7 @@ function UserSignup() {
   };
 
   const handleBack = () => {
-    navigate("/");
+    navigate(-1);
   };
 
   return (
