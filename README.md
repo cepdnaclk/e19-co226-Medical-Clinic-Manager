@@ -1,4 +1,4 @@
-<p align="center"><img src = "docs/images/Logo.png" width="500" height="120"></p>
+<p align=""><img src = "docs/images/Logo.png" width="200" height="200"></p>
 
 ## Under Construction
 
