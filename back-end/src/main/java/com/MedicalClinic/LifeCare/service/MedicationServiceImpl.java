@@ -50,6 +50,16 @@ public class MedicationServiceImpl implements MedicationService{
     }
 
     @Override
+    public List<Medication> findByProfessionalIdAndPatientIdAndAppointmentId(Long medprofId, Long patientId, Long appointmentId) {
+        return medicationRepository.findByProfessionalIdAndPatientIdAndAppointmentId(medprofId, patientId, appointmentId);
+    }
+
+    @Override
+    public List<Medication> findByPatientIdAndAppointmentId(Long patientId, Long appointmentId) {
+        return medicationRepository.findByPatientIdAndAppointmentId(patientId, appointmentId);
+    }
+
+    @Override
     public void deleteMedicationById(Long medicationId) {
         Authentication auth = SecurityContextHolder.getContext().getAuthentication();
         UserDetails userDetails1 = (UserDetails) auth.getPrincipal();

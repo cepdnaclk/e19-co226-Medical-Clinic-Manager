@@ -105,4 +105,9 @@ public class PatientServiceImpl implements PatientService {
     public boolean existsPatientByUid(Long uid) {
         return patientRepository.existsByUserUid(uid);
     }
+
+    @Override
+    public Patient findPatientByUid(Long uid) {
+        return patientRepository.findByUserUid(uid);
+    }
 }

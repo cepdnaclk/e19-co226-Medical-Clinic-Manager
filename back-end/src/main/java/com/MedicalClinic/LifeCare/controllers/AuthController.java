@@ -187,7 +187,7 @@ public class AuthController {
   }
 
   @PostMapping("/admin/signup")
-//  @PreAuthorize("hasRole('ADMIN')")
+  @PreAuthorize("hasRole('ADMIN')")
   public ResponseEntity<?> registerAdmin(@Valid @RequestBody SignupRequest signUpRequest) {
     if (userRepository.existsByUsername(signUpRequest.getUsername())) {
       return ResponseEntity

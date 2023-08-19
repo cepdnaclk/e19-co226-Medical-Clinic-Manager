@@ -24,4 +24,7 @@ public class Medication {
     @ManyToOne(targetEntity = Patient.class, cascade = CascadeType.MERGE)
     @JoinColumn(name = "patientId", referencedColumnName = "patientId")
     private Patient patient;
+    @ManyToOne(targetEntity = Appointment.class, cascade = CascadeType.MERGE)
+    @JoinColumn(name = "appointmentId", referencedColumnName = "appointmentId")
+    private Appointment appointment;
 }

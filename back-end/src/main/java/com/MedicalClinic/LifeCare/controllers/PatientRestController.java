@@ -5,6 +5,8 @@ import com.MedicalClinic.LifeCare.service.PatientService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.access.prepost.PreAuthorize;
 import org.springframework.web.bind.annotation.*;
+
+import java.util.ArrayList;
 import java.util.List;
 
 @CrossOrigin(origins = "http://localhost:3000")
@@ -28,10 +30,15 @@ public class PatientRestController {
     public Patient fetchPatientById(@PathVariable("id") Long id) {
         return patientService.fetchPatientById(id);
     }
-    @GetMapping("/findbyuserid/{uid}")
+    @GetMapping("/existsbyuserid/{uid}")
     @PreAuthorize("hasRole('USER') or hasRole('MODERATOR') or hasRole('ADMIN')")
     public boolean existsPatientByUid(@PathVariable("uid") Long uid) {
         return patientService.existsPatientByUid(uid);
+    }
+    @GetMapping("/findbyuserid/{uid}")
+    @PreAuthorize("hasRole('USER') or hasRole('MODERATOR') or hasRole('ADMIN')")
+    public Patient findPatientByUid(@PathVariable("uid") Long uid) {
+        return patientService.findPatientByUid(uid);
     }
     @PutMapping("/save/{id}")
     @PreAuthorize("hasRole('USER')")
@@ -44,5 +51,25 @@ public class PatientRestController {
         patientService.deletePatientById(patientId);
         return "patient deleted successfully";
     }
+    @PostMapping("/search/{text}")
+    public List<Patient> search(@PathVariable("text") String text) {
+        List<Patient> matchingPatients = new ArrayList<>();
+        List<Patient> patientList = patientService.fetchPatientList();
 
+        for (Patient p : patientList) {
+            if (p.getFname().toUpperCase().startsWith(text.toUpperCase())) {
+                matchingPatients.add(p);
+            }
+        }
+
+        if (matchingPatients.isEmpty()) {
+            System.out.println("No matching words found.");
+        } else {
+            System.out.println("Matching patients:");
+            for (Patient match : matchingPatients) {
+                System.out.println(match);
+            }
+        }
+        return matchingPatients;
+    }
 }

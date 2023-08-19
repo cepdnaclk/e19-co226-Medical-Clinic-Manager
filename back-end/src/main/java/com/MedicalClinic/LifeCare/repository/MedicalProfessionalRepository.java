@@ -8,4 +8,6 @@ import org.springframework.stereotype.Repository;
 public interface MedicalProfessionalRepository extends JpaRepository<MedicalProfessional, Long> {
     boolean existsById(Long Id);
     boolean existsByUserUid(Long Uid);
+
+    MedicalProfessional findByUserUid(Long Uid);
 }

@@ -1,6 +1,7 @@
 package com.MedicalClinic.LifeCare.service;
 
 import com.MedicalClinic.LifeCare.entity.Manager;
+import com.MedicalClinic.LifeCare.entity.Patient;
 import com.MedicalClinic.LifeCare.exception.UnauthorizedAccessException;
 import com.MedicalClinic.LifeCare.repository.ManagerRepository;
 import com.MedicalClinic.LifeCare.repository.MedicalProfessionalRepository;
@@ -103,5 +104,10 @@ public class MedicalProfessionalServiceImpl implements MedicalProfessionalServic
     @Override
     public boolean existsPatientByUid(Long uid) {
         return medicalProfessionalRepository.existsByUserUid(uid);
+    }
+
+    @Override
+    public MedicalProfessional findMedProfByUid(Long uid) {
+        return medicalProfessionalRepository.findByUserUid(uid);
     }
 }

@@ -32,6 +32,16 @@ public class MedicationRestController {
     public List<Medication> findByMedicalProfessionalProfessionalId(@PathVariable("medprof_id") Long patientid) {
         return medicationService.findByMedicalProfessionalProfessionalId(patientid);
     }
+    @GetMapping("/find/{medprof_id}/{patient_id}/{appointment_id}")
+    @PreAuthorize("hasRole('MODERATOR')")
+    public List<Medication> findByProfessionalIdAndPatientIdAndAppointmentId(@PathVariable("medprof_id") Long medprofId, @PathVariable("patient_id") Long patientId, @PathVariable("appointment_id") Long appointmentId) {
+        return medicationService.findByProfessionalIdAndPatientIdAndAppointmentId(medprofId, patientId, appointmentId);
+    }
+    @GetMapping("/find/{patient_id}/{appointment_id}")
+    @PreAuthorize("hasRole('USER') or hasRole('MODERATOR')")
+    public List<Medication> findByPatientIdAndAppointmentId(@PathVariable("patient_id") Long patientId, @PathVariable("appointment_id") Long appointmentId) {
+        return medicationService.findByPatientIdAndAppointmentId(patientId, appointmentId);
+    }
     @DeleteMapping("/delete/{id}")
     @PreAuthorize("hasRole('MODERATOR')")
     public String deleteMedicationById(@PathVariable("id") Long medicationId) {

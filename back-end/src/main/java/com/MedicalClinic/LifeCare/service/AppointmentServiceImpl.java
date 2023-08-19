@@ -40,6 +40,9 @@ public class AppointmentServiceImpl implements AppointmentService {
     @Autowired
     ManagerRepository managerRepository;
 
+    @Autowired
+    MedicationRepository medicationRepository;
+
     @Override
     public Appointment saveAppointment(Appointment appointment) {
         Authentication auth = SecurityContextHolder.getContext().getAuthentication();
@@ -136,6 +139,21 @@ public class AppointmentServiceImpl implements AppointmentService {
     @Override
     public List<Appointment> findByMedicalProfessionalProfessionalId(Long professionalId) {
         return appointmentRepository.findByMedicalProfessionalProfessionalId(professionalId);
+    }
+
+    @Override
+    public List<Appointment> findByProfessionalIdAndPatientId(Long medprofId, Long patientId) {
+        return appointmentRepository.findByProfessionalIdAndPatientId(medprofId,patientId);
+    }
+
+    @Override
+    public List<List<Long>> countAppointmentsByProfessionalAndPatient(Long medprofId) {
+        return appointmentRepository.countAppointmentsByProfessionalAndPatient(medprofId);
+    }
+
+    @Override
+    public List<Patient> findPatientsByMedicalProfessionalId(Long medprofId) {
+        return appointmentRepository.findPatientsByMedicalProfessionalId(medprofId);
     }
 
     public void deleteAppointmentById(Long id) {

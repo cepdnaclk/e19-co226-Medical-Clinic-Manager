@@ -116,4 +116,9 @@ public class ManagerServiceImpl implements ManagerService{
     public boolean existsPatientByUid(Long uid) {
         return managerRepository.existsByUserId(uid);
     }
+
+    @Override
+    public Manager findManagerByUid(Long uid) {
+        return managerRepository.findByUserUid(uid);
+    }
 }

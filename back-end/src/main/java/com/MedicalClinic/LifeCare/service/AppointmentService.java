@@ -1,6 +1,7 @@
 package com.MedicalClinic.LifeCare.service;
 
 import com.MedicalClinic.LifeCare.entity.Appointment;
+import com.MedicalClinic.LifeCare.entity.Patient;
 
 import java.util.List;
 
@@ -20,4 +21,10 @@ public interface AppointmentService {
     List<Appointment> findByMedicalProfessionalAccepted(Long patientId);
 
     List<Appointment> findByMedicalProfessionalProfessionalId(Long professionalId);
+
+   List<Appointment> findByProfessionalIdAndPatientId(Long medprofId, Long patientId);
+
+    List<List<Long>> countAppointmentsByProfessionalAndPatient(Long medprofId);
+
+    List<Patient> findPatientsByMedicalProfessionalId(Long medprofId);
 }

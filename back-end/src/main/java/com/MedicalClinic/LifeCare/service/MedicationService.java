@@ -14,4 +14,8 @@ public interface MedicationService {
     void deleteMedicationById(Long medicationId);
 
     public List<Medication> findByMedicalProfessionalProfessionalId(Long patientid);
+
+    public List<Medication> findByProfessionalIdAndPatientIdAndAppointmentId(Long medprofId, Long patientId, Long appointmentId);
+
+    public List<Medication> findByPatientIdAndAppointmentId(Long patientId, Long appointmentId);
 }

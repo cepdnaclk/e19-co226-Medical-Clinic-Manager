@@ -5,6 +5,7 @@ import com.MedicalClinic.LifeCare.service.ManagerService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.access.prepost.PreAuthorize;
 import org.springframework.web.bind.annotation.*;
+
 import java.util.List;
 
 @CrossOrigin(origins = "http://localhost:3000")
@@ -19,7 +20,6 @@ public class ManagerRestController {
         return managerService.saveManager(manager);
     }
     @GetMapping("/all")
-    @PreAuthorize("hasRole('USER') or hasRole('MODERATOR') or hasRole('ADMIN')")
     public List<Manager> fetchManagerList() {
         return managerService.fetchManagerList();
     }
@@ -29,6 +29,11 @@ public class ManagerRestController {
         return managerService.fetchManagerById(id);
     }
     @GetMapping("/findbyuserid/{uid}")
+    @PreAuthorize("hasRole('USER') or hasRole('MODERATOR') or hasRole('ADMIN')")
+    public Manager findManagerByUid(@PathVariable("uid") Long uid) {
+        return managerService.findManagerByUid(uid);
+    }
+    @GetMapping("/existsbyuserid/{uid}")
     @PreAuthorize("hasRole('USER') or hasRole('MODERATOR') or hasRole('ADMIN')")
     public boolean existsPatientByUid(@PathVariable("uid") Long uid) {
         return managerService.existsPatientByUid(uid);

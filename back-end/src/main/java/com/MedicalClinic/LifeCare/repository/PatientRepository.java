@@ -7,4 +7,5 @@ import org.springframework.stereotype.Repository;
 public interface PatientRepository extends JpaRepository<Patient, Long> {
     boolean existsById(Long Id);
     boolean existsByUserUid(Long Uid);
+    Patient findByUserUid(Long Uid);
 }

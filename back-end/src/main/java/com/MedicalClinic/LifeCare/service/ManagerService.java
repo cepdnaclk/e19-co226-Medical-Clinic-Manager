@@ -1,6 +1,7 @@
 package com.MedicalClinic.LifeCare.service;
 
 import com.MedicalClinic.LifeCare.entity.Manager;
+import com.MedicalClinic.LifeCare.entity.MedicalProfessional;
 
 import java.util.List;
 
@@ -12,4 +13,6 @@ public interface ManagerService {
     public String deleteManagerById(Long managerId);
 
     public boolean existsPatientByUid(Long uid);
+
+    public Manager findManagerByUid(Long uid);
 }

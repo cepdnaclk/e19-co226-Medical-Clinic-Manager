@@ -1,5 +1,6 @@
 package com.MedicalClinic.LifeCare.controllers;
 
+import com.MedicalClinic.LifeCare.entity.Patient;
 import com.MedicalClinic.LifeCare.service.MedicalProfessionalService;
 import com.MedicalClinic.LifeCare.entity.MedicalProfessional;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -22,7 +23,6 @@ public class MedicalProfessionalRestController {
     }
 
     @GetMapping("/all")
-    @PreAuthorize("hasRole('ADMIN') or hasRole('MODERATOR') or hasRole('USER')")
     public List<MedicalProfessional> fetchMedicalProfessionalList(){
         return medicalProfessionalService.fetchMedicalProfessionalList();
     }
@@ -32,6 +32,11 @@ public class MedicalProfessionalRestController {
         return medicalProfessionalService.fetchMedicalProfessionalById(id);
     }
     @GetMapping("/findbyuserid/{uid}")
+    @PreAuthorize("hasRole('USER') or hasRole('MODERATOR') or hasRole('ADMIN')")
+    public MedicalProfessional findMedProfByUid(@PathVariable("uid") Long uid) {
+        return medicalProfessionalService.findMedProfByUid(uid);
+    }
+    @GetMapping("/existsbyuserid/{uid}")
     @PreAuthorize("hasRole('USER') or hasRole('MODERATOR') or hasRole('ADMIN')")
     public boolean existsPatientByUid(@PathVariable("uid") Long uid) {
         return medicalProfessionalService.existsPatientByUid(uid);
