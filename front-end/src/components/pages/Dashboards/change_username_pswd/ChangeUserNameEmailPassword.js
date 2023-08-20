@@ -58,7 +58,7 @@ function ChangeUserNameEmailPassword() {
   const user = JSON.parse(sessionStorage.getItem('user'));
 
   const handleUpdate = async (data) => {
-    const respond = await axios.put("http://localhost:8080/api/v1/user/update/" + user.id, data);
+    const respond = await axios.put("https://lifecare-5z1q.onrender.com/api/v1/user/update/" + user.id, data);
   }
 
 

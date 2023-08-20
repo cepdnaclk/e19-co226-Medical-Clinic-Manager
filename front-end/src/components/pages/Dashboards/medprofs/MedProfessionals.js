@@ -12,7 +12,7 @@ export default function MedProfessionals() {
   // API call
   const fetchAllMedProfs = async () => {
     try {
-      const response = await axios.get('http://localhost:8080/api/v1/medprof/all');
+      const response = await axios.get('https://lifecare-5z1q.onrender.com/api/v1/medprof/all');
       // console.log(response.data);
       return response.data;
     } catch (error) {

@@ -16,7 +16,7 @@ export default function Patient() {
       const userJSON = sessionStorage.getItem('user');
       const user = JSON.parse(userJSON);
       const token = user.accessToken;
-      const response = await axios.get('http://localhost:8080/api/v1/patient/all',
+      const response = await axios.get('https://lifecare-5z1q.onrender.com/api/v1/patient/all',
       {
        headers: {
          Authorization: `Bearer ${token}`
@@ -54,7 +54,7 @@ export default function Patient() {
       const userJSON = sessionStorage.getItem('user');
       const user = JSON.parse(userJSON);
       const token = user.accessToken;
-      const response = await axios.delete('http://localhost:8080/api/v1/patient/delete/' + id,
+      const response = await axios.delete('https://lifecare-5z1q.onrender.com/api/v1/patient/delete/' + id,
        {
         headers: {
           Authorization: `Bearer ${token}`
@@ -88,7 +88,7 @@ export default function Patient() {
   let gvalue;
   const search = async (searchValue) => {
     try {
-      const response = await axios.post('http://localhost:8080/api/v1/patient/search/' + searchValue);
+      const response = await axios.post('https://lifecare-5z1q.onrender.com/api/v1/patient/search/' + searchValue);
       setPatients(response.data);
     } catch (error) {
       console.error("Error fetching patients:", error);

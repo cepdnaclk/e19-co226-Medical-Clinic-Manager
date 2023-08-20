@@ -14,14 +14,14 @@ const AppointmentMedProf = () => {
   const [searchInput, setSearchInput] = useState('');
   const [appointments, setAppointments] = useState([]);
 
-// API call http://localhost:8080/api/v1/appointment/find/patientid/{patientid}
+// API call https://lifecare-5z1q.onrender.com/api/v1/appointment/find/patientid/{patientid}
 const fetchAppointmentsByMedProfId = async () => {
   try {
     const userJSON = sessionStorage.getItem('user');
     const user = JSON.parse(userJSON);
     const token = user.accessToken;
     const professionalId = sessionStorage.getItem('professionalId');
-    const response = await axios.get('http://localhost:8080/api/v1/appointment/find/medprofid/' + professionalId, {
+    const response = await axios.get('https://lifecare-5z1q.onrender.com/api/v1/appointment/find/medprofid/' + professionalId, {
         headers: {
             Authorization: `Bearer ${token}`
         }
@@ -70,7 +70,7 @@ const handleAccept = async (appointment) => {
       const userJSON = sessionStorage.getItem('user');
       const user = JSON.parse(userJSON);
       const token = user.accessToken;
-      const response = await axios.put('http://localhost:8080/api/v1/appointment/save/' + appointment.appointmentId,
+      const response = await axios.put('https://lifecare-5z1q.onrender.com/api/v1/appointment/save/' + appointment.appointmentId,
       appointment,
        {
         headers: {
@@ -95,7 +95,7 @@ const handleDeny = async (appointment) => {
       const userJSON = sessionStorage.getItem('user');
       const user = JSON.parse(userJSON);
       const token = user.accessToken;
-      const response = await axios.put('http://localhost:8080/api/v1/appointment/save/' + appointment.appointmentId,
+      const response = await axios.put('https://lifecare-5z1q.onrender.com/api/v1/appointment/save/' + appointment.appointmentId,
       appointment,
        {
         headers: {

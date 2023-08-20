@@ -14,7 +14,7 @@ let nic;
 const MedicationMedProfPatientAppointment = () => {
   const [medications, setMedications] = useState([]);
 
-// API call http://localhost:8080/api/v1/medication/find/patientid/{patientid}
+// API call https://lifecare-5z1q.onrender.com/api/v1/medication/find/patientid/{patientid}
 const fetchMedicationsByMedProfIdPatientId = async () => {
   try {
     const userJSON = sessionStorage.getItem('user');
@@ -27,12 +27,12 @@ const fetchMedicationsByMedProfIdPatientId = async () => {
     fname = patientJSON.fname;
     lname = patientJSON.lname;
     nic = patientJSON.nic;
-    const response = await axios.get('http://localhost:8080/api/v1/medication/find/' + professionalId + '/' + pId + '/' + appointmentId, {
+    const response = await axios.get('https://lifecare-5z1q.onrender.com/api/v1/medication/find/' + professionalId + '/' + pId + '/' + appointmentId, {
         headers: {
             Authorization: `Bearer ${token}`
         }
     });
-    console.log('http://localhost:8080/api/v1/medication/find/' + professionalId + '/' + pId + '/' + appointmentId);
+    console.log('https://lifecare-5z1q.onrender.com/api/v1/medication/find/' + professionalId + '/' + pId + '/' + appointmentId);
     // Check the status code directly
     if (response.status === 401) {
         console.log('Unauthorized'); // Handle unauthorized case
@@ -75,7 +75,7 @@ const handleDelete = async (medication) => {
       const userJSON = sessionStorage.getItem('user');
       const user = JSON.parse(userJSON);
       const token = user.accessToken;
-      const response = await axios.delete('http://localhost:8080/api/v1/medication/delete/' + medication.medicationId,
+      const response = await axios.delete('https://lifecare-5z1q.onrender.com/api/v1/medication/delete/' + medication.medicationId,
        {
         headers: {
           Authorization: `Bearer ${token}`

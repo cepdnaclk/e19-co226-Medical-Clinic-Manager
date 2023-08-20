@@ -15,7 +15,7 @@ export default function MedProfMedications() {
       const user = JSON.parse(userJSON);
       const token = user.accessToken;
       const professionalId = sessionStorage.getItem('professionalId');
-      const response = await axios.get('http://localhost:8080/api/v1/medication/find/medprofid/' + professionalId,
+      const response = await axios.get('https://lifecare-5z1q.onrender.com/api/v1/medication/find/medprofid/' + professionalId,
       {
        headers: {
          Authorization: `Bearer ${token}`
@@ -50,7 +50,7 @@ export default function MedProfMedications() {
       const userJSON = sessionStorage.getItem('user');
       const user = JSON.parse(userJSON);
       const token = user.accessToken;
-      const response = await axios.delete('http://localhost:8080/api/v1/medication/delete/' + id,
+      const response = await axios.delete('https://lifecare-5z1q.onrender.com/api/v1/medication/delete/' + id,
        {
         headers: {
           Authorization: `Bearer ${token}`

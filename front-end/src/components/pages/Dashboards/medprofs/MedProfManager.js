@@ -9,7 +9,7 @@ export default function MedProfessionals() {
   // API call
   const fetchAllManagers = async () => {
     try {
-      const response = await axios.get('http://localhost:8080/api/v1/medprof/all');
+      const response = await axios.get('https://lifecare-5z1q.onrender.com/api/v1/medprof/all');
       // console.log(response.data);
       return response.data;
     } catch (error) {
@@ -33,7 +33,7 @@ export default function MedProfessionals() {
       const userJSON = sessionStorage.getItem('user');
       const user = JSON.parse(userJSON);
       const token = user.accessToken;
-      const response = await axios.delete('http://localhost:8080/api/v1/medprof/delete/' + id,
+      const response = await axios.delete('https://lifecare-5z1q.onrender.com/api/v1/medprof/delete/' + id,
        {
         headers: {
           Authorization: `Bearer ${token}`

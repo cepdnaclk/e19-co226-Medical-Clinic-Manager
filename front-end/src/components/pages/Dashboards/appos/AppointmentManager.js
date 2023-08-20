@@ -19,7 +19,7 @@ const AppointmentManager = () => {
         const userJSON = sessionStorage.getItem('user');
         const user = JSON.parse(userJSON);
         const token = user.accessToken;
-        const response = await axios.get('http://localhost:8080/api/v1/appointment/find/all', {
+        const response = await axios.get('https://lifecare-5z1q.onrender.com/api/v1/appointment/find/all', {
           headers: {
             Authorization: `Bearer ${token}`
           }
@@ -35,7 +35,7 @@ const AppointmentManager = () => {
         const userJSON = sessionStorage.getItem('user');
         const user = JSON.parse(userJSON);
         const token = user.accessToken;
-        const response = await axios.get('http://localhost:8080/api/v1/medprof/all', {
+        const response = await axios.get('https://lifecare-5z1q.onrender.com/api/v1/medprof/all', {
           headers: {
             Authorization: `Bearer ${token}`
           }
@@ -69,7 +69,7 @@ const AppointmentManager = () => {
       const userJSON = sessionStorage.getItem('user');
       const user = JSON.parse(userJSON);
       const token = user.accessToken;
-      const response = await axios.put('http://localhost:8080/api/v1/appointment/save/' + appointment.appointmentId,
+      const response = await axios.put('https://lifecare-5z1q.onrender.com/api/v1/appointment/save/' + appointment.appointmentId,
         {
           ...appointment,
           medicalProfessional: { professionalId: appointment.medicalProfessional.professionalId } // Only send the professionalId
@@ -97,7 +97,7 @@ const AppointmentManager = () => {
       const userJSON = sessionStorage.getItem('user');
       const user = JSON.parse(userJSON);
       const token = user.accessToken;
-      const response = await axios.delete('http://localhost:8080/api/v1/appointment/delete/' + id,
+      const response = await axios.delete('https://lifecare-5z1q.onrender.com/api/v1/appointment/delete/' + id,
        {
         headers: {
           Authorization: `Bearer ${token}`

@@ -78,7 +78,7 @@ function CustomNavbar(isSignedIn) {
     console.log(token);
     try {
       const response = axios.put(
-      'http://localhost:8080/api/v1/medprof/save/' + professionalId,
+      'https://lifecare-5z1q.onrender.com/api/v1/medprof/save/' + professionalId,
         {
           fname: fname,
           lname: lname,

@@ -21,7 +21,7 @@ export default function Patient() {
       const user = JSON.parse(userJSON);
       const token = user.accessToken;
       const professionalId = sessionStorage.getItem('professionalId');
-      const response = await axios.get('http://localhost:8080/api/v1/appointment/find/patient/' + professionalId,
+      const response = await axios.get('https://lifecare-5z1q.onrender.com/api/v1/appointment/find/patient/' + professionalId,
       {
        headers: {
          Authorization: `Bearer ${token}`
@@ -59,7 +59,7 @@ export default function Patient() {
       const user = JSON.parse(userJSON);
       const token = user.accessToken;
       const professionalId = sessionStorage.getItem('professionalId');
-      const response = await axios.get('http://localhost:8080/api/v1/appointment/count/' + professionalId,
+      const response = await axios.get('https://lifecare-5z1q.onrender.com/api/v1/appointment/count/' + professionalId,
       {
        headers: {
          Authorization: `Bearer ${token}`

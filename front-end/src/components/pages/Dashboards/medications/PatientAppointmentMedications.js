@@ -17,7 +17,7 @@ export default function PatientAppointmentMedications() {
       const token = user.accessToken;
       const patientId = sessionStorage.getItem('patientId');
       const appointmentId = sessionStorage.getItem('appointmentId');
-      const response = await axios.get('http://localhost:8080/api/v1/medication/find/' + patientId + '/' + appointmentId,
+      const response = await axios.get('https://lifecare-5z1q.onrender.com/api/v1/medication/find/' + patientId + '/' + appointmentId,
       {
        headers: {
          Authorization: `Bearer ${token}`

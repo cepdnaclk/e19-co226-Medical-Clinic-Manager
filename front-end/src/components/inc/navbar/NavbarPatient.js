@@ -78,7 +78,7 @@ const handleSave = () => {
   console.log(token);
   try {
     const response = axios.put(
-    'http://localhost:8080/api/v1/patient/save/' + patientId,
+    'https://lifecare-5z1q.onrender.com/api/v1/patient/save/' + patientId,
       {
         fname: fname,
         lname: lname,

@@ -59,7 +59,7 @@ function NewMedication() {
       const token = user.accessToken;
 
       const response = axios.post(
-      'http://localhost:8080/api/v1/medication/save',
+      'https://lifecare-5z1q.onrender.com/api/v1/medication/save',
         medication, 
         {
           headers: {

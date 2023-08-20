@@ -9,7 +9,7 @@ class FetchPatientProfileService {
             const token = user.accessToken;
             console.log(token);
             // console.log(user.id);
-            const response = await axios.get("http://localhost:8080/api/v1/patient/findbyuserid/" + user.id, {
+            const response = await axios.get("https://lifecare-5z1q.onrender.com/api/v1/patient/findbyuserid/" + user.id, {
                 headers: {
                     Authorization: `Bearer ${token}`
                 }

@@ -3,7 +3,7 @@ import axios from "axios";
 class RegisterUserService {
     handleRegisterUser = async (data, token) => {
         console.log(token);
-        const response = await axios.post("http://localhost:8080/api/v1/medprof/save", data, {
+        const response = await axios.post("https://lifecare-5z1q.onrender.com/api/v1/medprof/save", data, {
             headers: {
               Authorization: `Bearer ${token}`
             }

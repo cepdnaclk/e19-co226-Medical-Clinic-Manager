@@ -13,7 +13,7 @@ const Managers = () => {
   // API call
   const fetchAllManagers = async () => {
     try {
-      const response = await axios.get('http://localhost:8080/api/v1/manager/all');
+      const response = await axios.get('https://lifecare-5z1q.onrender.com/api/v1/manager/all');
       // console.log(response.data);
       return response.data;
     } catch (error) {

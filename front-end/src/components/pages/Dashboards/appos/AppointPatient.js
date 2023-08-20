@@ -14,14 +14,14 @@ const AppointmentPatient = () => {
   const [searchInput, setSearchInput] = useState('');
   const [appointments, setAppointments] = useState('');
 
-// API call http://localhost:8080/api/v1/appointment/find/patientid/{patientid}
+// API call https://lifecare-5z1q.onrender.com/api/v1/appointment/find/patientid/{patientid}
 const fetchAppointmentsByPatientId = async () => {
   try {
     const userJSON = sessionStorage.getItem('user');
     const user = JSON.parse(userJSON);
     const token = user.accessToken;
     const patientId = sessionStorage.getItem('patientId');
-    const response = await axios.get('http://localhost:8080/api/v1/appointment/find/patientid/' + patientId, {
+    const response = await axios.get('https://lifecare-5z1q.onrender.com/api/v1/appointment/find/patientid/' + patientId, {
         headers: {
             Authorization: `Bearer ${token}`
         }
@@ -46,7 +46,7 @@ const handleDelete = async (id) => {
     const userJSON = sessionStorage.getItem('user');
     const user = JSON.parse(userJSON);
     const token = user.accessToken;
-    const response = await axios.delete('http://localhost:8080/api/v1/appointment/delete/' + id,
+    const response = await axios.delete('https://lifecare-5z1q.onrender.com/api/v1/appointment/delete/' + id,
      {
       headers: {
         Authorization: `Bearer ${token}`
@@ -89,7 +89,7 @@ const isAPatient = async () => {
   try {
     const user = JSON.parse(sessionStorage.getItem('user'));
     const token = user.accessToken;
-    const response = await axios.get("http://localhost:8080/api/v1/patient/existsbyuserid/" + user.id, {
+    const response = await axios.get("https://lifecare-5z1q.onrender.com/api/v1/patient/existsbyuserid/" + user.id, {
       headers: {
         Authorization: `Bearer ${token}`
       }
