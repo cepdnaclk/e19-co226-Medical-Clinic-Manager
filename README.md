@@ -4,7 +4,7 @@ Our platform empowers clinics to efficiently handle appointments, medications, a
 
 ## EER Diagram
 
-<img src="docs/images/eer.png" alt="Image" width="600" height="auto" />
+<img src="docs/images/eernew.jpg" alt="Image" width="600" height="auto" />
 
 ## Relational Mapping
 
