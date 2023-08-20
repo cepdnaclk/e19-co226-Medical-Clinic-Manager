@@ -1,4 +1,11 @@
-## Dependency
+# Run Spring Boot application
+1. Install XAMPP ( download it from [Link here](https://www.apachefriends.org) )
+2. Open xampp control panel and start `Apache` and `mySQL` modules. Also pay attention to the 'port' that the `mySQL` runs on.
+3. Change the following properties in `application.properties` file such that it is suitable for your database configuration
+4. Install Maven ( if you dont know, how to install mevan; then watch this [Link Here](https://youtu.be/WASIyomqarc))
+5. Run following command `mvn spring-boot:run` in the terminal inside project root directory.
+
+### Dependency
 – If you want to use PostgreSQL:
 ```xml
 <dependency>
@@ -15,7 +22,7 @@
   <scope>runtime</scope>
 </dependency>
 ```
-## Configure Spring Datasource, JPA, App properties
+### Configure Spring Datasource, JPA, App properties
 Open `src/main/resources/application.properties`
 - For PostgreSQL:
 ```
@@ -46,31 +53,24 @@ spring.jpa.hibernate.ddl-auto=update
 LifeCare.app.jwtSecret= ======================Eshan=Spring===========================
 LifeCare.app.jwtExpirationMs=86400000
 ```
-## Run Spring Boot application
-1. Install XAMPP ( download it from [Link here](https://www.apachefriends.org) )
-2. Open xampp control panel and start `Apache` and `mySQL` modules. Also pay attention to the 'port' that the `mySQL` runs on.
-3. Change the following properties in `application.properties` file such that it is suitable for your database configuration
-4. Install Maven ( if you dont know, how to install mevan; then watch this [Link Here](https://youtu.be/WASIyomqarc))
-5. Run following command `mvn spring-boot:run` in the terminal inside project root directory.
-
-## Run following SQL insert statements in mySQL console
+### Run following SQL insert statements in mySQL console
 ```
 INSERT INTO roles(name) VALUES('ROLE_USER');
 INSERT INTO roles(name) VALUES('ROLE_MODERATOR');
 INSERT INTO roles(name) VALUES('ROLE_ADMIN');
 ```
 
-## User Registration, User Login and Authorization process.
+# User Registration, User Login and Authorization process.
 The diagram shows flow of how we implement User Registration, User Login and Authorization process.
 
 ![spring-boot-jwt-authentication-spring-security-flow](spring-boot-jwt-authentication-spring-security-flow.png)
 
-## Spring Boot Server Architecture with Spring Security
+### Spring Boot Server Architecture with Spring Security
 You can have an overview of our Spring Boot Server with the diagram below:
 
 ![spring-boot-jwt-authentication-spring-security-architecture](spring-boot-jwt-authentication-spring-security-architecture.png)
 
-## Refresh Token
+### Refresh Token
 
 ![spring-boot-refresh-token-jwt-example-flow](spring-boot-refresh-token-jwt-example-flow.png)
 
